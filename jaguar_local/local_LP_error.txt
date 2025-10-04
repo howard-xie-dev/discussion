@@ -1,0 +1,29 @@
+python3 main.py --chain_id='eip155:8453' --sns=false --dev=true --cloudwatch=false
+Traceback (most recent call last):
+  File "/Users/howard/src/jaguar/main.py", line 4, in <module>
+    from healer import healer_execute
+  File "/Users/howard/src/jaguar/healer.py", line 5, in <module>
+    from sqlalchemy import text
+  File "/Users/howard/src/test-infra/.venv/lib/python3.13/site-packages/sqlalchemy/__init__.py", line 13, in <module>
+    from .engine import AdaptedConnection as AdaptedConnection
+  File "/Users/howard/src/test-infra/.venv/lib/python3.13/site-packages/sqlalchemy/engine/__init__.py", line 18, in <module>
+    from . import events as events
+  File "/Users/howard/src/test-infra/.venv/lib/python3.13/site-packages/sqlalchemy/engine/events.py", line 19, in <module>
+    from .base import Connection
+  File "/Users/howard/src/test-infra/.venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 30, in <module>
+    from .interfaces import BindTyping
+  File "/Users/howard/src/test-infra/.venv/lib/python3.13/site-packages/sqlalchemy/engine/interfaces.py", line 38, in <module>
+    from ..sql.compiler import Compiled as Compiled
+  File "/Users/howard/src/test-infra/.venv/lib/python3.13/site-packages/sqlalchemy/sql/__init__.py", line 14, in <module>
+    from .compiler import COLLECT_CARTESIAN_PRODUCTS as COLLECT_CARTESIAN_PRODUCTS
+  File "/Users/howard/src/test-infra/.venv/lib/python3.13/site-packages/sqlalchemy/sql/compiler.py", line 615, in <module>
+    class InsertmanyvaluesSentinelOpts(FastIntFlag):
+    ...<14 lines>...
+        RENDER_SELECT_COL_CASTS = 64
+  File "/Users/howard/src/test-infra/.venv/lib/python3.13/site-packages/sqlalchemy/util/langhelpers.py", line 1663, in __init__
+    sym = symbol(k, canonical=v)
+  File "/Users/howard/src/test-infra/.venv/lib/python3.13/site-packages/sqlalchemy/util/langhelpers.py", line 1635, in __new__
+    raise TypeError(
+    ...<2 lines>...
+    )
+TypeError: Can't replace canonical symbol for '__firstlineno__' with new int value 615
