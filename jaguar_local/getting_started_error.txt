@@ -1,0 +1,1783 @@
+
+UPDATE
+    evm_staging.token_mappings
+SET
+    contract_address = lower(contract_address);]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+DEBUG    Read operation on file: ./database/schema/solana/svm_staging/actions.sql
+INFO     Onboarding SQL file='./database/schema/solana/svm_staging/actions.sql'
+ERROR    (psycopg2.errors.SyntaxError) syntax error at or near "ON"
+LINE 30: CREATE INDEX IF NOT EXISTS ON svm_staging.actions (tx_from_a...
+                                    ^
+
+[SQL: CREATE TABLE IF NOT EXISTS svm_staging.actions (
+    chain_id TEXT NOT NULL,
+    category TEXT NOT NULL,
+    label TEXT NOT NULL,
+    block_time TIMESTAMP WITHOUT TIME ZONE NOT NULL,
+    block_hash TEXT NOT NULL,
+    tx_from_address TEXT NOT NULL,
+    tx_to_address TEXT,
+    user_address TEXT NOT NULL,
+    contract_address TEXT, -- TODO: SHOULD BE RETURNED TO NULL WHEN SH FIXES THEIR SHIZ
+    transaction_hash TEXT NOT NULL,
+    is_event BOOLEAN NOT NULL,
+    log_index BIGINT,
+    trace_index BIGINT,
+    uniqueness_index BIGINT GENERATED ALWAYS AS (
+        COALESCE(log_index, 0 :: bigint) + COALESCE(trace_index, 0 :: bigint)
+    ) STORED NOT NULL,
+    extra_fields jsonb,
+    process_time TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (
+        user_address,
+        chain_id,
+        transaction_hash,
+        contract_address,
+        uniqueness_index
+    )
+);
+
+-- B-trees (defualt)
+CREATE INDEX IF NOT EXISTS ON svm_staging.actions (tx_from_address);
+
+create INDEX IF NOT EXISTS on svm_staging.actions (block_time);
+
+CREATE INDEX IF NOT EXISTS ON svm_staging.actions (chain_id);
+
+CREATE INDEX IF NOT EXISTS ON svm_staging.actions (category);
+
+CREATE INDEX IF NOT EXISTS ON svm_staging.actions (label);
+
+CREATE INDEX IF NOT EXISTS ON svm_staging.actions (user_address, block_time);
+
+ALTER TABLE
+    svm_staging.actions
+ALTER COLUMN
+    process_time TYPE TIMESTAMP WITH TIME ZONE USING process_time AT TIME ZONE 'UTC';
+
+ALTER TABLE
+    svm_staging.actions
+ALTER COLUMN
+    block_time TYPE TIMESTAMP WITH TIME ZONE USING block_time AT TIME ZONE 'UTC';]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.SyntaxError: syntax error at or near "ON"
+LINE 30: CREATE INDEX IF NOT EXISTS ON svm_staging.actions (tx_from_a...
+                                    ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/howard/src/jaguar/getting_started.py", line 81, in <module>
+    session.execute(text(sql_ddl))
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2245, in _execute_internal
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2353, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.SyntaxError) syntax error at or near "ON"
+LINE 30: CREATE INDEX IF NOT EXISTS ON svm_staging.actions (tx_from_a...
+                                    ^
+
+[SQL: CREATE TABLE IF NOT EXISTS svm_staging.actions (
+    chain_id TEXT NOT NULL,
+    category TEXT NOT NULL,
+    label TEXT NOT NULL,
+    block_time TIMESTAMP WITHOUT TIME ZONE NOT NULL,
+    block_hash TEXT NOT NULL,
+    tx_from_address TEXT NOT NULL,
+    tx_to_address TEXT,
+    user_address TEXT NOT NULL,
+    contract_address TEXT, -- TODO: SHOULD BE RETURNED TO NULL WHEN SH FIXES THEIR SHIZ
+    transaction_hash TEXT NOT NULL,
+    is_event BOOLEAN NOT NULL,
+    log_index BIGINT,
+    trace_index BIGINT,
+    uniqueness_index BIGINT GENERATED ALWAYS AS (
+        COALESCE(log_index, 0 :: bigint) + COALESCE(trace_index, 0 :: bigint)
+    ) STORED NOT NULL,
+    extra_fields jsonb,
+    process_time TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (
+        user_address,
+        chain_id,
+        transaction_hash,
+        contract_address,
+        uniqueness_index
+    )
+);
+
+-- B-trees (defualt)
+CREATE INDEX IF NOT EXISTS ON svm_staging.actions (tx_from_address);
+
+create INDEX IF NOT EXISTS on svm_staging.actions (block_time);
+
+CREATE INDEX IF NOT EXISTS ON svm_staging.actions (chain_id);
+
+CREATE INDEX IF NOT EXISTS ON svm_staging.actions (category);
+
+CREATE INDEX IF NOT EXISTS ON svm_staging.actions (label);
+
+CREATE INDEX IF NOT EXISTS ON svm_staging.actions (user_address, block_time);
+
+ALTER TABLE
+    svm_staging.actions
+ALTER COLUMN
+    process_time TYPE TIMESTAMP WITH TIME ZONE USING process_time AT TIME ZONE 'UTC';
+
+ALTER TABLE
+    svm_staging.actions
+ALTER COLUMN
+    block_time TYPE TIMESTAMP WITH TIME ZONE USING block_time AT TIME ZONE 'UTC';]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+DEBUG    Read operation on file: ./database/schema/evm/stats/crawler_controller.sql
+INFO     Onboarding SQL file='./database/schema/evm/stats/crawler_controller.sql'
+ERROR    (psycopg2.errors.InvalidSchemaName) schema "stats" does not exist
+LINE 1: CREATE TABLE IF NOT EXISTS stats.crawler_controller(
+                                   ^
+
+[SQL: CREATE TABLE IF NOT EXISTS stats.crawler_controller(
+    chain_id VARCHAR(100) NOT NULL,
+    paused BOOL NOT NULL DEFAULT FALSE,
+    healer_paused BOOL NOT NULL DEFAULT FALSE,
+    PRIMARY KEY (chain_id)
+);
+
+-- TODO: This needs to be updated as we add more chains
+INSERT INTO
+    stats.crawler_controller(chain_id)
+VALUES
+    ('eip155:1'),
+    ('eip155:8453'),
+    ('solana:101')
+;
+]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.InvalidSchemaName: schema "stats" does not exist
+LINE 1: CREATE TABLE IF NOT EXISTS stats.crawler_controller(
+                                   ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/howard/src/jaguar/getting_started.py", line 81, in <module>
+    session.execute(text(sql_ddl))
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2245, in _execute_internal
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2353, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.InvalidSchemaName) schema "stats" does not exist
+LINE 1: CREATE TABLE IF NOT EXISTS stats.crawler_controller(
+                                   ^
+
+[SQL: CREATE TABLE IF NOT EXISTS stats.crawler_controller(
+    chain_id VARCHAR(100) NOT NULL,
+    paused BOOL NOT NULL DEFAULT FALSE,
+    healer_paused BOOL NOT NULL DEFAULT FALSE,
+    PRIMARY KEY (chain_id)
+);
+
+-- TODO: This needs to be updated as we add more chains
+INSERT INTO
+    stats.crawler_controller(chain_id)
+VALUES
+    ('eip155:1'),
+    ('eip155:8453'),
+    ('solana:101')
+;
+]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+DEBUG    Read operation on file: ./database/schema/staging/asset_metadata.sql
+INFO     Onboarding SQL file='./database/schema/staging/asset_metadata.sql'
+ERROR    (psycopg2.errors.InvalidSchemaName) schema "staging" does not exist
+LINE 2: CREATE TABLE IF NOT EXISTS staging.asset_metadata (
+                                   ^
+
+[SQL: -- Unified Asset Metadata Table
+CREATE TABLE IF NOT EXISTS staging.asset_metadata (
+    -- Primary identifiers (Type 1 - Fixed in time)
+    chain_id TEXT NOT NULL,
+    contract_address TEXT NOT NULL,
+    token_id TEXT NULL,
+    asset_id TEXT NOT NULL,
+    asset_type TEXT NOT NULL CHECK (asset_type IN ('token', 'nft_collection', 'nft')),
+
+    -- Chain metadata
+    chain_image_url TEXT,
+
+    -- Blockchain immutable data (Type 1 - Fixed in time)
+    creator_address TEXT,
+    created_timestamp TIMESTAMPTZ, -- Should be datetime/timestamp, but kept date for backward compatibility
+    created_date TIMESTAMPTZ, -- Should be datetime/timestamp, but kept date for backward compatibility
+    created_block_number NUMERIC,
+
+    -- Core metadata (Type 2 - Mostly fixed in time)
+    name TEXT,
+    symbol TEXT,
+    standard TEXT, -- ERC20, ERC721, ERC1155, native, fungible, nonfungible
+    decimals NUMERIC, -- Only for tokens
+
+    -- Media and presentation (Type 3 - Can change more frequently)
+    image_url TEXT,
+    image_previews JSONB, -- {image_small_url, image_medium_url, image_large_url, etc.}
+    image_properties JSONB, -- {width, height, size, mime_type}
+    banner_image_url TEXT,
+    banner_image_previews JSONB,
+    banner_image_properties JSONB,
+    video_url TEXT,
+    video_properties JSONB,
+    audio_url TEXT,
+    audio_properties JSONB,
+    predominant_color TEXT, -- Hex color code
+
+    -- Descriptive content (Type 3 - Can change more frequently)
+    description TEXT,
+    category TEXT, -- general, pfp, art, gaming, etc.
+    is_nsfw BOOLEAN DEFAULT FALSE,
+    spam_score NUMERIC DEFAULT 0,
+    verified BOOLEAN DEFAULT FALSE NOT NULL,
+
+    -- Social and external links (Type 3 - Can change more frequently)
+    socials JSONB, -- {external_url, twitter_username, telegram_url, discord_url, etc.}
+
+    -- NFT-specific fields
+    collection_name TEXT, -- For individual NFTs
+    collection_asset_id TEXT, -- Points to the collection this NFT belongs to
+    collection_image_url TEXT,
+    collection_image_previews JSONB,
+    collection_image_properties JSONB,
+    owners INTEGER, -- For NFT collections
+    traits JSONB, -- Array of trait objects for NFTs
+    rarity JSONB, -- {rank, score, etc.}
+    royalties JSONB, -- {percentage, recipient_address}
+
+    -- Static supply info (Type 2/3 - Mostly fixed but can change)
+    supply NUMERIC, -- Total supply
+    circulating_supply NUMERIC, -- Circulating supply for tokens
+    editions NUMERIC, -- For NFT collections
+
+    -- Market data fields (Type 3 - Frequently changing)
+    pair_address_asset_id TEXT, -- Address of the trading TOP pair if applicable
+    liquidity_usd NUMERIC,
+    volume JSONB, -- {h24, total, etc.}
+    price_usd NUMERIC,
+    price_change_percentage JSONB, -- {h24, etc.}
+    market_cap_usd NUMERIC,
+    fdv_usd NUMERIC, -- Fully diluted valuation
+    floor_price JSONB, -- {usd_amount, eth_amount}
+    top_bid JSONB, -- {usd_amount, eth_amount}
+
+    -- Additional address fields
+    holder_address TEXT, -- Current holder for NFTs
+    owner_address TEXT, -- Owner address from API
+
+    -- NFT-specific transaction fields
+    last_sale_eth NUMERIC,
+    estimated_value_eth NUMERIC,
+
+    -- Computed identifiers
+    asset_id_caip_19 TEXT, -- Computed field for CAIP-19 format
+
+    -- Metadata
+    updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    processed_at TIMESTAMPTZ,
+
+    -- Primary key
+    PRIMARY KEY (asset_id)
+);
+
+-- Indexes for common access patterns
+CREATE INDEX IF NOT EXISTS idx_asset_metadata_chain_id ON staging.asset_metadata (chain_id);
+CREATE INDEX IF NOT EXISTS idx_asset_metadata_contract_address ON staging.asset_metadata (contract_address);
+CREATE INDEX IF NOT EXISTS idx_asset_metadata_asset_type ON staging.asset_metadata (asset_type);
+CREATE INDEX IF NOT EXISTS idx_asset_metadata_creator ON staging.asset_metadata (creator_address);
+CREATE INDEX IF NOT EXISTS idx_asset_metadata_processed_at ON staging.asset_metadata (processed_at);
+
+-- Indexes for new fields
+CREATE INDEX IF NOT EXISTS idx_asset_metadata_holder_address ON staging.asset_metadata (holder_address) WHERE holder_address IS NOT NULL;
+CREATE INDEX IF NOT EXISTS idx_asset_metadata_owner_address ON staging.asset_metadata (owner_address) WHERE owner_address IS NOT NULL;
+
+-- Trigger function to update updated_at timestamp
+CREATE OR REPLACE FUNCTION update_asset_metadata_updated_at()
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.updated_at = CURRENT_TIMESTAMP;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trigger_update_asset_metadata_updated_at
+    BEFORE UPDATE ON staging.asset_metadata
+    FOR EACH ROW
+    EXECUTE FUNCTION update_asset_metadata_updated_at();]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.InvalidSchemaName: schema "staging" does not exist
+LINE 2: CREATE TABLE IF NOT EXISTS staging.asset_metadata (
+                                   ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/howard/src/jaguar/getting_started.py", line 81, in <module>
+    session.execute(text(sql_ddl))
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2245, in _execute_internal
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2353, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.InvalidSchemaName) schema "staging" does not exist
+LINE 2: CREATE TABLE IF NOT EXISTS staging.asset_metadata (
+                                   ^
+
+[SQL: -- Unified Asset Metadata Table
+CREATE TABLE IF NOT EXISTS staging.asset_metadata (
+    -- Primary identifiers (Type 1 - Fixed in time)
+    chain_id TEXT NOT NULL,
+    contract_address TEXT NOT NULL,
+    token_id TEXT NULL,
+    asset_id TEXT NOT NULL,
+    asset_type TEXT NOT NULL CHECK (asset_type IN ('token', 'nft_collection', 'nft')),
+
+    -- Chain metadata
+    chain_image_url TEXT,
+
+    -- Blockchain immutable data (Type 1 - Fixed in time)
+    creator_address TEXT,
+    created_timestamp TIMESTAMPTZ, -- Should be datetime/timestamp, but kept date for backward compatibility
+    created_date TIMESTAMPTZ, -- Should be datetime/timestamp, but kept date for backward compatibility
+    created_block_number NUMERIC,
+
+    -- Core metadata (Type 2 - Mostly fixed in time)
+    name TEXT,
+    symbol TEXT,
+    standard TEXT, -- ERC20, ERC721, ERC1155, native, fungible, nonfungible
+    decimals NUMERIC, -- Only for tokens
+
+    -- Media and presentation (Type 3 - Can change more frequently)
+    image_url TEXT,
+    image_previews JSONB, -- {image_small_url, image_medium_url, image_large_url, etc.}
+    image_properties JSONB, -- {width, height, size, mime_type}
+    banner_image_url TEXT,
+    banner_image_previews JSONB,
+    banner_image_properties JSONB,
+    video_url TEXT,
+    video_properties JSONB,
+    audio_url TEXT,
+    audio_properties JSONB,
+    predominant_color TEXT, -- Hex color code
+
+    -- Descriptive content (Type 3 - Can change more frequently)
+    description TEXT,
+    category TEXT, -- general, pfp, art, gaming, etc.
+    is_nsfw BOOLEAN DEFAULT FALSE,
+    spam_score NUMERIC DEFAULT 0,
+    verified BOOLEAN DEFAULT FALSE NOT NULL,
+
+    -- Social and external links (Type 3 - Can change more frequently)
+    socials JSONB, -- {external_url, twitter_username, telegram_url, discord_url, etc.}
+
+    -- NFT-specific fields
+    collection_name TEXT, -- For individual NFTs
+    collection_asset_id TEXT, -- Points to the collection this NFT belongs to
+    collection_image_url TEXT,
+    collection_image_previews JSONB,
+    collection_image_properties JSONB,
+    owners INTEGER, -- For NFT collections
+    traits JSONB, -- Array of trait objects for NFTs
+    rarity JSONB, -- {rank, score, etc.}
+    royalties JSONB, -- {percentage, recipient_address}
+
+    -- Static supply info (Type 2/3 - Mostly fixed but can change)
+    supply NUMERIC, -- Total supply
+    circulating_supply NUMERIC, -- Circulating supply for tokens
+    editions NUMERIC, -- For NFT collections
+
+    -- Market data fields (Type 3 - Frequently changing)
+    pair_address_asset_id TEXT, -- Address of the trading TOP pair if applicable
+    liquidity_usd NUMERIC,
+    volume JSONB, -- {h24, total, etc.}
+    price_usd NUMERIC,
+    price_change_percentage JSONB, -- {h24, etc.}
+    market_cap_usd NUMERIC,
+    fdv_usd NUMERIC, -- Fully diluted valuation
+    floor_price JSONB, -- {usd_amount, eth_amount}
+    top_bid JSONB, -- {usd_amount, eth_amount}
+
+    -- Additional address fields
+    holder_address TEXT, -- Current holder for NFTs
+    owner_address TEXT, -- Owner address from API
+
+    -- NFT-specific transaction fields
+    last_sale_eth NUMERIC,
+    estimated_value_eth NUMERIC,
+
+    -- Computed identifiers
+    asset_id_caip_19 TEXT, -- Computed field for CAIP-19 format
+
+    -- Metadata
+    updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    processed_at TIMESTAMPTZ,
+
+    -- Primary key
+    PRIMARY KEY (asset_id)
+);
+
+-- Indexes for common access patterns
+CREATE INDEX IF NOT EXISTS idx_asset_metadata_chain_id ON staging.asset_metadata (chain_id);
+CREATE INDEX IF NOT EXISTS idx_asset_metadata_contract_address ON staging.asset_metadata (contract_address);
+CREATE INDEX IF NOT EXISTS idx_asset_metadata_asset_type ON staging.asset_metadata (asset_type);
+CREATE INDEX IF NOT EXISTS idx_asset_metadata_creator ON staging.asset_metadata (creator_address);
+CREATE INDEX IF NOT EXISTS idx_asset_metadata_processed_at ON staging.asset_metadata (processed_at);
+
+-- Indexes for new fields
+CREATE INDEX IF NOT EXISTS idx_asset_metadata_holder_address ON staging.asset_metadata (holder_address) WHERE holder_address IS NOT NULL;
+CREATE INDEX IF NOT EXISTS idx_asset_metadata_owner_address ON staging.asset_metadata (owner_address) WHERE owner_address IS NOT NULL;
+
+-- Trigger function to update updated_at timestamp
+CREATE OR REPLACE FUNCTION update_asset_metadata_updated_at()
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.updated_at = CURRENT_TIMESTAMP;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trigger_update_asset_metadata_updated_at
+    BEFORE UPDATE ON staging.asset_metadata
+    FOR EACH ROW
+    EXECUTE FUNCTION update_asset_metadata_updated_at();]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+DEBUG    Read operation on file: ./database/schema/staging/asset_scans.sql
+INFO     Onboarding SQL file='./database/schema/staging/asset_scans.sql'
+ERROR    (psycopg2.errors.InvalidSchemaName) schema "staging" does not exist
+LINE 1: CREATE TABLE IF NOT EXISTS staging.asset_scans (
+                                   ^
+
+[SQL: CREATE TABLE IF NOT EXISTS staging.asset_scans (
+    asset_id TEXT PRIMARY KEY NOT NULL,
+
+    contract_address TEXT NOT NULL,
+    chain_id TEXT NOT NULL,
+
+    result_type TEXT NOT NULL,
+    malicious_score NUMERIC NOT NULL,
+    attack_types JSONB,
+    high_risk_features JSONB,
+
+    transfer_fee NUMERIC,
+    buy_fee NUMERIC,
+    sell_fee NUMERIC,
+
+    burned_liquidity_pct NUMERIC,
+    locked_liquidity_pct NUMERIC,
+
+    holders_count NUMERIC,
+    top_holder_pct NUMERIC,
+
+    creation_timestamp TIMESTAMPTZ,
+    has_malicious_urls BOOLEAN DEFAULT FALSE NOT NULL,
+    has_trading_limits BOOLEAN DEFAULT FALSE NOT NULL,
+
+    deployer_address TEXT,
+    owner_address TEXT,
+
+    raw_response JSONB,
+
+    process_time TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
+
+-- Indexes for lookups and risk analysis
+CREATE INDEX IF NOT EXISTS idx_asset_scans_result_type ON staging.asset_scans (result_type);
+CREATE INDEX IF NOT EXISTS idx_asset_scans_malicious_score ON staging.asset_scans (malicious_score DESC);
+CREATE INDEX IF NOT EXISTS idx_asset_scans_contract_address ON staging.asset_scans (contract_address);
+CREATE INDEX IF NOT EXISTS idx_asset_scans_process_time ON staging.asset_scans (process_time DESC);]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.InvalidSchemaName: schema "staging" does not exist
+LINE 1: CREATE TABLE IF NOT EXISTS staging.asset_scans (
+                                   ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/howard/src/jaguar/getting_started.py", line 81, in <module>
+    session.execute(text(sql_ddl))
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2245, in _execute_internal
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2353, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.InvalidSchemaName) schema "staging" does not exist
+LINE 1: CREATE TABLE IF NOT EXISTS staging.asset_scans (
+                                   ^
+
+[SQL: CREATE TABLE IF NOT EXISTS staging.asset_scans (
+    asset_id TEXT PRIMARY KEY NOT NULL,
+
+    contract_address TEXT NOT NULL,
+    chain_id TEXT NOT NULL,
+
+    result_type TEXT NOT NULL,
+    malicious_score NUMERIC NOT NULL,
+    attack_types JSONB,
+    high_risk_features JSONB,
+
+    transfer_fee NUMERIC,
+    buy_fee NUMERIC,
+    sell_fee NUMERIC,
+
+    burned_liquidity_pct NUMERIC,
+    locked_liquidity_pct NUMERIC,
+
+    holders_count NUMERIC,
+    top_holder_pct NUMERIC,
+
+    creation_timestamp TIMESTAMPTZ,
+    has_malicious_urls BOOLEAN DEFAULT FALSE NOT NULL,
+    has_trading_limits BOOLEAN DEFAULT FALSE NOT NULL,
+
+    deployer_address TEXT,
+    owner_address TEXT,
+
+    raw_response JSONB,
+
+    process_time TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
+
+-- Indexes for lookups and risk analysis
+CREATE INDEX IF NOT EXISTS idx_asset_scans_result_type ON staging.asset_scans (result_type);
+CREATE INDEX IF NOT EXISTS idx_asset_scans_malicious_score ON staging.asset_scans (malicious_score DESC);
+CREATE INDEX IF NOT EXISTS idx_asset_scans_contract_address ON staging.asset_scans (contract_address);
+CREATE INDEX IF NOT EXISTS idx_asset_scans_process_time ON staging.asset_scans (process_time DESC);]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+ERROR    File not found error: File './database/schema/staging/chain_slugs.sql' not found.
+Traceback (most recent call last):
+  File "/Users/howard/src/jaguar/utils/file_utils.py", line 26, in read
+    raise FileNotFoundError(f"File '{self.file_path}' not found.")
+FileNotFoundError: File './database/schema/staging/chain_slugs.sql' not found.
+INFO     Onboarding SQL file='./database/schema/staging/chain_slugs.sql'
+ERROR    (psycopg2.ProgrammingError) can't execute an empty query
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.ProgrammingError: can't execute an empty query
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/howard/src/jaguar/getting_started.py", line 81, in <module>
+    session.execute(text(sql_ddl))
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2245, in _execute_internal
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2353, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.ProgrammingError) can't execute an empty query
+(Background on this error at: https://sqlalche.me/e/20/f405)
+DEBUG    Read operation on file: ./database/schema/staging/image_metadata.sql
+INFO     Onboarding SQL file='./database/schema/staging/image_metadata.sql'
+ERROR    (psycopg2.errors.InvalidSchemaName) schema "staging" does not exist
+LINE 1: CREATE TABLE IF NOT EXISTS staging.image_metadata (
+                                   ^
+
+[SQL: CREATE TABLE IF NOT EXISTS staging.image_metadata (
+    platform_id TEXT NOT NULL,
+    contract_address VARCHAR(255) NOT NULL,
+    image TEXT,
+    banner_image TEXT GENERATED ALWAYS AS (
+        CASE
+            WHEN image LIKE 'https://dd.dexscreener.com%%' THEN 'https://dd.dexscreener.com/ds-data/tokens/' || platform_id || '/' || contract_address || '/header.png'
+            ELSE NULL
+        END
+    ) STORED,
+    source TEXT GENERATED ALWAYS AS (
+        CASE
+            WHEN image LIKE 'https://coin-images.coingecko.com%%' THEN 'coingecko.com'
+            WHEN image LIKE 'https://dd.dexscreener.com%%' THEN 'dexscreener.com'
+            ELSE split_part(
+                regexp_replace(image, '^https?://(www\.)?', ''),
+                '/',
+                1
+            )
+        END
+    ) STORED,
+    process_time TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (platform_id, contract_address)
+);
+
+-- Index remains the same
+CREATE INDEX IF NOT EXISTS image_metadata_contract_address_idx ON staging.image_metadata (contract_address);]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.InvalidSchemaName: schema "staging" does not exist
+LINE 1: CREATE TABLE IF NOT EXISTS staging.image_metadata (
+                                   ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/howard/src/jaguar/getting_started.py", line 81, in <module>
+    session.execute(text(sql_ddl))
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2245, in _execute_internal
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2353, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.InvalidSchemaName) schema "staging" does not exist
+LINE 1: CREATE TABLE IF NOT EXISTS staging.image_metadata (
+                                   ^
+
+[SQL: CREATE TABLE IF NOT EXISTS staging.image_metadata (
+    platform_id TEXT NOT NULL,
+    contract_address VARCHAR(255) NOT NULL,
+    image TEXT,
+    banner_image TEXT GENERATED ALWAYS AS (
+        CASE
+            WHEN image LIKE 'https://dd.dexscreener.com%%' THEN 'https://dd.dexscreener.com/ds-data/tokens/' || platform_id || '/' || contract_address || '/header.png'
+            ELSE NULL
+        END
+    ) STORED,
+    source TEXT GENERATED ALWAYS AS (
+        CASE
+            WHEN image LIKE 'https://coin-images.coingecko.com%%' THEN 'coingecko.com'
+            WHEN image LIKE 'https://dd.dexscreener.com%%' THEN 'dexscreener.com'
+            ELSE split_part(
+                regexp_replace(image, '^https?://(www\.)?', ''),
+                '/',
+                1
+            )
+        END
+    ) STORED,
+    process_time TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (platform_id, contract_address)
+);
+
+-- Index remains the same
+CREATE INDEX IF NOT EXISTS image_metadata_contract_address_idx ON staging.image_metadata (contract_address);]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+DEBUG    Read operation on file: ./database/schema/staging/coingecko_cache.sql
+INFO     Onboarding SQL file='./database/schema/staging/coingecko_cache.sql'
+ERROR    (psycopg2.errors.InvalidSchemaName) schema "staging" does not exist
+LINE 1: CREATE TABLE IF NOT EXISTS staging.coingecko_cache (
+                                   ^
+
+[SQL: CREATE TABLE IF NOT EXISTS staging.coingecko_cache (
+    asset_id TEXT PRIMARY KEY,
+    chain_id TEXT NOT NULL,
+    contract_address TEXT,
+    coingecko_id TEXT NOT NULL,
+    symbol TEXT NOT NULL,
+    name TEXT NOT NULL,
+    categories TEXT[] NOT NULL DEFAULT '{}',
+    process_time TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX IF NOT EXISTS idx_coingecko_cache_chain_id
+    ON staging.coingecko_cache(chain_id);
+
+-- Create GIN index for array search on categories
+CREATE INDEX IF NOT EXISTS idx_coingecko_cache_categories
+    ON staging.coingecko_cache USING GIN(categories);
+
+-- Add comment to table
+COMMENT ON TABLE staging.coingecko_cache IS 'CoinGecko token data cache with contract addresses and categories';]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.InvalidSchemaName: schema "staging" does not exist
+LINE 1: CREATE TABLE IF NOT EXISTS staging.coingecko_cache (
+                                   ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/howard/src/jaguar/getting_started.py", line 81, in <module>
+    session.execute(text(sql_ddl))
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2245, in _execute_internal
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2353, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.InvalidSchemaName) schema "staging" does not exist
+LINE 1: CREATE TABLE IF NOT EXISTS staging.coingecko_cache (
+                                   ^
+
+[SQL: CREATE TABLE IF NOT EXISTS staging.coingecko_cache (
+    asset_id TEXT PRIMARY KEY,
+    chain_id TEXT NOT NULL,
+    contract_address TEXT,
+    coingecko_id TEXT NOT NULL,
+    symbol TEXT NOT NULL,
+    name TEXT NOT NULL,
+    categories TEXT[] NOT NULL DEFAULT '{}',
+    process_time TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX IF NOT EXISTS idx_coingecko_cache_chain_id
+    ON staging.coingecko_cache(chain_id);
+
+-- Create GIN index for array search on categories
+CREATE INDEX IF NOT EXISTS idx_coingecko_cache_categories
+    ON staging.coingecko_cache USING GIN(categories);
+
+-- Add comment to table
+COMMENT ON TABLE staging.coingecko_cache IS 'CoinGecko token data cache with contract addresses and categories';]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+DEBUG    Read operation on file: ./database/schema/staging/wallet_action_stats.sql
+INFO     Onboarding SQL file='./database/schema/staging/wallet_action_stats.sql'
+ERROR    (psycopg2.errors.InvalidSchemaName) schema "staging" does not exist
+LINE 1: CREATE TABLE staging.wallet_action_stats (
+                     ^
+
+[SQL: CREATE TABLE staging.wallet_action_stats (
+        chain_namespace text NOT NULL,
+        user_address text NOT NULL,
+        last_action_time timestamptz NULL,
+        is_done bool NULL,
+        updated_at timestamptz DEFAULT CURRENT_TIMESTAMP NULL,
+        CONSTRAINT wallet_action_stats_pkey PRIMARY KEY (user_address, chain_namespace)
+);
+CREATE INDEX IF NOT EXISTS wallet_action_stats_chain_namespace_idx ON staging.wallet_action_stats USING btree (chain_namespace);]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.InvalidSchemaName: schema "staging" does not exist
+LINE 1: CREATE TABLE staging.wallet_action_stats (
+                     ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/howard/src/jaguar/getting_started.py", line 81, in <module>
+    session.execute(text(sql_ddl))
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2245, in _execute_internal
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2353, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.InvalidSchemaName) schema "staging" does not exist
+LINE 1: CREATE TABLE staging.wallet_action_stats (
+                     ^
+
+[SQL: CREATE TABLE staging.wallet_action_stats (
+        chain_namespace text NOT NULL,
+        user_address text NOT NULL,
+        last_action_time timestamptz NULL,
+        is_done bool NULL,
+        updated_at timestamptz DEFAULT CURRENT_TIMESTAMP NULL,
+        CONSTRAINT wallet_action_stats_pkey PRIMARY KEY (user_address, chain_namespace)
+);
+CREATE INDEX IF NOT EXISTS wallet_action_stats_chain_namespace_idx ON staging.wallet_action_stats USING btree (chain_namespace);]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+DEBUG    Read operation on file: ./database/schema/staging/wallet_queue.sql
+INFO     Onboarding SQL file='./database/schema/staging/wallet_queue.sql'
+ERROR    (psycopg2.errors.InvalidSchemaName) schema "staging" does not exist
+LINE 1: CREATE TABLE IF NOT EXISTS staging.wallet_queue (
+                                   ^
+
+[SQL: CREATE TABLE IF NOT EXISTS staging.wallet_queue (
+        chain_namespace text NOT NULL,
+        user_address text NOT NULL,
+        status text NOT NULL,
+        process_time_start timestamptz NULL,
+        process_time_end timestamptz NULL,
+        meta jsonb NULL,
+        CONSTRAINT wallet_queue_pkey PRIMARY KEY (user_address, chain_namespace)
+);
+CREATE INDEX IF NOT EXISTS wallet_queue_chain_namespace_idx ON staging.wallet_queue USING btree (chain_namespace);
+CREATE INDEX IF NOT EXISTS wallet_queue_expr_idx ON staging.wallet_queue USING btree (((meta ->> 'service'::text)));
+CREATE INDEX IF NOT EXISTS wallet_queue_status_idx ON staging.wallet_queue USING btree (status);]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.InvalidSchemaName: schema "staging" does not exist
+LINE 1: CREATE TABLE IF NOT EXISTS staging.wallet_queue (
+                                   ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/howard/src/jaguar/getting_started.py", line 81, in <module>
+    session.execute(text(sql_ddl))
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2245, in _execute_internal
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2353, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.InvalidSchemaName) schema "staging" does not exist
+LINE 1: CREATE TABLE IF NOT EXISTS staging.wallet_queue (
+                                   ^
+
+[SQL: CREATE TABLE IF NOT EXISTS staging.wallet_queue (
+        chain_namespace text NOT NULL,
+        user_address text NOT NULL,
+        status text NOT NULL,
+        process_time_start timestamptz NULL,
+        process_time_end timestamptz NULL,
+        meta jsonb NULL,
+        CONSTRAINT wallet_queue_pkey PRIMARY KEY (user_address, chain_namespace)
+);
+CREATE INDEX IF NOT EXISTS wallet_queue_chain_namespace_idx ON staging.wallet_queue USING btree (chain_namespace);
+CREATE INDEX IF NOT EXISTS wallet_queue_expr_idx ON staging.wallet_queue USING btree (((meta ->> 'service'::text)));
+CREATE INDEX IF NOT EXISTS wallet_queue_status_idx ON staging.wallet_queue USING btree (status);]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+DEBUG    Read operation on file: ./database/schema/evm/stats/ethereum_next_blocks.sql
+INFO     Onboarding SQL file='./database/schema/evm/stats/ethereum_next_blocks.sql'
+ERROR    (psycopg2.errors.InvalidSchemaName) schema "stats" does not exist
+LINE 1: CREATE TABLE IF NOT EXISTS stats.ethereum_next_blocks (
+                                   ^
+
+[SQL: CREATE TABLE IF NOT EXISTS stats.ethereum_next_blocks (
+    next_block_number int8 NULL,
+    latest_block_number int8 NULL,
+    chain_id varchar(100) NOT NULL
+);]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.InvalidSchemaName: schema "stats" does not exist
+LINE 1: CREATE TABLE IF NOT EXISTS stats.ethereum_next_blocks (
+                                   ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/howard/src/jaguar/getting_started.py", line 81, in <module>
+    session.execute(text(sql_ddl))
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2245, in _execute_internal
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2353, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.InvalidSchemaName) schema "stats" does not exist
+LINE 1: CREATE TABLE IF NOT EXISTS stats.ethereum_next_blocks (
+                                   ^
+
+[SQL: CREATE TABLE IF NOT EXISTS stats.ethereum_next_blocks (
+    next_block_number int8 NULL,
+    latest_block_number int8 NULL,
+    chain_id varchar(100) NOT NULL
+);]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+DEBUG    Read operation on file: ./database/schema/evm/stats/ethereum_block_stats.sql
+INFO     Onboarding SQL file='./database/schema/evm/stats/ethereum_block_stats.sql'
+ERROR    (psycopg2.errors.InvalidSchemaName) schema "stats" does not exist
+LINE 1: CREATE TABLE IF NOT EXISTS stats.ethereum_block_stats (
+                                   ^
+
+[SQL: CREATE TABLE IF NOT EXISTS stats.ethereum_block_stats (
+    block_number int4 NOT NULL,
+    block_time timestamp NULL,
+    started_at timestamp NULL,
+    finished_at timestamp NULL,
+    elapsed float8 NULL,
+    block_hash varchar(100) NULL,
+    parent_hash varchar(100) NULL,
+    state varchar(100) NULL,
+    meta_data jsonb NULL,
+    PRIMARY KEY (block_number)
+);
+
+CREATE INDEX IF NOT EXISTS idx_ethereum_block_stats_block_hash ON stats.ethereum_block_stats USING btree (block_hash);
+
+CREATE INDEX IF NOT EXISTS idx_ethereum_block_stats_block_number ON stats.ethereum_block_stats USING btree (block_number);
+
+CREATE INDEX IF NOT EXISTS idx_ethereum_block_stats_block_time ON stats.ethereum_block_stats USING btree (date(block_time));
+
+CREATE INDEX IF NOT EXISTS idx_ethereum_block_stats_started_at ON stats.ethereum_block_stats USING btree (date(started_at));
+
+CREATE INDEX IF NOT EXISTS idx_ethereum_block_stats_finished_at ON stats.ethereum_block_stats USING btree (date(finished_at));
+
+CREATE INDEX IF NOT EXISTS idx_ethereum_block_stats_parent_hash ON stats.ethereum_block_stats USING btree (parent_hash);
+
+CREATE INDEX IF NOT EXISTS idx_ethereum_block_stats_state ON stats.ethereum_block_stats USING btree (state);]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.InvalidSchemaName: schema "stats" does not exist
+LINE 1: CREATE TABLE IF NOT EXISTS stats.ethereum_block_stats (
+                                   ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/howard/src/jaguar/getting_started.py", line 81, in <module>
+    session.execute(text(sql_ddl))
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2245, in _execute_internal
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2353, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.InvalidSchemaName) schema "stats" does not exist
+LINE 1: CREATE TABLE IF NOT EXISTS stats.ethereum_block_stats (
+                                   ^
+
+[SQL: CREATE TABLE IF NOT EXISTS stats.ethereum_block_stats (
+    block_number int4 NOT NULL,
+    block_time timestamp NULL,
+    started_at timestamp NULL,
+    finished_at timestamp NULL,
+    elapsed float8 NULL,
+    block_hash varchar(100) NULL,
+    parent_hash varchar(100) NULL,
+    state varchar(100) NULL,
+    meta_data jsonb NULL,
+    PRIMARY KEY (block_number)
+);
+
+CREATE INDEX IF NOT EXISTS idx_ethereum_block_stats_block_hash ON stats.ethereum_block_stats USING btree (block_hash);
+
+CREATE INDEX IF NOT EXISTS idx_ethereum_block_stats_block_number ON stats.ethereum_block_stats USING btree (block_number);
+
+CREATE INDEX IF NOT EXISTS idx_ethereum_block_stats_block_time ON stats.ethereum_block_stats USING btree (date(block_time));
+
+CREATE INDEX IF NOT EXISTS idx_ethereum_block_stats_started_at ON stats.ethereum_block_stats USING btree (date(started_at));
+
+CREATE INDEX IF NOT EXISTS idx_ethereum_block_stats_finished_at ON stats.ethereum_block_stats USING btree (date(finished_at));
+
+CREATE INDEX IF NOT EXISTS idx_ethereum_block_stats_parent_hash ON stats.ethereum_block_stats USING btree (parent_hash);
+
+CREATE INDEX IF NOT EXISTS idx_ethereum_block_stats_state ON stats.ethereum_block_stats USING btree (state);]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+DEBUG    Read operation on file: ./database/schema/evm/stats/base_next_blocks.sql
+INFO     Onboarding SQL file='./database/schema/evm/stats/base_next_blocks.sql'
+ERROR    (psycopg2.errors.InvalidSchemaName) schema "stats" does not exist
+LINE 1: CREATE TABLE IF NOT EXISTS stats.base_next_blocks (
+                                   ^
+
+[SQL: CREATE TABLE IF NOT EXISTS stats.base_next_blocks (
+    next_block_number int8 NULL,
+    latest_block_number int8 NULL,
+    chain_id varchar(100) NOT NULL
+);]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.InvalidSchemaName: schema "stats" does not exist
+LINE 1: CREATE TABLE IF NOT EXISTS stats.base_next_blocks (
+                                   ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/howard/src/jaguar/getting_started.py", line 81, in <module>
+    session.execute(text(sql_ddl))
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2245, in _execute_internal
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2353, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.InvalidSchemaName) schema "stats" does not exist
+LINE 1: CREATE TABLE IF NOT EXISTS stats.base_next_blocks (
+                                   ^
+
+[SQL: CREATE TABLE IF NOT EXISTS stats.base_next_blocks (
+    next_block_number int8 NULL,
+    latest_block_number int8 NULL,
+    chain_id varchar(100) NOT NULL
+);]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+DEBUG    Read operation on file: ./database/schema/evm/stats/base_block_stats.sql
+INFO     Onboarding SQL file='./database/schema/evm/stats/base_block_stats.sql'
+ERROR    (psycopg2.errors.InvalidSchemaName) schema "stats" does not exist
+LINE 1: CREATE TABLE IF NOT EXISTS stats.base_block_stats (
+                                   ^
+
+[SQL: CREATE TABLE IF NOT EXISTS stats.base_block_stats (
+    block_number int4 NOT NULL,
+    block_time timestamp NULL,
+    started_at timestamp NULL,
+    finished_at timestamp NULL,
+    elapsed float8 NULL,
+    block_hash varchar(100) NULL,
+    parent_hash varchar(100) NULL,
+    state varchar(100) NULL,
+    meta_data jsonb NULL,
+    PRIMARY KEY (block_number)
+);
+
+CREATE INDEX IF NOT EXISTS idx_base_block_stats_block_hash ON stats.base_block_stats USING btree (block_hash);
+
+CREATE INDEX IF NOT EXISTS idx_base_block_stats_block_number ON stats.base_block_stats USING btree (block_number);
+
+CREATE INDEX IF NOT EXISTS idx_base_block_stats_block_time ON stats.base_block_stats USING btree (date(block_time));
+
+CREATE INDEX IF NOT EXISTS idx_base_block_stats_started_at ON stats.base_block_stats USING btree (date(started_at));
+
+CREATE INDEX IF NOT EXISTS idx_base_block_stats_finished_at ON stats.base_block_stats USING btree (date(finished_at));
+
+CREATE INDEX IF NOT EXISTS idx_base_block_stats_parent_hash ON stats.base_block_stats USING btree (parent_hash);
+
+CREATE INDEX IF NOT EXISTS idx_base_block_stats_state ON stats.base_block_stats USING btree (state);]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.InvalidSchemaName: schema "stats" does not exist
+LINE 1: CREATE TABLE IF NOT EXISTS stats.base_block_stats (
+                                   ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/howard/src/jaguar/getting_started.py", line 81, in <module>
+    session.execute(text(sql_ddl))
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2245, in _execute_internal
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2353, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.InvalidSchemaName) schema "stats" does not exist
+LINE 1: CREATE TABLE IF NOT EXISTS stats.base_block_stats (
+                                   ^
+
+[SQL: CREATE TABLE IF NOT EXISTS stats.base_block_stats (
+    block_number int4 NOT NULL,
+    block_time timestamp NULL,
+    started_at timestamp NULL,
+    finished_at timestamp NULL,
+    elapsed float8 NULL,
+    block_hash varchar(100) NULL,
+    parent_hash varchar(100) NULL,
+    state varchar(100) NULL,
+    meta_data jsonb NULL,
+    PRIMARY KEY (block_number)
+);
+
+CREATE INDEX IF NOT EXISTS idx_base_block_stats_block_hash ON stats.base_block_stats USING btree (block_hash);
+
+CREATE INDEX IF NOT EXISTS idx_base_block_stats_block_number ON stats.base_block_stats USING btree (block_number);
+
+CREATE INDEX IF NOT EXISTS idx_base_block_stats_block_time ON stats.base_block_stats USING btree (date(block_time));
+
+CREATE INDEX IF NOT EXISTS idx_base_block_stats_started_at ON stats.base_block_stats USING btree (date(started_at));
+
+CREATE INDEX IF NOT EXISTS idx_base_block_stats_finished_at ON stats.base_block_stats USING btree (date(finished_at));
+
+CREATE INDEX IF NOT EXISTS idx_base_block_stats_parent_hash ON stats.base_block_stats USING btree (parent_hash);
+
+CREATE INDEX IF NOT EXISTS idx_base_block_stats_state ON stats.base_block_stats USING btree (state);]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+DEBUG    Read operation on file: ./database/schema/solana/stats/solana_block_stats.sql
+INFO     Onboarding SQL file='./database/schema/solana/stats/solana_block_stats.sql'
+ERROR    (psycopg2.errors.InvalidSchemaName) schema "stats" does not exist
+LINE 1: CREATE TABLE IF NOT EXISTS stats.solana_block_stats (
+                                   ^
+
+[SQL: CREATE TABLE IF NOT EXISTS stats.solana_block_stats (
+    block_number int4 NOT NULL,
+    block_time timestamp NULL,
+    started_at timestamp NULL,
+    finished_at timestamp NULL,
+    elapsed float8 NULL,
+    block_hash varchar(100) NULL,
+    parent_hash varchar(100) NULL,
+    state varchar(100) NULL,
+    meta_data jsonb NULL,
+    PRIMARY KEY (block_number)
+);
+
+CREATE INDEX IF NOT EXISTS idx_solana_block_stats_block_hash ON stats.solana_block_stats USING btree (block_hash);
+
+CREATE INDEX IF NOT EXISTS idx_solana_block_stats_block_number ON stats.solana_block_stats USING btree (block_number);
+
+CREATE INDEX IF NOT EXISTS idx_solana_block_stats_block_time ON stats.solana_block_stats USING btree (date(block_time));
+
+CREATE INDEX IF NOT EXISTS idx_solana_block_stats_started_at ON stats.solana_block_stats USING btree (date(started_at));
+
+CREATE INDEX IF NOT EXISTS idx_solana_block_stats_finished_at ON stats.solana_block_stats USING btree (date(finished_at));
+
+CREATE INDEX IF NOT EXISTS idx_solana_block_stats_parent_hash ON stats.solana_block_stats USING btree (parent_hash);
+
+CREATE INDEX IF NOT EXISTS idx_solana_block_stats_state ON stats.solana_block_stats USING btree (state);]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.InvalidSchemaName: schema "stats" does not exist
+LINE 1: CREATE TABLE IF NOT EXISTS stats.solana_block_stats (
+                                   ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/howard/src/jaguar/getting_started.py", line 81, in <module>
+    session.execute(text(sql_ddl))
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2245, in _execute_internal
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2353, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.InvalidSchemaName) schema "stats" does not exist
+LINE 1: CREATE TABLE IF NOT EXISTS stats.solana_block_stats (
+                                   ^
+
+[SQL: CREATE TABLE IF NOT EXISTS stats.solana_block_stats (
+    block_number int4 NOT NULL,
+    block_time timestamp NULL,
+    started_at timestamp NULL,
+    finished_at timestamp NULL,
+    elapsed float8 NULL,
+    block_hash varchar(100) NULL,
+    parent_hash varchar(100) NULL,
+    state varchar(100) NULL,
+    meta_data jsonb NULL,
+    PRIMARY KEY (block_number)
+);
+
+CREATE INDEX IF NOT EXISTS idx_solana_block_stats_block_hash ON stats.solana_block_stats USING btree (block_hash);
+
+CREATE INDEX IF NOT EXISTS idx_solana_block_stats_block_number ON stats.solana_block_stats USING btree (block_number);
+
+CREATE INDEX IF NOT EXISTS idx_solana_block_stats_block_time ON stats.solana_block_stats USING btree (date(block_time));
+
+CREATE INDEX IF NOT EXISTS idx_solana_block_stats_started_at ON stats.solana_block_stats USING btree (date(started_at));
+
+CREATE INDEX IF NOT EXISTS idx_solana_block_stats_finished_at ON stats.solana_block_stats USING btree (date(finished_at));
+
+CREATE INDEX IF NOT EXISTS idx_solana_block_stats_parent_hash ON stats.solana_block_stats USING btree (parent_hash);
+
+CREATE INDEX IF NOT EXISTS idx_solana_block_stats_state ON stats.solana_block_stats USING btree (state);]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+DEBUG    Read operation on file: ./database/schema/solana/stats/solana_next_blocks.sql
+INFO     Onboarding SQL file='./database/schema/solana/stats/solana_next_blocks.sql'
+ERROR    (psycopg2.errors.InvalidSchemaName) schema "stats" does not exist
+LINE 1: CREATE TABLE IF NOT EXISTS stats.solana_next_blocks (
+                                   ^
+
+[SQL: CREATE TABLE IF NOT EXISTS stats.solana_next_blocks (
+    next_block_number int8 NULL,
+    latest_block_number int8 NULL,
+    chain_id varchar(100) NOT NULL
+);]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.InvalidSchemaName: schema "stats" does not exist
+LINE 1: CREATE TABLE IF NOT EXISTS stats.solana_next_blocks (
+                                   ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/howard/src/jaguar/getting_started.py", line 81, in <module>
+    session.execute(text(sql_ddl))
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2245, in _execute_internal
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2353, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.InvalidSchemaName) schema "stats" does not exist
+LINE 1: CREATE TABLE IF NOT EXISTS stats.solana_next_blocks (
+                                   ^
+
+[SQL: CREATE TABLE IF NOT EXISTS stats.solana_next_blocks (
+    next_block_number int8 NULL,
+    latest_block_number int8 NULL,
+    chain_id varchar(100) NOT NULL
+);]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+DEBUG    Read operation on file: ./database/functions/next_block.sql
+INFO     Onboarding SQL file='./database/functions/next_block.sql'
+ERROR    (psycopg2.errors.InvalidSchemaName) schema "stats" does not exist
+
+[SQL: CREATE OR REPLACE FUNCTION stats.next_block(chain text, latest_block bigint, _chain_id text) RETURNS bigint LANGUAGE plpgsql AS $$
+DECLARE
+    new_nxt_number bigint;
+    cur_nxt_number bigint;
+    cur_latest_number bigint;
+BEGIN
+    IF chain = 'ethereum' THEN
+        select next_block_number, latest_block_number into cur_nxt_number, cur_latest_number from stats.ethereum_next_blocks WHERE chain_id = 'eip155:1' for update;
+    ELSIF chain = 'base' THEN
+        select next_block_number, latest_block_number into cur_nxt_number, cur_latest_number from stats.base_next_blocks WHERE chain_id = 'eip155:8453' for update;
+    ELSIF chain = 'optimism' THEN
+        select next_block_number, latest_block_number into cur_nxt_number, cur_latest_number from stats.optimism_next_blocks WHERE chain_id = 'eip155:10' for update;
+    ELSIF chain = 'xdai' THEN
+        select next_block_number, latest_block_number into cur_nxt_number, cur_latest_number from stats.xdai_next_blocks WHERE chain_id = 'eip155:100' for update;
+    ELSIF chain = 'polygon_zkevm' THEN
+        select next_block_number, latest_block_number into cur_nxt_number, cur_latest_number from stats.polygon_zkevm_next_blocks WHERE chain_id = 'eip155:1101' for update;
+    ELSIF chain = 'polygon' THEN
+        select next_block_number, latest_block_number into cur_nxt_number, cur_latest_number from stats.polygon_next_blocks WHERE chain_id = 'eip155:137' for update;
+    ELSIF chain = 'dogechain' THEN
+        select next_block_number, latest_block_number into cur_nxt_number, cur_latest_number from stats.dogechain_next_blocks WHERE chain_id = 'eip155:2000' for update;
+    ELSIF chain = 'blast' THEN
+        select next_block_number, latest_block_number into cur_nxt_number, cur_latest_number from stats.blast_next_blocks WHERE chain_id = 'eip155:23888' for update;
+    ELSIF chain = 'fantom' THEN
+        select next_block_number, latest_block_number into cur_nxt_number, cur_latest_number from stats.fantom_next_blocks WHERE chain_id = 'eip155:250' for update;
+    ELSIF chain = 'arbitrum' THEN
+        select next_block_number, latest_block_number into cur_nxt_number, cur_latest_number from stats.arbitrum_next_blocks WHERE chain_id = 'eip155:42161' for update;
+    ELSIF chain = 'arbitrum_nova' THEN
+        select next_block_number, latest_block_number into cur_nxt_number, cur_latest_number from stats.arbitrum_nova_next_blocks WHERE chain_id = 'eip155:42170' for update;
+    ELSIF chain = 'celo' THEN
+        select next_block_number, latest_block_number into cur_nxt_number, cur_latest_number from stats.celo_next_blocks WHERE chain_id = 'eip155:42220' for update;
+    ELSIF chain = 'avalanche' THEN
+        select next_block_number, latest_block_number into cur_nxt_number, cur_latest_number from stats.avalanche_next_blocks WHERE chain_id = 'eip155:43114' for update;
+    ELSIF chain = 'binance' THEN
+        select next_block_number, latest_block_number into cur_nxt_number, cur_latest_number from stats.binance_next_blocks WHERE chain_id = 'eip155:56' for update;
+    ELSIF chain = 'linea' THEN
+        select next_block_number, latest_block_number into cur_nxt_number, cur_latest_number from stats.linea_next_blocks WHERE chain_id = 'eip155:59144' for update;
+    ELSIF chain = 'solana' THEN
+        select next_block_number, latest_block_number into cur_nxt_number, cur_latest_number from stats.solana_next_blocks WHERE chain_id = 'solana:101' for update;
+    ELSE
+        select next_block_number, latest_block_number into cur_nxt_number, cur_latest_number from stats.next_blocks WHERE chain_id = _chain_id for update;
+    END IF;
+
+    -- Update latest_block_number if necessary
+    IF latest_block > cur_latest_number THEN
+        EXECUTE format('UPDATE stats.%%I_next_blocks SET latest_block_number = %%s where chain_id = %%L', chain, latest_block, _chain_id);
+        cur_latest_number := latest_block;
+    END IF;
+
+    -- Update next_block_number if necessary and then return next available crawlable block number
+    IF cur_nxt_number <= cur_latest_number THEN
+        new_nxt_number := cur_nxt_number + 1;
+        EXECUTE format('UPDATE stats.%%I_next_blocks SET next_block_number = %%s where chain_id = %%L', chain, new_nxt_number, _chain_id);
+        RETURN cur_nxt_number;
+    ELSE
+        RETURN -1;
+    END IF;
+END;
+$$;]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.InvalidSchemaName: schema "stats" does not exist
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/howard/src/jaguar/getting_started.py", line 81, in <module>
+    session.execute(text(sql_ddl))
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2245, in _execute_internal
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2353, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.InvalidSchemaName) schema "stats" does not exist
+
+[SQL: CREATE OR REPLACE FUNCTION stats.next_block(chain text, latest_block bigint, _chain_id text) RETURNS bigint LANGUAGE plpgsql AS $$
+DECLARE
+    new_nxt_number bigint;
+    cur_nxt_number bigint;
+    cur_latest_number bigint;
+BEGIN
+    IF chain = 'ethereum' THEN
+        select next_block_number, latest_block_number into cur_nxt_number, cur_latest_number from stats.ethereum_next_blocks WHERE chain_id = 'eip155:1' for update;
+    ELSIF chain = 'base' THEN
+        select next_block_number, latest_block_number into cur_nxt_number, cur_latest_number from stats.base_next_blocks WHERE chain_id = 'eip155:8453' for update;
+    ELSIF chain = 'optimism' THEN
+        select next_block_number, latest_block_number into cur_nxt_number, cur_latest_number from stats.optimism_next_blocks WHERE chain_id = 'eip155:10' for update;
+    ELSIF chain = 'xdai' THEN
+        select next_block_number, latest_block_number into cur_nxt_number, cur_latest_number from stats.xdai_next_blocks WHERE chain_id = 'eip155:100' for update;
+    ELSIF chain = 'polygon_zkevm' THEN
+        select next_block_number, latest_block_number into cur_nxt_number, cur_latest_number from stats.polygon_zkevm_next_blocks WHERE chain_id = 'eip155:1101' for update;
+    ELSIF chain = 'polygon' THEN
+        select next_block_number, latest_block_number into cur_nxt_number, cur_latest_number from stats.polygon_next_blocks WHERE chain_id = 'eip155:137' for update;
+    ELSIF chain = 'dogechain' THEN
+        select next_block_number, latest_block_number into cur_nxt_number, cur_latest_number from stats.dogechain_next_blocks WHERE chain_id = 'eip155:2000' for update;
+    ELSIF chain = 'blast' THEN
+        select next_block_number, latest_block_number into cur_nxt_number, cur_latest_number from stats.blast_next_blocks WHERE chain_id = 'eip155:23888' for update;
+    ELSIF chain = 'fantom' THEN
+        select next_block_number, latest_block_number into cur_nxt_number, cur_latest_number from stats.fantom_next_blocks WHERE chain_id = 'eip155:250' for update;
+    ELSIF chain = 'arbitrum' THEN
+        select next_block_number, latest_block_number into cur_nxt_number, cur_latest_number from stats.arbitrum_next_blocks WHERE chain_id = 'eip155:42161' for update;
+    ELSIF chain = 'arbitrum_nova' THEN
+        select next_block_number, latest_block_number into cur_nxt_number, cur_latest_number from stats.arbitrum_nova_next_blocks WHERE chain_id = 'eip155:42170' for update;
+    ELSIF chain = 'celo' THEN
+        select next_block_number, latest_block_number into cur_nxt_number, cur_latest_number from stats.celo_next_blocks WHERE chain_id = 'eip155:42220' for update;
+    ELSIF chain = 'avalanche' THEN
+        select next_block_number, latest_block_number into cur_nxt_number, cur_latest_number from stats.avalanche_next_blocks WHERE chain_id = 'eip155:43114' for update;
+    ELSIF chain = 'binance' THEN
+        select next_block_number, latest_block_number into cur_nxt_number, cur_latest_number from stats.binance_next_blocks WHERE chain_id = 'eip155:56' for update;
+    ELSIF chain = 'linea' THEN
+        select next_block_number, latest_block_number into cur_nxt_number, cur_latest_number from stats.linea_next_blocks WHERE chain_id = 'eip155:59144' for update;
+    ELSIF chain = 'solana' THEN
+        select next_block_number, latest_block_number into cur_nxt_number, cur_latest_number from stats.solana_next_blocks WHERE chain_id = 'solana:101' for update;
+    ELSE
+        select next_block_number, latest_block_number into cur_nxt_number, cur_latest_number from stats.next_blocks WHERE chain_id = _chain_id for update;
+    END IF;
+
+    -- Update latest_block_number if necessary
+    IF latest_block > cur_latest_number THEN
+        EXECUTE format('UPDATE stats.%%I_next_blocks SET latest_block_number = %%s where chain_id = %%L', chain, latest_block, _chain_id);
+        cur_latest_number := latest_block;
+    END IF;
+
+    -- Update next_block_number if necessary and then return next available crawlable block number
+    IF cur_nxt_number <= cur_latest_number THEN
+        new_nxt_number := cur_nxt_number + 1;
+        EXECUTE format('UPDATE stats.%%I_next_blocks SET next_block_number = %%s where chain_id = %%L', chain, new_nxt_number, _chain_id);
+        RETURN cur_nxt_number;
+    ELSE
+        RETURN -1;
+    END IF;
+END;
+$$;]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+DEBUG    Failed to connect to Redis at redis://localhost:6379/0: Error 61 connecting to localhost:6379. Connection refused.. Falling back to LRU cache.
+INFO     Initialized SolanaAPI with {'chain_id': 'solana:101', 'url': 'https://methodical-maximum-valley.solana-mainnet.quiknode.pro/b26781e476461f689de03c8e1511a9801e20fdf4', 'retries': 3, 'headers': {'Content-Type': 'application/json'}, 'requests_session': <requests.sessions.Session object at 0x108f59100>, 'coingecko_api_key': 'CG-UBwaLQfRLKiPo5LkQxQFvocC', 'coingecko_session': <requests.sessions.Session object at 0x108a495b0>, 'coingecko_base_url': 'https://pro-api.coingecko.com/api/v3', 'cache_manager': <common.processing.cache_manager.CacheManager object at 0x108f867b0>}
+DEBUG    Initialized EvmAPI with url=https://morning-icy-dew.quiknode.pro/517a666208fca5174571dbc7e0b5be800ef5f193 endpoint
+DEBUG    Initialized EvmAPI with url=https://burned-smart-star.base-mainnet.quiknode.pro/996c7863dcf9fabcaee58437e1e04b201162f915 endpoint
+DEBUG    Time taken for getSlot iteration=0: 0.16410133405588567
+DEBUG    get_latest_block completed in 0.18s (attempt 1/3)
+DEBUG    get_latest_block completed in 0.16s (attempt 1/3)
+INFO     solana_latest_block=371229587, ethereum_latest_block=23507535, base_latest_block=36414622
+Traceback (most recent call last):
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedTable: relation "stats.ethereum_next_blocks" does not exist
+LINE 1: UPDATE stats.ethereum_next_blocks
+               ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/howard/src/jaguar/getting_started.py", line 155, in <module>
+    raise e
+  File "/Users/howard/src/jaguar/getting_started.py", line 99, in <module>
+    session.execute(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2245, in _execute_internal
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2353, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/howard/src/jaguar/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedTable) relation "stats.ethereum_next_blocks" does not exist
+LINE 1: UPDATE stats.ethereum_next_blocks
+               ^
+
+[SQL: UPDATE stats.ethereum_next_blocks
+                    SET next_block_number = %(next_block)s, latest_block_number = %(latest_block)s
+                    WHERE chain_id = %(chain_id)s]
+[parameters: {'next_block': 23507536, 'latest_block': 23507535, 'chain_id': 'eip155:1'}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
