@@ -1,4 +1,5 @@
 
+
 {"level":"warn","ts":"2025-10-11T18:13:50-07:00","caller":"middleware/requestID.go:39","msg":"No requestID found in context, generating a new one.","requestID":"763919d4-7610-4db5-b80c-2969edc40b07","requestID":"unknown","traceID":"unknown"}
 {"level":"info","ts":"2025-10-11T18:13:50-07:00","caller":"frontend/auth.go:23","msg":"START Frontend Login()","req":{"Body":{"device":{"id":"test_device-b5ee50be-a708-11f0-b09b-e287799f13cd","type":"iPhone"},"login":{"apple":{"authCode":"Alohomora","email":"test-b5ee50be-a708-11f0-b09b-e287799f13cd@share.xyz","id":"b5ee50be-a708-11f0-b09b-e287799f13cd","name":"test b5ee50be-a708-11f0-b09b-e287799f13cd"}}}},"requestID":"763919d4-7610-4db5-b80c-2969edc40b07","traceID":"1-68eb00ce-3388573e0108e3792920f27f"}
 
