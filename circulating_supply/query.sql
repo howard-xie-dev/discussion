@@ -14,3 +14,9 @@ WHERE
   chain_id = 'solana:101';
 ;
 
+SELECT
+  user_address || '-eip155%3A8453-' || transaction_hash AS formatted_string
+FROM
+  evm_staging.actions
+WHERE
+  chain_id = 'eip155:8453';
