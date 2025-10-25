@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -euo pipefail
 
 BASE='http://actions-service-alb-2007321336.us-east-1.elb.amazonaws.com/action'
 REQ_ID='0d9d21fb-e26d-41f5-9842-a5ba221cacc8'
@@ -116,6 +115,19 @@ while IFS= read -r ID; do
   curl -sS -f --location "${BASE}/${ID}" \
     --header "x-request-id: ${REQ_ID}" \
     --header "X-API-Key: ${API_KEY}" \
-  | jq '.data[].action_items[].extra_fields.swap_info.tokens_bought[].token_circulating_supply // empty' \
+  | jq -r '
+      .data[]
+      | .action_items[]
+      | .extra_fields as $ef
+      | (
+          ($ef.swap_info.tokens_sold // [])[]  |
+          ["tokens_sold", $ef.id, .token_symbol, .token_address, (.token_circulating_supply // "")]
+        ),
+        (
+          ($ef.swap_info.tokens_bought // [])[] |
+          ["tokens_bought", $ef.id, .token_symbol, .token_address, (.token_circulating_supply // "")]
+        )
+      | @tsv
+    ' \
   || echo "Request failed for ${ID}" >&2
 done <<< "$IDS"
