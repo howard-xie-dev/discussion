@@ -113,5 +113,18 @@ while IFS= read -r ID; do
   curl -sS --location "${BASE}/${ID}" \
     --header "x-request-id: ${REQ_ID}" \
     --header "X-API-Key: ${API_KEY}" \
-  | jq '.data[].action_items[].extra_fields.swap_info.tokens_bought[].token_circulating_supply'
+  | jq -r '
+      .data[]
+      | .action_items[]
+      | .extra_fields as $ef
+      | (
+          ($ef.swap_info.tokens_sold // [])[]  |
+          ["tokens_sold", $ef.id, .token_symbol, .token_address, (.token_circulating_supply // "")]
+        ),
+        (
+          ($ef.swap_info.tokens_bought // [])[] |
+          ["tokens_bought", $ef.id, .token_symbol, .token_address, (.token_circulating_supply // "")]
+        )
+      | @tsv
+    '
 done <<< "$IDS"
