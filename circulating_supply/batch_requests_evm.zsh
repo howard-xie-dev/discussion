@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -euo pipefail
 
 BASE='http://actions-service-alb-2007321336.us-east-1.elb.amazonaws.com/action'
 REQ_ID='0d9d21fb-e26d-41f5-9842-a5ba221cacc8'
