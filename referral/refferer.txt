@@ -1,0 +1,45 @@
+POSTMAN test request for /v1/swap/createTx
+
+{
+  "feeAttribution": {
+    // "actionID":"2X8hBaz6ijFPUHZU4FsFK94H3GLRmBtN1ZcELcSNpPQj-solana:101-5mZCHuagtyhcUtVJoBDCeV2kUkq8Gmnw3hQxwYcpXiwNsafgJGUFH4bXQhVQYAK6JHDUgS2ouLUfit1WVhq4pR1Y"
+  },
+  "receiveTokenID": "solana:101-JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN",
+  "sendTokenBalancePct": 100,
+//   "sendTokenAmount": {
+//     "amount": "3.6813325",
+//     "asset": {
+//       "shortToken": {
+//         "assetID": "solana:101-JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN",
+//         "name": "",
+//         "symbol": "",
+//         "verified": false
+//       },
+//       "type": "Token"
+//     }
+//   },
+  "sendTokenID": "solana:101-So11111111111111111111111111111111111111111",
+  "sessionID": "2DBDD308-D633-459F-B79D-1E76E7743109",
+  "swapType": "Buy",
+  "walletAddress": {
+    "address": "FaJvLJtAYbW9TtDcd6E1Yu24G84VLiaVdT8kxVirJHDS",
+    "addressSpace": "solana"
+  }
+}
+
+
+Identity DB queries and results
+
+  select id, type, display_name from share.profiles where display_name is not null and display_name != '';
+
+ 6f4a6840-3b0a-423b-bc15-e37e677515a6 |    1 | Chirag
+
+
+ select * from share.profiles where display_name ilike 'howard';
+-[ RECORD 1 ]-----------------------------------+---------------------------------------------------------------------------------------------
+id                                              | c5fcb891-7a48-4ded-b2c3-33c960d13f94
+
+
+ update share.profiles set referrer_user = '6f4a6840-3b0a-423b-bc15-e37e677515a6' where id = 'c5fcb891-7a48-4ded-b2c3-33c960d13f94';
+
+
