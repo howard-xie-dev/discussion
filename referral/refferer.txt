@@ -40,12 +40,14 @@ Identity DB queries and results
 id                                              | c5fcb891-7a48-4ded-b2c3-33c960d13f94
 
 
+ update share.profiles set referrer_user = '6f4a6840-3b0a-423b-bc15-e37e677515a6' where id = 'c5fcb891-7a48-4ded-b2c3-33c960d13f94';
+
+
+
+
+
 
 fields @timestamp, @message
 | filter @message like "fee recipient"
 | sort @timestamp desc
-
-
- update share.profiles set referrer_user = '6f4a6840-3b0a-423b-bc15-e37e677515a6' where id = 'c5fcb891-7a48-4ded-b2c3-33c960d13f94';
-
 
