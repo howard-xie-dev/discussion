@@ -1,0 +1,162 @@
+{
+    "feeSplit": {
+        "fees": [
+            {
+                "fee": {
+                    "amount": "0.008988639882489477",
+                    "fiat": {
+                        "currencyCode": "USD",
+                        "symbol": "$"
+                    }
+                },
+                "recipient": {
+                    "avatar": {
+                        "image": {
+                            "metadata": {
+                                "height": 512,
+                                "mimeType": "image/png",
+                                "predominantColor": {
+                                    "darkTheme": {
+                                        "color": "#5324ff",
+                                        "opacity": 1
+                                    },
+                                    "lightTheme": {
+                                        "color": "#5324ff",
+                                        "opacity": 1
+                                    }
+                                },
+                                "width": 512
+                            },
+                            "previews": {
+                                "largeURL": "https://lh3.googleusercontent.com/MEj3HQVNJwGqKMfJQHQRy78aNbdKTQIcXEx7QF2E9tf4lSqV7HaqoAdpB8J98VNsD4Qb6mTIP3HA7dn7aUJiGjHs3cG9dlI3guyM=s1000",
+                                "mediumURL": "https://lh3.googleusercontent.com/MEj3HQVNJwGqKMfJQHQRy78aNbdKTQIcXEx7QF2E9tf4lSqV7HaqoAdpB8J98VNsD4Qb6mTIP3HA7dn7aUJiGjHs3cG9dlI3guyM",
+                                "smallURL": "https://lh3.googleusercontent.com/MEj3HQVNJwGqKMfJQHQRy78aNbdKTQIcXEx7QF2E9tf4lSqV7HaqoAdpB8J98VNsD4Qb6mTIP3HA7dn7aUJiGjHs3cG9dlI3guyM=s250"
+                            },
+                            "url": "https://cdn.simplehash.com/assets/0a3e8cd3d1166127497e95b21b9f32ba947ccaae2c299e9a6bea96d51f031aa0.png"
+                        },
+                        "nft": {
+                            "assetID": "",
+                            "collection": {
+                                "assetID": "",
+                                "name": "",
+                                "verified": false
+                            },
+                            "image": {
+                                "metadata": {
+                                    "height": 512,
+                                    "mimeType": "image/png",
+                                    "predominantColor": {
+                                        "darkTheme": {
+                                            "color": "#5324ff",
+                                            "opacity": 1
+                                        },
+                                        "lightTheme": {
+                                            "color": "#5324ff",
+                                            "opacity": 1
+                                        }
+                                    },
+                                    "width": 512
+                                },
+                                "previews": {
+                                    "largeURL": "https://lh3.googleusercontent.com/MEj3HQVNJwGqKMfJQHQRy78aNbdKTQIcXEx7QF2E9tf4lSqV7HaqoAdpB8J98VNsD4Qb6mTIP3HA7dn7aUJiGjHs3cG9dlI3guyM=s1000",
+                                    "mediumURL": "https://lh3.googleusercontent.com/MEj3HQVNJwGqKMfJQHQRy78aNbdKTQIcXEx7QF2E9tf4lSqV7HaqoAdpB8J98VNsD4Qb6mTIP3HA7dn7aUJiGjHs3cG9dlI3guyM",
+                                    "smallURL": "https://lh3.googleusercontent.com/MEj3HQVNJwGqKMfJQHQRy78aNbdKTQIcXEx7QF2E9tf4lSqV7HaqoAdpB8J98VNsD4Qb6mTIP3HA7dn7aUJiGjHs3cG9dlI3guyM=s250"
+                                },
+                                "url": "https://cdn.simplehash.com/assets/0a3e8cd3d1166127497e95b21b9f32ba947ccaae2c299e9a6bea96d51f031aa0.png"
+                            },
+                            "name": ""
+                        },
+                        "nftAssetID": ""
+                    },
+                    "displayName": "Kevin Lanceplaine",
+                    "id": {
+                        "accID": "36df7b3d-3255-46cd-ba3f-6cd667243c1f"
+                    },
+                    "identity": {
+                        "username": "kevin"
+                    }
+                },
+                "roles": [
+                    "Actor"
+                ]
+            },
+            {
+                "fee": {
+                    "amount": "0.007190849357830334",
+                    "fiat": {
+                        "currencyCode": "USD",
+                        "symbol": "$"
+                    }
+                },
+                "recipient": {
+                    "avatar": {
+                        "image": {
+                            "metadata": {
+                                "height": 1000,
+                                "mimeType": "application/octet-stream",
+                                "width": 1000
+                            },
+                            "previews": {
+                                "largeURL": "https://imagedelivery.net/90kS5HuIA-OvczE-Dr7gYg/466f8a51-fa35-4e0e-5f29-5393d1fab700/large",
+                                "mediumURL": "https://imagedelivery.net/90kS5HuIA-OvczE-Dr7gYg/466f8a51-fa35-4e0e-5f29-5393d1fab700/medium",
+                                "smallURL": "https://imagedelivery.net/90kS5HuIA-OvczE-Dr7gYg/466f8a51-fa35-4e0e-5f29-5393d1fab700/small"
+                            },
+                            "url": "https://imagedelivery.net/90kS5HuIA-OvczE-Dr7gYg/466f8a51-fa35-4e0e-5f29-5393d1fab700/large"
+                        }
+                    },
+                    "displayName": "Share",
+                    "id": {
+                        "accID": "e62bfdb5-fac9-44b9-a081-a6dfe4458334"
+                    },
+                    "identity": {
+                        "username": "share"
+                    }
+                },
+                "roles": [
+                    "Platform"
+                ]
+            }
+        ],
+        "gasFee": {
+            "amount": "0.001156022713590549139734",
+            "fiat": {
+                "currencyCode": "USD",
+                "symbol": "$"
+            }
+        },
+        "totalCreatorFeePercent": 55,
+        "totalFee": {
+            "amount": "0.017335511953910360139734",
+            "fiat": {
+                "currencyCode": "USD",
+                "symbol": "$"
+            }
+        }
+    },
+    "sessionID": "2DBDD308-D633-459F-B79D-1E76E7743109",
+    "swapQuote": {
+        "autoSlippageBPS": 50,
+        "minGasAmount": {
+            "amount": "0.00816212",
+            "asset": {
+                "shortToken": {
+                    "assetID": "solana:101-So11111111111111111111111111111111111111111",
+                    "name": "SOL",
+                    "symbol": "SOL",
+                    "verified": false
+                },
+                "type": "Token"
+            }
+        },
+        "priceImpactPct": 0
+    },
+    "txsToSign": [
+        {
+            "chain": "solana:101",
+            "solana": {
+                "serializedTransaction": "AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAQAHFNiMC5v5fULtm3FMw2dkUyr/XPBWfSY4T4F+s64SPsHp4bpWO88gPSAVmVB3CpVpSuasIMjIIwInaoHJmYDWXMn+3lfQpTrD+6p2hZWRyT8SG7oycu7W/LgrAsNRCTv3aQoFJEGhWE5XjHAF9qe+HgV0GXdXcA8kGQDyX0r9ihnOvqpmwGCt8da0TF0vTcT4mD7TiEzM7cxEZ9ch5i88wzidGzQLMheIWVjV6Xb5xjM5ri36/Ln+gVQWG6fgK8ugTQFMMEthUZxjesO3OgGcbbFvasjSF40FxShtn+CvbJMKXs2a9k9UIoDQiXVE+zLQK593U7zVZHkT2PS6ZIY/Ege5ha48uggePWu090s1ff4yoCjAvULeZ+cqYFn+Adk5TdaJ5XMmtBuaPtrxKS+b7aYuz04Y4sFaWgiXA+rXRkhp38ZFdytG6UY9oMX5drptlAq5NA1f2dTBjURADDErcgkxZ+JALqgUkTXCM8a0nQyr+3JljloHUQ3hnIXUbdDupxaTzznr29QKtKmOtHMEfW4e1UzEYzcl4nI66lCzcHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAG3fbh12Whk9nL4UbO63msHLSF7V9bN5E6jPWFfv8AqeL4d+g9rsaIj0Orta57MRu3jDSWCJf85ae4LBbiD/GXtD/6J/XX9kp0wJsfKVh53ksJqzbfyd1RSzIap7OM5egEedVb8jHAbu50xW7OaBUH/bGy3qP0jlECsc2iVrwTjwMGRm/lIRcy/+ytunLDm+e8jOW7xfcSayxDmzpAAAAAjJclj04kifG7PRApFI4NgwtaE5na/xCEBI572Nvp+Fm9DqeyrW2iUv5YRTXBNnaQti5L8yXdQNwyASrFuQ2O1gkSAAUC3OkEABIACQPuHwAAAAAAABMGAAEAKA0OAQENAgABDAIAAACH4TIAAAAAAA4BAQEREwYAAgApDQ4BARE8DwABAwQCKCkODhARBSAUIBUWAwYhKBcgDyIOKiMgBxgZESQPGiUmGxwGCCErIg4nLA4PHQQeCB8JCgstONGYU5N8/tjpAIfhMgAAAAAAj3sXAAAAAAAyACgAAAADAAAASwAAAAAQJwABXwAQJwECEQAQJwIDDQIADAwCAAAAi+AAAAAAAAAOAwEAAAEJA7pfaUy3zN2/Z+Yf2nwWmLPI8raOTVgUjVshrYF0LomNBlJQTzBUVgQYDw4ZwYFMD5VqOSiUxKOelwN5LRvzaM2eWvGCGDzyy6G8uAEDFBYVBBgcFx2IEcCyRB5p391xfuFTruPAxbiWr5eGfeW6RVfAdTsy3QOVy5kGAcoDbAnJ"
+            },
+            "type": "Solana"
+        }
+    ]
+}
