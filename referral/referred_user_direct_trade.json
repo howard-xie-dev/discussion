@@ -1,0 +1,165 @@
+{
+    "feeSplit": {
+        "fees": [
+            {
+                "fee": {
+                    "amount": "0.009011483522932662",
+                    "fiat": {
+                        "currencyCode": "USD",
+                        "symbol": "$"
+                    }
+                },
+                "recipient": {
+                    "avatar": {
+                        "image": {
+                            "metadata": {
+                                "height": 2000,
+                                "mimeType": "image/png",
+                                "predominantColor": {
+                                    "darkTheme": {
+                                        "color": "#ff2310",
+                                        "opacity": 1
+                                    },
+                                    "lightTheme": {
+                                        "color": "#ff2310",
+                                        "opacity": 1
+                                    }
+                                },
+                                "width": 2000
+                            },
+                            "previews": {
+                                "largeURL": "https://images.zapper.xyz/z/?path=zapper-fi-assets/nfts/medias/446f765292a2c96a08c7fb2cfabd7d40933467fa0a54e7d9cf998aad1c54f256.png&width=1000&checksum=qAfnZ4M-NqCC4ccuX0wobgfGlbJ8YMWgmByfedcXVVs",
+                                "mediumURL": "https://images.zapper.xyz/z/?path=zapper-fi-assets/nfts/medias/446f765292a2c96a08c7fb2cfabd7d40933467fa0a54e7d9cf998aad1c54f256.png&width=500&checksum=W7nLyGWfmh5rY53sLoDZVqDvczbm-Kub1oWn2knMp7U",
+                                "smallURL": "https://images.zapper.xyz/z/?path=zapper-fi-assets/nfts/medias/446f765292a2c96a08c7fb2cfabd7d40933467fa0a54e7d9cf998aad1c54f256.png&width=250&checksum=yolrBwY3dOg60dQWcwIO9V0nUwlu7-a51EG7C_2srUU"
+                            },
+                            "url": "https://images.zapper.xyz/z/?path=zapper-fi-assets/nfts/medias/446f765292a2c96a08c7fb2cfabd7d40933467fa0a54e7d9cf998aad1c54f256.png&width=500&checksum=W7nLyGWfmh5rY53sLoDZVqDvczbm-Kub1oWn2knMp7U"
+                        },
+                        "nft": {
+                            "assetID": "eip155:8453-0xebcec2e959bad4137925f9ddb68e163cca72242b-11776",
+                            "collection": {
+                                "assetID": "eip155:8453-0xebcec2e959bad4137925f9ddb68e163cca72242b",
+                                "name": "DackieOnBase",
+                                "verified": false
+                            },
+                            "image": {
+                                "metadata": {
+                                    "height": 2000,
+                                    "mimeType": "image/png",
+                                    "predominantColor": {
+                                        "darkTheme": {
+                                            "color": "#ff2310",
+                                            "opacity": 1
+                                        },
+                                        "lightTheme": {
+                                            "color": "#ff2310",
+                                            "opacity": 1
+                                        }
+                                    },
+                                    "width": 2000
+                                },
+                                "previews": {
+                                    "largeURL": "https://images.zapper.xyz/z/?path=zapper-fi-assets/nfts/medias/446f765292a2c96a08c7fb2cfabd7d40933467fa0a54e7d9cf998aad1c54f256.png&width=1000&checksum=qAfnZ4M-NqCC4ccuX0wobgfGlbJ8YMWgmByfedcXVVs",
+                                    "mediumURL": "https://images.zapper.xyz/z/?path=zapper-fi-assets/nfts/medias/446f765292a2c96a08c7fb2cfabd7d40933467fa0a54e7d9cf998aad1c54f256.png&width=500&checksum=W7nLyGWfmh5rY53sLoDZVqDvczbm-Kub1oWn2knMp7U",
+                                    "smallURL": "https://images.zapper.xyz/z/?path=zapper-fi-assets/nfts/medias/446f765292a2c96a08c7fb2cfabd7d40933467fa0a54e7d9cf998aad1c54f256.png&width=250&checksum=yolrBwY3dOg60dQWcwIO9V0nUwlu7-a51EG7C_2srUU"
+                                },
+                                "url": "https://images.zapper.xyz/z/?path=zapper-fi-assets/nfts/medias/446f765292a2c96a08c7fb2cfabd7d40933467fa0a54e7d9cf998aad1c54f256.png&width=500&checksum=W7nLyGWfmh5rY53sLoDZVqDvczbm-Kub1oWn2knMp7U"
+                            },
+                            "name": "DackieOnBase #11776"
+                        },
+                        "nftAssetID": "eip155:8453-0xebcec2e959bad4137925f9ddb68e163cca72242b-11776"
+                    },
+                    "displayName": "Xoogler",
+                    "id": {
+                        "accID": "8ce6336d-d822-49ea-8702-6c21d3793d60"
+                    },
+                    "identity": {
+                        "domainName": {
+                            "domain": "0xoogler.eth",
+                            "expiry": "3023-08-09T00:00:00Z"
+                        }
+                    }
+                },
+                "roles": [
+                    "Referrer"
+                ]
+            },
+            {
+                "fee": {
+                    "amount": "0.007209124111225604",
+                    "fiat": {
+                        "currencyCode": "USD",
+                        "symbol": "$"
+                    }
+                },
+                "recipient": {
+                    "avatar": {
+                        "image": {
+                            "metadata": {
+                                "height": 1000,
+                                "mimeType": "application/octet-stream",
+                                "width": 1000
+                            },
+                            "previews": {
+                                "largeURL": "https://imagedelivery.net/90kS5HuIA-OvczE-Dr7gYg/466f8a51-fa35-4e0e-5f29-5393d1fab700/large",
+                                "mediumURL": "https://imagedelivery.net/90kS5HuIA-OvczE-Dr7gYg/466f8a51-fa35-4e0e-5f29-5393d1fab700/medium",
+                                "smallURL": "https://imagedelivery.net/90kS5HuIA-OvczE-Dr7gYg/466f8a51-fa35-4e0e-5f29-5393d1fab700/small"
+                            },
+                            "url": "https://imagedelivery.net/90kS5HuIA-OvczE-Dr7gYg/466f8a51-fa35-4e0e-5f29-5393d1fab700/large"
+                        }
+                    },
+                    "displayName": "Share",
+                    "id": {
+                        "accID": "e62bfdb5-fac9-44b9-a081-a6dfe4458334"
+                    },
+                    "identity": {
+                        "username": "share"
+                    }
+                },
+                "roles": [
+                    "Platform"
+                ]
+            }
+        ],
+        "gasFee": {
+            "amount": "0.001304107739340567954262",
+            "fiat": {
+                "currencyCode": "USD",
+                "symbol": "$"
+            }
+        },
+        "totalCreatorFeePercent": 55,
+        "totalFee": {
+            "amount": "0.017524715373498833954262",
+            "fiat": {
+                "currencyCode": "USD",
+                "symbol": "$"
+            }
+        }
+    },
+    "sessionID": "2DBDD308-D633-459F-B79D-1E76E7743109",
+    "swapQuote": {
+        "autoSlippageBPS": 50,
+        "minGasAmount": {
+            "amount": "0.00816212",
+            "asset": {
+                "shortToken": {
+                    "assetID": "solana:101-So11111111111111111111111111111111111111111",
+                    "name": "SOL",
+                    "symbol": "SOL",
+                    "verified": false
+                },
+                "type": "Token"
+            }
+        },
+        "priceImpactPct": 0
+    },
+    "txsToSign": [
+        {
+            "chain": "solana:101",
+            "solana": {
+                "serializedTransaction": "AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAQAHDtiMC5v5fULtm3FMw2dkUyr/XPBWfSY4T4F+s64SPsHp4bpWO88gPSAVmVB3CpVpSuasIMjIIwInaoHJmYDWXMn+3lfQpTrD+6p2hZWRyT8SG7oycu7W/LgrAsNRCTv3aZ0bNAsyF4hZWNXpdvnGMzmuLfr8uf6BVBYbp+Ary6BNxSjoDBzSBe1jOnoF6joBfcaPbCm1TpWfPEFZuxtAF9Zkp/x1jyl2O05W0TwJNBUAe5Vf1x0jUeyGwRbDcCVEkW7q2bYB2Iom6URMa/2shGH/aqiwvzRa/t+zSk1vmJeWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAG3fbh12Whk9nL4UbO63msHLSF7V9bN5E6jPWFfv8AqQR52cfMEDXechH5nrSMCdcLK99b354uVrih+7Wi6jMnBHnVW/IxwG7udMVuzmgVB/2xst6j9I5RArHNola8E4+0P/on9df2SnTAmx8pWHneSwmrNt/J3VFLMhqns4zl6AMGRm/lIRcy/+ytunLDm+e8jOW7xfcSayxDmzpAAAAAjJclj04kifG7PRApFI4NgwtaE5na/xCEBI572Nvp+FkTywUIsnlbaCV0q51DpoSXW5kcMWlaSsjha5urLnF0EwkMAAUCoy8CAAwACQOJYwAAAAAAAA0GAAEAFAcIAQEHAgABDAIAAACH4TIAAAAAAAgBAQERDQYAAgAJBwgBAQoaAAECFAkICAoLCgMVABYOAQIPEBEIBBITBQonu2T6zDHErxSH4TIAAAAAABd1FwAAAAAAMgAoAAAAAQAAABoQJwABBwIABgwCAAAAi+AAAAAAAAAIAwEAAAEJAfWkGit65BdxsND5gNc8US4x1YN2gxeefO5jD8mM+1vqBpuanJWRlgMLmZg="
+            },
+            "type": "Solana"
+        }
+    ]
+}
