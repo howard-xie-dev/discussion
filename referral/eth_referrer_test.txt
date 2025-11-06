@@ -1,0 +1,41 @@
+POSTMAN test request for /v1/swap/createTx
+
+{
+  "feeAttribution": {
+    //"actionID":"eip155:8453-0x620b410faf2c3ccda3909fe37dc0c30c30b629ac-22178"
+  },
+  "receiveTokenID": "eip155:8453-0x461deb53515cac6c923eed9eb7ed5be80f4e0b07",
+  "sendTokenBalancePct": 100,
+  "sendTokenID": "eip155:8453-0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+  "sessionID": "2DBDD308-D633-459F-B79D-1E76E7743109",
+  "swapType": "Buy",
+  "walletAddress": {
+    "address": "0x6Ccf1851BAA0b54371061e88780F3da30430B55B",
+    "addressSpace": "eip155"
+  }
+}
+
+
+DEV Identity DB queries and results
+
+sharexyz=> select * from share.farcasters where owner_profile = 'c5fcb891-7a48-4ded-b2c3-33c960d13f94';
+-[ RECORD 1 ]---------------------+-------------------------------------
+f_id                              | 18672
+owner_profile                     | c5fcb891-7a48-4ded-b2c3-33c960d13f94
+
+
+PROD Identity DB query and results
+
+ select * from farcaster.verifications where fid = '18672';
+                  id                  |         created_at         |         updated_at         | deleted_at |      timestamp      |                              address                               |  fid  | protocol
+--------------------------------------+----------------------------+----------------------------+------------+---------------------+--------------------------------------------------------------------+-------+----------
+ 01927809-041f-ebf2-20c7-9334e89c6496 | 2024-10-10 20:05:09.785917 | 2025-11-06 02:21:06.116036 |            | 2025-11-06 02:21:04 | \x6ccf1851baa0b54371061e88780f3da30430b55b                         | 18672 |        0
+ 019628a1-8bcd-f09e-bfe2-d03613e5ef79 | 2025-04-12 06:13:17.89526  | 2025-04-12 06:13:17.89526  |            | 2025-04-12 06:13:17 | \xf07cb7381e0bf6100f877afac9f091cff506479f                         | 18672 |        0
+ 01976263-8a93-ed1e-c891-dc9293ecf5b8 | 2025-06-12 04:26:20.165655 | 2025-06-12 04:26:20.165655 |            | 2025-06-12 04:26:20 | \x1c59e089245e69bb142851157040fed32503f2def3fd9a0de663685c618147ed | 18672 |        1
+
+
+
+
+fields @timestamp, @message
+| filter @message like "fee recipient"
+| sort @timestamp desc
