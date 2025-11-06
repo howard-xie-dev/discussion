@@ -32,7 +32,7 @@ Identity DB queries and results
 
   select id, type, display_name from share.profiles where display_name is not null and display_name != '';
 
- 6f4a6840-3b0a-423b-bc15-e37e677515a6 |    1 | Chirag
+8ce6336d-d822-49ea-8702-6c21d3793d60 |    1 | Chirag
 
 
  select * from share.profiles where display_name ilike 'howard';
@@ -40,7 +40,7 @@ Identity DB queries and results
 id                                              | c5fcb891-7a48-4ded-b2c3-33c960d13f94
 
 
- update share.profiles set referrer_user = '6f4a6840-3b0a-423b-bc15-e37e677515a6' where id = 'c5fcb891-7a48-4ded-b2c3-33c960d13f94';
+ update share.profiles set referrer_user = '8ce6336d-d822-49ea-8702-6c21d3793d60' where id = 'c5fcb891-7a48-4ded-b2c3-33c960d13f94';
 
 
 
