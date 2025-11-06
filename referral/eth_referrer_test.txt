@@ -24,6 +24,9 @@ f_id                              | 18672
 owner_profile                     | c5fcb891-7a48-4ded-b2c3-33c960d13f94
 
 
+UPDATE share.profiles SET referrer_user = NULL WHERE id = 'c5fcb891-7a48-4ded-b2c3-33c960d13f94';
+
+
 PROD Identity DB query and results
 
  select * from farcaster.verifications where fid = '18672';
