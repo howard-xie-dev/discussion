@@ -1,0 +1,167 @@
+{
+  "actions": [
+    {
+      "user_address": "string",
+      "chain_id": "string",
+      "transaction_hash": "string",
+      "block_time": "string",
+      "action_items": [
+        {
+          "label": "string",
+          "category": "string",
+          "is_event": true,
+          "log_index": 0,
+          "block_hash": "string",
+          "block_time": "string",
+          "trace_index": 0,
+          "extra_fields": {
+            "id": "string",
+            "swap_info": {
+              "tokens_sold": [
+                {
+                  "price_usd": 0,
+                  "token_name": "string",
+                  "token_amount": 0,
+                  "token_symbol": "string",
+                  "token_address": "string",
+                  "eth_price_usd": 0,
+                  "sol_price_usd": 0,
+                  "token_asset_id": "string",
+                  "token_decimals": 0,
+                  "token_image_url": "string",
+                  "token_amount_eth": 0,
+                  "token_amount_sol": 0,
+                  "token_amount_usd": 0,
+                  "token_banner_url": "string",
+                  "token_external_url": "string",
+                  "token_image_previews": {
+                    "additionalProp1": {}
+                  },
+                  "token_creator_address": "string",
+                  "token_created_timestamp": "string",
+                  "token_verified": true,
+                  "token_circulating_supply": 0
+                }
+              ],
+              "tokens_bought": [
+                {
+                  "price_usd": 0,
+                  "token_name": "string",
+                  "token_amount": 0,
+                  "token_symbol": "string",
+                  "token_address": "string",
+                  "eth_price_usd": 0,
+                  "sol_price_usd": 0,
+                  "token_asset_id": "string",
+                  "token_decimals": 0,
+                  "token_image_url": "string",
+                  "token_amount_eth": 0,
+                  "token_amount_sol": 0,
+                  "token_amount_usd": 0,
+                  "token_banner_url": "string",
+                  "token_external_url": "string",
+                  "token_image_previews": {
+                    "additionalProp1": {}
+                  },
+                  "token_creator_address": "string",
+                  "token_created_timestamp": "string",
+                  "token_verified": true,
+                  "token_circulating_supply": 0
+                }
+              ]
+            },
+            "nft_info": {
+              "name": "string",
+              "owners": "string",
+              "supply": "string",
+              "royalty": [
+                "string"
+              ],
+              "previews": {
+                "additionalProp1": {}
+              },
+              "quantity": "string",
+              "token_id": "string",
+              "image_url": "string",
+              "collection": {
+                "name": "string",
+                "chains": [
+                  "string"
+                ],
+                "address": "string",
+                "image_url": "string",
+                "spam_score": "string",
+                "description": "string",
+                "collection_asset_id": "string"
+              },
+              "to_address": "string",
+              "description": "string",
+              "token_count": "string",
+              "from_address": "string",
+              "buyer_address": "string",
+              "token_address": "string",
+              "extra_metadata": {
+                "additionalProp1": {}
+              },
+              "seller_address": "string",
+              "token_asset_id": "string",
+              "token_standard": "string",
+              "contract_address": "string",
+              "image_properties": {
+                "additionalProp1": {}
+              },
+              "simplehash_nft_id": "string",
+              "distinct_nft_count": "string",
+              "token_owner_address": "string",
+              "distinct_owner_count": "string",
+              "token_asset_id_caip19": "string",
+              "token_creator_address": "string",
+              "token_created_timestamp": "string"
+            },
+            "payment_token_info": {
+              "unit_price": 0,
+              "total_price": 0,
+              "payment_token": {
+                "name": "string",
+                "symbol": "string",
+                "address": "string",
+                "decimals": 0,
+                "payment_asset_id": "string",
+                "payment_token_id": "string"
+              },
+              "is_bundle_sale": true,
+              "unit_price_usd": 0,
+              "unit_price_usd_cents": 0
+            },
+            "db_uniqueness_id": 0,
+            "transaction_info": {
+              "tx_fee": 0,
+              "network": "string",
+              "tx_value": 0,
+              "log_index": 0,
+              "timestamp": "string",
+              "block_hash": "string",
+              "block_number": 0,
+              "tx_fee_symbol": "string",
+              "tx_to_address": "string",
+              "tx_fee_asset_id": "string",
+              "tx_fee_decimals": 0,
+              "tx_from_address": "string",
+              "tx_value_symbol": "string",
+              "transaction_hash": "string",
+              "tx_value_asset_id": "string",
+              "trace_index": 0
+            }
+          },
+          "tx_to_address": "string",
+          "tx_from_address": "string",
+          "contract_address": "string"
+        }
+      ],
+      "action_item_length": 0
+    }
+  ],
+  "error": "string",
+  "next_cursor": "string",
+  "prev_cursor": "string"
+}
