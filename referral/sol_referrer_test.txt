@@ -5,21 +5,15 @@ POSTMAN test request for /v1/swap/createTx
     // "actionID":"2X8hBaz6ijFPUHZU4FsFK94H3GLRmBtN1ZcELcSNpPQj-solana:101-5mZCHuagtyhcUtVJoBDCeV2kUkq8Gmnw3hQxwYcpXiwNsafgJGUFH4bXQhVQYAK6JHDUgS2ouLUfit1WVhq4pR1Y"
   },
   "receiveTokenID": "solana:101-JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN",
-  "sendTokenBalancePct": 100,
-//   "sendTokenAmount": {
-//     "amount": "3.6813325",
-//     "asset": {
-//       "shortToken": {
-//         "assetID": "solana:101-JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN",
-//         "name": "",
-//         "symbol": "",
-//         "verified": false
-//       },
-//       "type": "Token"
-//     }
-//   },
+   "fiatAmount": {
+        "amount": "100",
+        "fiat": {
+            "currencyCode": "USD",
+            "symbol": "$"
+        }
+    },
   "sendTokenID": "solana:101-So11111111111111111111111111111111111111111",
-  "sessionID": "2DBDD308-D633-459F-B79D-1E76E7743109",
+  //"sessionID": "2DBDD308-D633-459F-B79D-1E76E7743109",
   "swapType": "Buy",
   "walletAddress": {
     "address": "FaJvLJtAYbW9TtDcd6E1Yu24G84VLiaVdT8kxVirJHDS",
