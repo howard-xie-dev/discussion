@@ -3,7 +3,7 @@
         "fees": [
             {
                 "fee": {
-                    "amount": "0.008988639882489477",
+                    "amount": "0.499999889117142354",
                     "fiat": {
                         "currencyCode": "USD",
                         "symbol": "$"
@@ -82,7 +82,7 @@
             },
             {
                 "fee": {
-                    "amount": "0.007190849357830334",
+                    "amount": "0.399999967812558018",
                     "fiat": {
                         "currencyCode": "USD",
                         "symbol": "$"
@@ -118,24 +118,24 @@
             }
         ],
         "gasFee": {
-            "amount": "0.001156022713590549139734",
+            "amount": "0.007372389471023052152592",
             "fiat": {
                 "currencyCode": "USD",
                 "symbol": "$"
             }
         },
-        "totalCreatorFeePercent": 55,
+        "totalCreatorFeePercent": 50,
         "totalFee": {
-            "amount": "0.017335511953910360139734",
+            "amount": "0.907372246400723424152592",
             "fiat": {
                 "currencyCode": "USD",
                 "symbol": "$"
             }
         }
     },
-    "sessionID": "2DBDD308-D633-459F-B79D-1E76E7743109",
+    "sessionID": "019a99f5-330b-75f2-ac54-0f5e27f79e93",
     "swapQuote": {
-        "autoSlippageBPS": 50,
+        "autoSlippageBPS": 350,
         "minGasAmount": {
             "amount": "0.00816212",
             "asset": {
@@ -148,13 +148,13 @@
                 "type": "Token"
             }
         },
-        "priceImpactPct": 0
+        "priceImpactPct": 0.0058558397
     },
     "txsToSign": [
         {
             "chain": "solana:101",
             "solana": {
-                "serializedTransaction": "AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAQAHFNiMC5v5fULtm3FMw2dkUyr/XPBWfSY4T4F+s64SPsHp4bpWO88gPSAVmVB3CpVpSuasIMjIIwInaoHJmYDWXMn+3lfQpTrD+6p2hZWRyT8SG7oycu7W/LgrAsNRCTv3aQoFJEGhWE5XjHAF9qe+HgV0GXdXcA8kGQDyX0r9ihnOvqpmwGCt8da0TF0vTcT4mD7TiEzM7cxEZ9ch5i88wzidGzQLMheIWVjV6Xb5xjM5ri36/Ln+gVQWG6fgK8ugTQFMMEthUZxjesO3OgGcbbFvasjSF40FxShtn+CvbJMKXs2a9k9UIoDQiXVE+zLQK593U7zVZHkT2PS6ZIY/Ege5ha48uggePWu090s1ff4yoCjAvULeZ+cqYFn+Adk5TdaJ5XMmtBuaPtrxKS+b7aYuz04Y4sFaWgiXA+rXRkhp38ZFdytG6UY9oMX5drptlAq5NA1f2dTBjURADDErcgkxZ+JALqgUkTXCM8a0nQyr+3JljloHUQ3hnIXUbdDupxaTzznr29QKtKmOtHMEfW4e1UzEYzcl4nI66lCzcHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAG3fbh12Whk9nL4UbO63msHLSF7V9bN5E6jPWFfv8AqeL4d+g9rsaIj0Orta57MRu3jDSWCJf85ae4LBbiD/GXtD/6J/XX9kp0wJsfKVh53ksJqzbfyd1RSzIap7OM5egEedVb8jHAbu50xW7OaBUH/bGy3qP0jlECsc2iVrwTjwMGRm/lIRcy/+ytunLDm+e8jOW7xfcSayxDmzpAAAAAjJclj04kifG7PRApFI4NgwtaE5na/xCEBI572Nvp+Fm9DqeyrW2iUv5YRTXBNnaQti5L8yXdQNwyASrFuQ2O1gkSAAUC3OkEABIACQPuHwAAAAAAABMGAAEAKA0OAQENAgABDAIAAACH4TIAAAAAAA4BAQEREwYAAgApDQ4BARE8DwABAwQCKCkODhARBSAUIBUWAwYhKBcgDyIOKiMgBxgZESQPGiUmGxwGCCErIg4nLA4PHQQeCB8JCgstONGYU5N8/tjpAIfhMgAAAAAAj3sXAAAAAAAyACgAAAADAAAASwAAAAAQJwABXwAQJwECEQAQJwIDDQIADAwCAAAAi+AAAAAAAAAOAwEAAAEJA7pfaUy3zN2/Z+Yf2nwWmLPI8raOTVgUjVshrYF0LomNBlJQTzBUVgQYDw4ZwYFMD5VqOSiUxKOelwN5LRvzaM2eWvGCGDzyy6G8uAEDFBYVBBgcFx2IEcCyRB5p391xfuFTruPAxbiWr5eGfeW6RVfAdTsy3QOVy5kGAcoDbAnJ"
+                "serializedTransaction": "AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAQAIENiMC5v5fULtm3FMw2dkUyr/XPBWfSY4T4F+s64SPsHp4bpWO88gPSAVmVB3CpVpSuasIMjIIwInaoHJmYDWXMn+3lfQpTrD+6p2hZWRyT8SG7oycu7W/LgrAsNRCTv3aXEzfZHfK+df8cHOiMH18Ck85+5FYvbuPgRfoH+q0xHdsO8fVcSNdazbLbJBLZL63OUC4WUDrpCSXjSZPeEgNj+dGzQLMheIWVjV6Xb5xjM5ri36/Ln+gVQWG6fgK8ugTWZ/y1OFUjaxGSYPYSYxL38DI5jSwryQ6RMhtMx+2NckFpPPOevb1Aq0qY60cwR9bh7VTMRjNyXicjrqULNwcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAbd9uHXZaGT2cvhRs7reawctIXtX1s3kTqM9YV+/wCpBHnZx8wQNd5yEfmetIwJ1wsr31vfni5WuKH7taLqMyeagAv/TIc2iJbCD8FAc+vxy1qjdf6B/k29yCuk37deeLQ/+if11/ZKdMCbHylYed5LCas238ndUUsyGqezjOXoBHnVW/IxwG7udMVuzmgVB/2xst6j9I5RArHNola8E48DBkZv5SEXMv/srbpyw5vnvIzlu8X3EmssQ5s6QAAAAIyXJY9OJInxuz0QKRSODYMLWhOZ2v8QhASOe9jb6fhZ/X5xNmjfbAbzuWbRs9/2A0N5iGH4W0CFbjB0sXj1mmcJDgAFAgZMAwAOAAkDLKoDAAAAAAAPBgABABkICQEBCAIAAQwCAAAA2hX5KQAAAAAJAQEBEQ8GAAIACggJAQENJAsAAQMEAhkKCQkMDQUWFxALERIDBhkYCQkaGwsTFBUEBhwJGjfRmFOTfP7Y6QLaFfkpAAAAABFzJxYAAAAAXgEoAAAAAgAAAFkBECcAAVdClE9NxTSX3QAQJwECCAIABwwCAAAA0v41AAAAAAAJAwEAAAEJAnlATi34O/HRSXIZP76/dX2z/WBAjRysQx/BvA1dkGYWA9vfFwPcFt6mA93MBuFiXqhcdTDxneRSH7MxvGWMqYyDjheT890zcgPd2twEDN7g3w=="
             },
             "type": "Solana"
         }
