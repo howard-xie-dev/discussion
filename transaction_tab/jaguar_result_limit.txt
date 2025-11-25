@@ -1,0 +1,197 @@
+   WITH filtered_actions AS (
+        SELECT
+            a.user_address,
+            a.chain_id,
+            a.transaction_hash,
+            a.block_time,
+            a.category,
+            a.label,
+            a.block_hash,
+            a.tx_from_address,
+            a.tx_to_address,
+            a.contract_address,
+            a.is_event,
+            a.log_index,
+            a.trace_index,
+            a.uniqueness_index,
+            a.extra_fields
+        FROM evm_staging.actions AS a
+        WHERE 1=1
+         AND a.chain_id = 'eip155:8453'
+
+
+        AND a.category = 'token'
+        AND a.token_addresses IS NOT NULL
+        AND lower('0x4200000000000000000000000000000000000006') = ANY(a.token_addresses)
+
+        AND a.label IN ('nft_buy', 'nft_mint', 'nft_sell', 'token_buy', 'token_sell')
+        ORDER BY a.block_time DESC, a.user_address, a.chain_id, a.transaction_hash
+        LIMIT 1000
+    ),
+    grouped_actions AS (
+        SELECT
+            a.user_address,
+            a.chain_id,
+            a.transaction_hash,
+            a.block_time,
+            jsonb_agg(
+                jsonb_build_object(
+                    'category', a.category,
+                    'label', a.label,
+                    'block_time', a.block_time,
+                    'block_hash', a.block_hash,
+                    'tx_from_address', a.tx_from_address,
+                    'tx_to_address', a.tx_to_address,
+                    'contract_address', a.contract_address,
+                    'is_event', a.is_event,
+                    'log_index', a.log_index,
+                    'trace_index', a.trace_index,
+                    'extra_fields', a.extra_fields
+                ) ORDER BY a.uniqueness_index
+            ) as action_items,
+            jsonb_agg(
+                DISTINCT (a.extra_fields->>'nft_info')::jsonb->>'token_asset_id'
+            ) FILTER (WHERE a.category = 'nft') as nft_asset_ids,
+            jsonb_agg(
+                DISTINCT (((a.extra_fields->>'swap_info')::jsonb->>'tokens_bought')::jsonb)[0]->>'token_asset_id'
+            ) FILTER (WHERE a.category = 'token' AND (a.extra_fields->>'swap_info')::jsonb ? 'tokens_bought') as token_buy_asset_ids,
+            jsonb_agg(
+                DISTINCT (((a.extra_fields->>'swap_info')::jsonb->>'tokens_sold')::jsonb)[0]->>'token_asset_id'
+            ) FILTER (WHERE a.category = 'token' AND (a.extra_fields->>'swap_info')::jsonb ? 'tokens_sold') as token_sell_asset_ids
+        FROM filtered_actions a
+        GROUP BY a.user_address, a.chain_id, a.transaction_hash, a.block_time
+    ),
+    enriched_actions AS (
+        SELECT
+            g.user_address,
+            g.chain_id,
+            g.transaction_hash,
+            g.block_time,
+            g.action_items,
+            COALESCE(
+                (SELECT jsonb_agg(
+                    jsonb_build_object(
+                        'asset_id', am.asset_id,
+                        'contract_address', am.contract_address,
+                        'chain_id', am.chain_id,
+                        'token_id', am.token_id,
+                        'asset_type', am.asset_type,
+                        'name', am.name,
+                        'symbol', am.symbol,
+                        'decimals', am.decimals,
+                        'verified', am.verified,
+                        'creator_address', am.creator_address,
+                        'created_timestamp', am.created_timestamp,
+                        'image_url', am.image_url,
+                        'image_previews', am.image_previews,
+                        'image_properties', am.image_properties,
+                        'predominant_color', am.predominant_color,
+                        'circulating_supply', am.circulating_supply
+                    )
+                )
+                FROM staging.asset_metadata am
+                WHERE am.asset_id = ANY(SELECT jsonb_array_elements_text(g.nft_asset_ids))
+                ), '[]'::jsonb
+            ) as nft_asset_items,
+            COALESCE(
+                (SELECT jsonb_agg(
+                    jsonb_build_object(
+                        'asset_id', am.asset_id,
+                        'contract_address', am.contract_address,
+                        'chain_id', am.chain_id,
+                        'token_id', am.token_id,
+                        'asset_type', am.asset_type,
+                        'name', am.name,
+                        'symbol', am.symbol,
+                        'decimals', am.decimals,
+                        'verified', am.verified,
+                        'creator_address', am.creator_address,
+                        'created_timestamp', am.created_timestamp,
+                        'image_url', am.image_url,
+                        'image_previews', am.image_previews,
+                        'image_properties', am.image_properties,
+                        'predominant_color', am.predominant_color,
+                        'circulating_supply', am.circulating_supply
+                    )
+                )
+                FROM staging.asset_metadata am
+                WHERE am.asset_id = ANY(SELECT jsonb_array_elements_text(g.token_buy_asset_ids))
+                ), '[]'::jsonb
+            ) as token_buy_side_asset_items,
+            COALESCE(
+                (SELECT jsonb_agg(
+                    jsonb_build_object(
+                        'asset_id', am.asset_id,
+                        'contract_address', am.contract_address,
+                        'chain_id', am.chain_id,
+                        'token_id', am.token_id,
+                        'asset_type', am.asset_type,
+                        'name', am.name,
+                        'symbol', am.symbol,
+                        'decimals', am.decimals,
+                        'verified', am.verified,
+                        'creator_address', am.creator_address,
+                        'created_timestamp', am.created_timestamp,
+                        'image_url', am.image_url,
+                        'image_previews', am.image_previews,
+                        'image_properties', am.image_properties,
+                        'predominant_color', am.predominant_color,
+                        'circulating_supply', am.circulating_supply
+                    )
+                )
+                FROM staging.asset_metadata am
+                WHERE am.asset_id = ANY(SELECT jsonb_array_elements_text(g.token_sell_asset_ids))
+                ), '[]'::jsonb
+            ) as token_sell_side_asset_items
+        FROM grouped_actions g
+    )
+    SELECT
+        user_address,
+        chain_id,
+        transaction_hash,
+        block_time,
+        action_items,
+        nft_asset_items,
+        token_buy_side_asset_items,
+        token_sell_side_asset_items,
+        jsonb_array_length(action_items) as action_item_length
+    FROM enriched_actions
+    ORDER BY block_time DESC, user_address, chain_id, transaction_hash
+     LIMIT 6;
+DEBUG:root:DBQuery: Initial query returned 6 rows
+DEBUG:root:Row 0: Processing 1 action items
+DEBUG:root:Row 0: NFT metadata items: 0, Buy-side: 1, Sell-side: 1
+DEBUG:root:Token buy-side enrichment: Updated 4 fields for eip155:8453-0x22af33fe49fd1fa80c7149773dde5890d3c76f3b: ['decimals', 'image_previews', 'verified', 'circulating_supply']
+DEBUG:root:Token sell-side enrichment: Updated 5 fields for eip155:8453-0x4200000000000000000000000000000000000006: ['decimals', 'image_previews', 'predominant_color', 'verified', 'circulating_supply']
+DEBUG:root:Row 1: Processing 1 action items
+DEBUG:root:Row 1: NFT metadata items: 0, Buy-side: 1, Sell-side: 1
+DEBUG:root:Token buy-side enrichment: Updated 5 fields for eip155:8453-0x4200000000000000000000000000000000000006: ['decimals', 'image_previews', 'predominant_color', 'verified', 'circulating_supply']
+DEBUG:root:Token sell-side enrichment: Updated 4 fields for eip155:8453-0x767a739d1a152639e9ea1d8c1bd55fdc5b217d7f: ['decimals', 'image_previews', 'verified', 'circulating_supply']
+DEBUG:root:Row 2: Processing 1 action items
+DEBUG:root:Row 2: NFT metadata items: 0, Buy-side: 1, Sell-side: 1
+DEBUG:root:Token buy-side enrichment: Updated 5 fields for eip155:8453-0x50f88fe97f72cd3e75b9eb4f747f59bceba80d59: ['decimals', 'image_previews', 'predominant_color', 'verified', 'circulating_supply']
+DEBUG:root:Token sell-side enrichment: Updated 5 fields for eip155:8453-0x4200000000000000000000000000000000000006: ['decimals', 'image_previews', 'predominant_color', 'verified', 'circulating_supply']
+DEBUG:root:Row 3: Processing 1 action items
+DEBUG:root:Row 3: NFT metadata items: 0, Buy-side: 1, Sell-side: 0
+DEBUG:root:Token buy-side enrichment: Updated 5 fields for eip155:8453-0x4200000000000000000000000000000000000006: ['decimals', 'image_previews', 'predominant_color', 'verified', 'circulating_supply']
+DEBUG:root:Token sell-side: No metadata found at index 0
+DEBUG:root:Row 4: Processing 1 action items
+DEBUG:root:Row 4: NFT metadata items: 0, Buy-side: 1, Sell-side: 1
+DEBUG:root:Token buy-side enrichment: Updated 5 fields for eip155:8453-0x833589fcd6edb6e08f4c7c32d4f71b54bda02913: ['decimals', 'image_previews', 'predominant_color', 'verified', 'circulating_supply']
+DEBUG:root:Token sell-side enrichment: Updated 5 fields for eip155:8453-0x4200000000000000000000000000000000000006: ['decimals', 'image_previews', 'predominant_color', 'verified', 'circulating_supply']
+DEBUG:root:Row 5: Processing 1 action items
+DEBUG:root:Row 5: NFT metadata items: 0, Buy-side: 1, Sell-side: 1
+DEBUG:root:Token buy-side enrichment: Updated 5 fields for eip155:8453-0x4200000000000000000000000000000000000006: ['decimals', 'image_previews', 'predominant_color', 'verified', 'circulating_supply']
+DEBUG:root:Token sell-side enrichment: Updated 5 fields for eip155:8453-0x833589fcd6edb6e08f4c7c32d4f71b54bda02913: ['decimals', 'image_previews', 'predominant_color', 'verified', 'circulating_supply']
+DEBUG:root:Unpacked and enriched 6 grouped results
+DEBUG:root:Row 0: Processing 1 action items
+DEBUG:root:Row 0: NFT metadata items: 0, Buy-side: 1, Sell-side: 1
+DEBUG:root:Token buy-side enrichment: Updated 5 fields for eip155:8453-0x833589fcd6edb6e08f4c7c32d4f71b54bda02913: ['decimals', 'image_previews', 'predominant_color', 'verified', 'circulating_supply']
+DEBUG:root:Token sell-side enrichment: Updated 5 fields for eip155:8453-0x4200000000000000000000000000000000000006: ['decimals', 'image_previews', 'predominant_color', 'verified', 'circulating_supply']
+DEBUG:root:Unpacked and enriched 1 grouped results
+DEBUG:root:DBQuery: Additional query returned 1 rows
+DEBUG:root:DBQuery: Final result - 7 rows, next_cursor: 2025-11-21T16:25:04Z
+DEBUG:root:DBQuery: Closed thread session for chain_namespace: eip155
+INFO:root:Asset actions query: asset_id=eip155:8453-0x4200000000000000000000000000000000000006, category=token, results=7
+DEBUG:app.middleware.tracing:Request POST /actions/asset completed in 1.315s with status 200
+INFO:root:{"log_type": "response", "request_id": "1fdbda74-a380-44e5-9e4d-fb562f58a297", "path": "/actions/asset", "query_params": {}, "status_code": 200, "processing_time_ms": 1315.71, "response_time": "2025-11-25 23:15:57 UTC", "response_content": {"actions": [{"user_address": "0x4dad794a34b52c17580dd0ec139b680460b8d422", "chain_id": "eip155:8453", "transaction_hash": "0xc3a0f87b8bf71c134e9447d4b3eb4520b7a151868b730e6a1f6fe5891ec1ae63", "block_time": "2025-11-21T20:37:5
