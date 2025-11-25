@@ -1,0 +1,764 @@
+{
+    "actions": [
+        {
+            "user_address": "0x4dad794a34b52c17580dd0ec139b680460b8d422",
+            "chain_id": "eip155:8453",
+            "transaction_hash": "0xc3a0f87b8bf71c134e9447d4b3eb4520b7a151868b730e6a1f6fe5891ec1ae63",
+            "block_time": "2025-11-21T20:37:55Z",
+            "action_items": [
+                {
+                    "label": "token_buy",
+                    "category": "token",
+                    "is_event": false,
+                    "log_index": 4,
+                    "block_hash": "",
+                    "block_time": "2025-11-21T20:37:55+00:00",
+                    "trace_index": null,
+                    "extra_fields": {
+                        "id": "0x4dad794a34b52c17580dd0ec139b680460b8d422-eip155:8453-0xc3a0f87b8bf71c134e9447d4b3eb4520b7a151868b730e6a1f6fe5891ec1ae63",
+                        "swap_info": {
+                            "tokens_sold": [
+                                {
+                                    "price_usd": 2722.3389834845916,
+                                    "token_name": "Wrapped Ether",
+                                    "token_amount": 0.000728124056066228,
+                                    "token_symbol": "WETH",
+                                    "token_address": "0x4200000000000000000000000000000000000006",
+                                    "eth_price_usd": null,
+                                    "sol_price_usd": null,
+                                    "token_asset_id": "eip155:8453-0x4200000000000000000000000000000000000006",
+                                    "token_decimals": 18,
+                                    "token_image_url": "https://token-media.defined.fi/8453_0x4200000000000000000000000000000000000006_1758707472_large.png",
+                                    "token_amount_eth": null,
+                                    "token_amount_sol": null,
+                                    "token_amount_usd": 1.9822005026420129,
+                                    "token_banner_url": "https://dd.dexscreener.com/ds-data/tokens/base/0x4200000000000000000000000000000000000006/header.png",
+                                    "token_external_url": null,
+                                    "token_image_previews": {
+                                        "blurhash": null,
+                                        "image_large_url": "https://token-media.defined.fi/8453_0x4200000000000000000000000000000000000006_1758707472_large.png",
+                                        "image_small_url": "https://token-media.defined.fi/8453_0x4200000000000000000000000000000000000006_1758707472_small.png",
+                                        "image_medium_url": "https://token-media.defined.fi/8453_0x4200000000000000000000000000000000000006_1758707472_large.png",
+                                        "predominant_color": "#647cec",
+                                        "image_opengraph_url": "https://token-media.defined.fi/8453_0x4200000000000000000000000000000000000006_1758707472_large.png"
+                                    },
+                                    "token_creator_address": null,
+                                    "token_created_timestamp": "2024-09-26T18:53:29Z",
+                                    "token_verified": true,
+                                    "token_circulating_supply": 185776.0067520575
+                                }
+                            ],
+                            "tokens_bought": [
+                                {
+                                    "price_usd": 0.0142325119954204,
+                                    "token_name": "jesse",
+                                    "token_amount": 139.27270908184207,
+                                    "token_symbol": "jesse",
+                                    "token_address": "0x50f88fe97f72cd3e75b9eb4f747f59bceba80d59",
+                                    "eth_price_usd": null,
+                                    "sol_price_usd": null,
+                                    "token_asset_id": "eip155:8453-0x50f88fe97f72cd3e75b9eb4f747f59bceba80d59",
+                                    "token_decimals": 18,
+                                    "token_image_url": "https://token-media.defined.fi/8453_0x50f88fe97f72cd3e75b9eb4f747f59bceba80d59_large.png",
+                                    "token_amount_eth": null,
+                                    "token_amount_sol": null,
+                                    "token_amount_usd": 1.9822005026420129,
+                                    "token_banner_url": "https://token-media.defined.fi/8453_0x50f88fe97f72cd3e75b9eb4f747f59bceba80d59_banner_0939492d-0c56-4fed-bce2-9df490c91b71.png",
+                                    "token_external_url": null,
+                                    "token_image_previews": {
+                                        "blurhash": null,
+                                        "image_large_url": "https://token-media.defined.fi/8453_0x50f88fe97f72cd3e75b9eb4f747f59bceba80d59_large.png",
+                                        "image_small_url": "https://token-media.defined.fi/8453_0x50f88fe97f72cd3e75b9eb4f747f59bceba80d59_small.png",
+                                        "image_medium_url": "https://token-media.defined.fi/8453_0x50f88fe97f72cd3e75b9eb4f747f59bceba80d59_large.png",
+                                        "predominant_color": "#6f848b",
+                                        "image_opengraph_url": "https://token-media.defined.fi/8453_0x50f88fe97f72cd3e75b9eb4f747f59bceba80d59_large.png"
+                                    },
+                                    "token_creator_address": "0x2211d1d0020daea8039e46cf1367962070d77da9",
+                                    "token_created_timestamp": "2025-11-20T17:00:11Z",
+                                    "token_verified": true,
+                                    "token_circulating_supply": 1000000000.0
+                                }
+                            ]
+                        },
+                        "nft_info": null,
+                        "payment_token_info": null,
+                        "db_uniqueness_id": 4,
+                        "transaction_info": {
+                            "tx_fee": null,
+                            "network": "base",
+                            "tx_value": 0.0,
+                            "log_index": 4,
+                            "timestamp": "2025-11-21T20:37:55Z",
+                            "block_hash": "",
+                            "block_number": 38484064,
+                            "tx_fee_symbol": "ETH",
+                            "tx_to_address": "0x0000000000001ff3684f28c67538d4d072c22734",
+                            "tx_fee_asset_id": "eip155:8453-0x0000000000000000000000000000000000000000",
+                            "tx_fee_decimals": 18,
+                            "tx_from_address": "0x4dad794a34b52c17580dd0ec139b680460b8d422",
+                            "tx_value_symbol": "ETH",
+                            "transaction_hash": "0xc3a0f87b8bf71c134e9447d4b3eb4520b7a151868b730e6a1f6fe5891ec1ae63",
+                            "tx_value_asset_id": "eip155:8453-0x0000000000000000000000000000000000000000",
+                            "trace_index": null
+                        }
+                    },
+                    "tx_to_address": "0x0000000000001ff3684f28c67538d4d072c22734",
+                    "tx_from_address": "0x4dad794a34b52c17580dd0ec139b680460b8d422",
+                    "contract_address": "0x4e40ff3be6bda5b131c91520fa73515076eee098"
+                }
+            ],
+            "action_item_length": 1
+        },
+        {
+            "user_address": "0xaf11495f021c5c2c5f5230f40d5d57ebe4059700",
+            "chain_id": "eip155:8453",
+            "transaction_hash": "0xab879a907cf0158ecfb9273ba23f97c22118c7445597be8516ae9908b30c3a4e",
+            "block_time": "2025-11-21T16:25:05Z",
+            "action_items": [
+                {
+                    "label": "token_sell",
+                    "category": "token",
+                    "is_event": false,
+                    "log_index": 5,
+                    "block_hash": "22d0733a9b0bfd6d1d91cdf210eb07f83e0428d7901a9306fdaba556fdae06e6",
+                    "block_time": "2025-11-21T16:25:05+00:00",
+                    "trace_index": null,
+                    "extra_fields": {
+                        "id": "0xaf11495f021c5c2c5f5230f40d5d57ebe4059700-eip155:8453-0xab879a907cf0158ecfb9273ba23f97c22118c7445597be8516ae9908b30c3a4e",
+                        "swap_info": {
+                            "tokens_sold": [
+                                {
+                                    "price_usd": 2699.2851830257578,
+                                    "token_name": "Wrapped Ether",
+                                    "token_amount": 0.003966,
+                                    "token_symbol": "WETH",
+                                    "token_address": "0x4200000000000000000000000000000000000006",
+                                    "eth_price_usd": null,
+                                    "sol_price_usd": null,
+                                    "token_asset_id": "eip155:8453-0x4200000000000000000000000000000000000006",
+                                    "token_decimals": 18,
+                                    "token_image_url": "https://token-media.defined.fi/8453_0x4200000000000000000000000000000000000006_1758707472_large.png",
+                                    "token_amount_eth": null,
+                                    "token_amount_sol": null,
+                                    "token_amount_usd": 10.705365035880154,
+                                    "token_banner_url": "https://dd.dexscreener.com/ds-data/tokens/base/0x4200000000000000000000000000000000000006/header.png",
+                                    "token_external_url": null,
+                                    "token_image_previews": {
+                                        "blurhash": null,
+                                        "image_large_url": "https://token-media.defined.fi/8453_0x4200000000000000000000000000000000000006_1758707472_large.png",
+                                        "image_small_url": "https://token-media.defined.fi/8453_0x4200000000000000000000000000000000000006_1758707472_small.png",
+                                        "image_medium_url": "https://token-media.defined.fi/8453_0x4200000000000000000000000000000000000006_1758707472_large.png",
+                                        "predominant_color": "#647cec",
+                                        "image_opengraph_url": "https://token-media.defined.fi/8453_0x4200000000000000000000000000000000000006_1758707472_large.png"
+                                    },
+                                    "token_creator_address": null,
+                                    "token_created_timestamp": "2024-09-26T18:53:29Z",
+                                    "token_verified": true,
+                                    "token_circulating_supply": 185776.0067520575
+                                }
+                            ],
+                            "tokens_bought": [
+                                {
+                                    "price_usd": 1.0000613782160293,
+                                    "token_name": "USD Coin",
+                                    "token_amount": 10.704708,
+                                    "token_symbol": "USDC",
+                                    "token_address": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+                                    "eth_price_usd": null,
+                                    "sol_price_usd": null,
+                                    "token_asset_id": "eip155:8453-0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+                                    "token_decimals": 6,
+                                    "token_image_url": "https://token-media.defined.fi/8453_0x833589fcd6edb6e08f4c7c32d4f71b54bda02913_large.png",
+                                    "token_amount_eth": null,
+                                    "token_amount_sol": null,
+                                    "token_amount_usd": 10.705365035880154,
+                                    "token_banner_url": "https://dd.dexscreener.com/ds-data/tokens/base/0x833589fcd6edb6e08f4c7c32d4f71b54bda02913/header.png",
+                                    "token_external_url": null,
+                                    "token_image_previews": {
+                                        "blurhash": null,
+                                        "image_large_url": "https://token-media.defined.fi/8453_0x833589fcd6edb6e08f4c7c32d4f71b54bda02913_large.png",
+                                        "image_small_url": "https://token-media.defined.fi/8453_0x833589fcd6edb6e08f4c7c32d4f71b54bda02913_small.png",
+                                        "image_medium_url": "https://token-media.defined.fi/8453_0x833589fcd6edb6e08f4c7c32d4f71b54bda02913_large.png",
+                                        "predominant_color": "#2373cb",
+                                        "image_opengraph_url": "https://token-media.defined.fi/8453_0x833589fcd6edb6e08f4c7c32d4f71b54bda02913_large.png"
+                                    },
+                                    "token_creator_address": "0x6aaff8af0ae8017725312c388ba3745dfe91185b",
+                                    "token_created_timestamp": "2023-09-06T19:56:01Z",
+                                    "token_verified": true,
+                                    "token_circulating_supply": 4397647850.647651
+                                }
+                            ]
+                        },
+                        "nft_info": null,
+                        "payment_token_info": null,
+                        "db_uniqueness_id": 5,
+                        "transaction_info": {
+                            "tx_fee": null,
+                            "network": "base",
+                            "tx_value": 0.0,
+                            "log_index": 5,
+                            "timestamp": "2025-11-21T16:25:05Z",
+                            "block_hash": "22d0733a9b0bfd6d1d91cdf210eb07f83e0428d7901a9306fdaba556fdae06e6",
+                            "block_number": 38476479,
+                            "tx_fee_symbol": "ETH",
+                            "tx_to_address": "0xf5042e6ffac5a625d4e7848e0b01373d8eb9e222",
+                            "tx_fee_asset_id": "eip155:8453-0x0000000000000000000000000000000000000000",
+                            "tx_fee_decimals": 18,
+                            "tx_from_address": "0xaf11495f021c5c2c5f5230f40d5d57ebe4059700",
+                            "tx_value_symbol": "ETH",
+                            "transaction_hash": "0xab879a907cf0158ecfb9273ba23f97c22118c7445597be8516ae9908b30c3a4e",
+                            "tx_value_asset_id": "eip155:8453-0x0000000000000000000000000000000000000000",
+                            "trace_index": null
+                        }
+                    },
+                    "tx_to_address": "0xf5042e6ffac5a625d4e7848e0b01373d8eb9e222",
+                    "tx_from_address": "0xaf11495f021c5c2c5f5230f40d5d57ebe4059700",
+                    "contract_address": "0xdf033790907c60c9b81ae355f76f74f52f92114a"
+                }
+            ],
+            "action_item_length": 1
+        },
+        {
+            "user_address": "0xaf2bfb6b69dfe6efd257fe8cd694175156a23812",
+            "chain_id": "eip155:8453",
+            "transaction_hash": "0x833124a09a0eb0e6484e8e07cda3cc36c1abf50b7e6fd6329edbf48d3627ee80",
+            "block_time": "2025-11-21T16:25:09Z",
+            "action_items": [
+                {
+                    "label": "token_sell",
+                    "category": "token",
+                    "is_event": false,
+                    "log_index": 4,
+                    "block_hash": "61af8942e03cd097a25843072a9433fadad28b39bba9e986e783224a86af544e",
+                    "block_time": "2025-11-21T16:25:09+00:00",
+                    "trace_index": null,
+                    "extra_fields": {
+                        "id": "0xaf2bfb6b69dfe6efd257fe8cd694175156a23812-eip155:8453-0x833124a09a0eb0e6484e8e07cda3cc36c1abf50b7e6fd6329edbf48d3627ee80",
+                        "swap_info": {
+                            "tokens_sold": [
+                                {
+                                    "price_usd": 3.490974186394682e-05,
+                                    "token_name": "psychonaut",
+                                    "token_amount": 61481.53273057993,
+                                    "token_symbol": "psychonaut",
+                                    "token_address": "0xe1568ad2e9aad747302accf70839cdd0fe86502d",
+                                    "eth_price_usd": null,
+                                    "sol_price_usd": null,
+                                    "token_asset_id": "eip155:8453-0xe1568ad2e9aad747302accf70839cdd0fe86502d",
+                                    "token_decimals": 18,
+                                    "token_image_url": "https://token-media.defined.fi/8453_0xe1568ad2e9aad747302accf70839cdd0fe86502d_large.png",
+                                    "token_amount_eth": null,
+                                    "token_amount_sol": null,
+                                    "token_amount_usd": 2.1463044370243427,
+                                    "token_banner_url": "https://dd.dexscreener.com/ds-data/tokens/base/0xe1568ad2e9aad747302accf70839cdd0fe86502d/header.png",
+                                    "token_external_url": null,
+                                    "token_image_previews": {
+                                        "blurhash": null,
+                                        "image_large_url": "https://token-media.defined.fi/8453_0xe1568ad2e9aad747302accf70839cdd0fe86502d_large.png",
+                                        "image_small_url": "https://token-media.defined.fi/8453_0xe1568ad2e9aad747302accf70839cdd0fe86502d_small.png",
+                                        "image_medium_url": "https://token-media.defined.fi/8453_0xe1568ad2e9aad747302accf70839cdd0fe86502d_large.png",
+                                        "predominant_color": null,
+                                        "image_opengraph_url": "https://token-media.defined.fi/8453_0xe1568ad2e9aad747302accf70839cdd0fe86502d_large.png"
+                                    },
+                                    "token_creator_address": "0x021ade92e04a89b9bce4f624b8c4a87965508d89",
+                                    "token_created_timestamp": "2025-06-24T21:01:49Z",
+                                    "token_verified": null,
+                                    "token_circulating_supply": null
+                                }
+                            ],
+                            "tokens_bought": [
+                                {
+                                    "price_usd": 2699.78740480105,
+                                    "token_name": "Wrapped Ether",
+                                    "token_amount": 0.00052563399335877,
+                                    "token_symbol": "WETH",
+                                    "token_address": "0x4200000000000000000000000000000000000006",
+                                    "eth_price_usd": null,
+                                    "sol_price_usd": null,
+                                    "token_asset_id": "eip155:8453-0x4200000000000000000000000000000000000006",
+                                    "token_decimals": 18,
+                                    "token_image_url": "https://token-media.defined.fi/8453_0x4200000000000000000000000000000000000006_1758707472_large.png",
+                                    "token_amount_eth": null,
+                                    "token_amount_sol": null,
+                                    "token_amount_usd": 1.419100034805286,
+                                    "token_banner_url": "https://dd.dexscreener.com/ds-data/tokens/base/0x4200000000000000000000000000000000000006/header.png",
+                                    "token_external_url": null,
+                                    "token_image_previews": {
+                                        "blurhash": null,
+                                        "image_large_url": "https://token-media.defined.fi/8453_0x4200000000000000000000000000000000000006_1758707472_large.png",
+                                        "image_small_url": "https://token-media.defined.fi/8453_0x4200000000000000000000000000000000000006_1758707472_small.png",
+                                        "image_medium_url": "https://token-media.defined.fi/8453_0x4200000000000000000000000000000000000006_1758707472_large.png",
+                                        "predominant_color": "#647cec",
+                                        "image_opengraph_url": "https://token-media.defined.fi/8453_0x4200000000000000000000000000000000000006_1758707472_large.png"
+                                    },
+                                    "token_creator_address": null,
+                                    "token_created_timestamp": "2024-09-26T18:53:29Z",
+                                    "token_verified": true,
+                                    "token_circulating_supply": 185776.0067520575
+                                }
+                            ]
+                        },
+                        "nft_info": null,
+                        "payment_token_info": null,
+                        "db_uniqueness_id": 4,
+                        "transaction_info": {
+                            "tx_fee": null,
+                            "network": "base",
+                            "tx_value": 0.0,
+                            "log_index": 4,
+                            "timestamp": "2025-11-21T16:25:09Z",
+                            "block_hash": "61af8942e03cd097a25843072a9433fadad28b39bba9e986e783224a86af544e",
+                            "block_number": 38476481,
+                            "tx_fee_symbol": "ETH",
+                            "tx_to_address": "0x5ff137d4b0fdcd49dca30c7cf57e578a026d2789",
+                            "tx_fee_asset_id": "eip155:8453-0x0000000000000000000000000000000000000000",
+                            "tx_fee_decimals": 18,
+                            "tx_from_address": "0xaf2bfb6b69dfe6efd257fe8cd694175156a23812",
+                            "tx_value_symbol": "ETH",
+                            "transaction_hash": "0x833124a09a0eb0e6484e8e07cda3cc36c1abf50b7e6fd6329edbf48d3627ee80",
+                            "tx_value_asset_id": "eip155:8453-0x0000000000000000000000000000000000000000",
+                            "trace_index": null
+                        }
+                    },
+                    "tx_to_address": "0x5ff137d4b0fdcd49dca30c7cf57e578a026d2789",
+                    "tx_from_address": "0xaf2bfb6b69dfe6efd257fe8cd694175156a23812",
+                    "contract_address": "0x5ff137d4b0fdcd49dca30c7cf57e578a026d2789"
+                }
+            ],
+            "action_item_length": 1
+        },
+        {
+            "user_address": "0xf56345338cb4cddaf915ebef3bfde63e70fe3053",
+            "chain_id": "eip155:8453",
+            "transaction_hash": "0x578476de2add304ae330d63f35131cf423e6ccc893d4a1f039a43c29b2ce15ad",
+            "block_time": "2025-11-24T19:01:43Z",
+            "action_items": [
+                {
+                    "label": "token_buy",
+                    "category": "token",
+                    "is_event": false,
+                    "log_index": 5,
+                    "block_hash": "",
+                    "block_time": "2025-11-24T19:01:43+00:00",
+                    "trace_index": null,
+                    "extra_fields": {
+                        "id": "0xf56345338cb4cddaf915ebef3bfde63e70fe3053-eip155:8453-0x578476de2add304ae330d63f35131cf423e6ccc893d4a1f039a43c29b2ce15ad",
+                        "swap_info": {
+                            "tokens_sold": [
+                                {
+                                    "price_usd": 2956.9912111024264,
+                                    "token_name": "Wrapped Ether",
+                                    "token_amount": 0.0193350432,
+                                    "token_symbol": "WETH",
+                                    "token_address": "0x4200000000000000000000000000000000000006",
+                                    "eth_price_usd": null,
+                                    "sol_price_usd": null,
+                                    "token_asset_id": "eip155:8453-0x4200000000000000000000000000000000000006",
+                                    "token_decimals": 18,
+                                    "token_image_url": "https://token-media.defined.fi/8453_0x4200000000000000000000000000000000000006_1758707472_large.png",
+                                    "token_amount_eth": null,
+                                    "token_amount_sol": null,
+                                    "token_amount_usd": 57.173552808685734,
+                                    "token_banner_url": "https://dd.dexscreener.com/ds-data/tokens/base/0x4200000000000000000000000000000000000006/header.png",
+                                    "token_external_url": null,
+                                    "token_image_previews": {
+                                        "blurhash": null,
+                                        "image_large_url": "https://token-media.defined.fi/8453_0x4200000000000000000000000000000000000006_1758707472_large.png",
+                                        "image_small_url": "https://token-media.defined.fi/8453_0x4200000000000000000000000000000000000006_1758707472_small.png",
+                                        "image_medium_url": "https://token-media.defined.fi/8453_0x4200000000000000000000000000000000000006_1758707472_large.png",
+                                        "predominant_color": "#647cec",
+                                        "image_opengraph_url": "https://token-media.defined.fi/8453_0x4200000000000000000000000000000000000006_1758707472_large.png"
+                                    },
+                                    "token_creator_address": null,
+                                    "token_created_timestamp": "2024-09-26T18:53:29Z",
+                                    "token_verified": true,
+                                    "token_circulating_supply": 185776.0067520575
+                                }
+                            ],
+                            "tokens_bought": [
+                                {
+                                    "price_usd": 0.00028055367901886556,
+                                    "token_name": "BankrCoin",
+                                    "token_amount": 209005.48341858468,
+                                    "token_symbol": "BNKR",
+                                    "token_address": "0x22af33fe49fd1fa80c7149773dde5890d3c76f3b",
+                                    "eth_price_usd": null,
+                                    "sol_price_usd": null,
+                                    "token_asset_id": "eip155:8453-0x22af33fe49fd1fa80c7149773dde5890d3c76f3b",
+                                    "token_decimals": 18,
+                                    "token_image_url": "https://token-media.defined.fi/8453_0x22af33fe49fd1fa80c7149773dde5890d3c76f3b_1756208638_large.png",
+                                    "token_amount_eth": null,
+                                    "token_amount_sol": null,
+                                    "token_amount_usd": 58.63725730820043,
+                                    "token_banner_url": "https://token-media.defined.fi/8453_0x22af33fe49fd1fa80c7149773dde5890d3c76f3b_1756208638_banner.png",
+                                    "token_external_url": null,
+                                    "token_image_previews": {
+                                        "large": "https://token-media.defined.fi/8453_0x22af33fe49fd1fa80c7149773dde5890d3c76f3b_1756208638_large.png",
+                                        "small": "https://token-media.defined.fi/8453_0x22af33fe49fd1fa80c7149773dde5890d3c76f3b_1756208638_small.png",
+                                        "thumb": "https://token-media.defined.fi/8453_0x22af33fe49fd1fa80c7149773dde5890d3c76f3b_1756208638_thumb.png"
+                                    },
+                                    "token_creator_address": "0x72469d86a92f5a9e975fe371a66015e667ab288f",
+                                    "token_created_timestamp": "2024-12-03T04:44:53Z",
+                                    "token_verified": false,
+                                    "token_circulating_supply": 99999999999.99998
+                                }
+                            ]
+                        },
+                        "nft_info": null,
+                        "payment_token_info": null,
+                        "db_uniqueness_id": 5,
+                        "transaction_info": {
+                            "tx_fee": null,
+                            "network": "base",
+                            "tx_value": 0.0,
+                            "log_index": 5,
+                            "timestamp": "2025-11-24T19:01:43Z",
+                            "block_hash": "",
+                            "block_number": 38610778,
+                            "tx_fee_symbol": "ETH",
+                            "tx_to_address": "0xf5042e6ffac5a625d4e7848e0b01373d8eb9e222",
+                            "tx_fee_asset_id": "eip155:8453-0x0000000000000000000000000000000000000000",
+                            "tx_fee_decimals": 18,
+                            "tx_from_address": "0xf56345338cb4cddaf915ebef3bfde63e70fe3053",
+                            "tx_value_symbol": "ETH",
+                            "transaction_hash": "0x578476de2add304ae330d63f35131cf423e6ccc893d4a1f039a43c29b2ce15ad",
+                            "tx_value_asset_id": "eip155:8453-0x0000000000000000000000000000000000000000",
+                            "trace_index": null
+                        }
+                    },
+                    "tx_to_address": "0xf5042e6ffac5a625d4e7848e0b01373d8eb9e222",
+                    "tx_from_address": "0xf56345338cb4cddaf915ebef3bfde63e70fe3053",
+                    "contract_address": "0xc16e685de885efc4a01d159db62bbb613a96ba70"
+                }
+            ],
+            "action_item_length": 1
+        },
+        {
+            "user_address": "0xf56345338cb4cddaf915ebef3bfde63e70fe3053",
+            "chain_id": "eip155:8453",
+            "transaction_hash": "0xb39ed9c39817363a6ed8c0d10f1e08d1a0a2341efd9d9f6d64021ceecef15e5d",
+            "block_time": "2025-11-24T15:51:51Z",
+            "action_items": [
+                {
+                    "label": "token_sell",
+                    "category": "token",
+                    "is_event": false,
+                    "log_index": 8,
+                    "block_hash": "",
+                    "block_time": "2025-11-24T15:51:51+00:00",
+                    "trace_index": null,
+                    "extra_fields": {
+                        "id": "0xf56345338cb4cddaf915ebef3bfde63e70fe3053-eip155:8453-0xb39ed9c39817363a6ed8c0d10f1e08d1a0a2341efd9d9f6d64021ceecef15e5d",
+                        "swap_info": {
+                            "tokens_sold": [
+                                {
+                                    "price_usd": 0.11492291784097491,
+                                    "token_name": "VEIL Token",
+                                    "token_amount": 4246.91366425466,
+                                    "token_symbol": "VEIL",
+                                    "token_address": "0x767a739d1a152639e9ea1d8c1bd55fdc5b217d7f",
+                                    "eth_price_usd": null,
+                                    "sol_price_usd": null,
+                                    "token_asset_id": "eip155:8453-0x767a739d1a152639e9ea1d8c1bd55fdc5b217d7f",
+                                    "token_decimals": 18,
+                                    "token_image_url": "https://token-media.defined.fi/8453_0x767a739d1a152639e9ea1d8c1bd55fdc5b217d7f_1756158830_large.png",
+                                    "token_amount_eth": null,
+                                    "token_amount_sol": null,
+                                    "token_amount_usd": 488.067710114852,
+                                    "token_banner_url": "https://token-media.defined.fi/8453_0x767a739d1a152639e9ea1d8c1bd55fdc5b217d7f_1756158830_banner.png",
+                                    "token_external_url": null,
+                                    "token_image_previews": {
+                                        "large": "https://token-media.defined.fi/8453_0x767a739d1a152639e9ea1d8c1bd55fdc5b217d7f_1756158830_large.png",
+                                        "small": "https://token-media.defined.fi/8453_0x767a739d1a152639e9ea1d8c1bd55fdc5b217d7f_1756158830_small.png",
+                                        "thumb": "https://token-media.defined.fi/8453_0x767a739d1a152639e9ea1d8c1bd55fdc5b217d7f_1756158830_thumb.png"
+                                    },
+                                    "token_creator_address": "0x19f49e0096c1c0c4fa722ba2171d6da18e9f3702",
+                                    "token_created_timestamp": "2025-01-03T18:43:07Z",
+                                    "token_verified": false,
+                                    "token_circulating_supply": 65560884.16484879
+                                }
+                            ],
+                            "tokens_bought": [
+                                {
+                                    "price_usd": 2850.4504042790813,
+                                    "token_name": "Wrapped Ether",
+                                    "token_amount": 0.17122384875387592,
+                                    "token_symbol": "WETH",
+                                    "token_address": "0x4200000000000000000000000000000000000006",
+                                    "eth_price_usd": null,
+                                    "sol_price_usd": null,
+                                    "token_asset_id": "eip155:8453-0x4200000000000000000000000000000000000006",
+                                    "token_decimals": 18,
+                                    "token_image_url": "https://token-media.defined.fi/8453_0x4200000000000000000000000000000000000006_1758707472_large.png",
+                                    "token_amount_eth": null,
+                                    "token_amount_sol": null,
+                                    "token_amount_usd": 488.0650889027059,
+                                    "token_banner_url": "https://dd.dexscreener.com/ds-data/tokens/base/0x4200000000000000000000000000000000000006/header.png",
+                                    "token_external_url": null,
+                                    "token_image_previews": {
+                                        "blurhash": null,
+                                        "image_large_url": "https://token-media.defined.fi/8453_0x4200000000000000000000000000000000000006_1758707472_large.png",
+                                        "image_small_url": "https://token-media.defined.fi/8453_0x4200000000000000000000000000000000000006_1758707472_small.png",
+                                        "image_medium_url": "https://token-media.defined.fi/8453_0x4200000000000000000000000000000000000006_1758707472_large.png",
+                                        "predominant_color": "#647cec",
+                                        "image_opengraph_url": "https://token-media.defined.fi/8453_0x4200000000000000000000000000000000000006_1758707472_large.png"
+                                    },
+                                    "token_creator_address": null,
+                                    "token_created_timestamp": "2024-09-26T18:53:29Z",
+                                    "token_verified": true,
+                                    "token_circulating_supply": 185776.0067520575
+                                }
+                            ]
+                        },
+                        "nft_info": null,
+                        "payment_token_info": null,
+                        "db_uniqueness_id": 8,
+                        "transaction_info": {
+                            "tx_fee": null,
+                            "network": "base",
+                            "tx_value": 0.0,
+                            "log_index": 8,
+                            "timestamp": "2025-11-24T15:51:51Z",
+                            "block_hash": "",
+                            "block_number": 38605082,
+                            "tx_fee_symbol": "ETH",
+                            "tx_to_address": "0x00000000009726632680fb29d3f7a9734e3010e2",
+                            "tx_fee_asset_id": "eip155:8453-0x0000000000000000000000000000000000000000",
+                            "tx_fee_decimals": 18,
+                            "tx_from_address": "0xf56345338cb4cddaf915ebef3bfde63e70fe3053",
+                            "tx_value_symbol": "ETH",
+                            "transaction_hash": "0xb39ed9c39817363a6ed8c0d10f1e08d1a0a2341efd9d9f6d64021ceecef15e5d",
+                            "tx_value_asset_id": "eip155:8453-0x0000000000000000000000000000000000000000",
+                            "trace_index": null
+                        }
+                    },
+                    "tx_to_address": "0x00000000009726632680fb29d3f7a9734e3010e2",
+                    "tx_from_address": "0xf56345338cb4cddaf915ebef3bfde63e70fe3053",
+                    "contract_address": "0xf207d02becd4417aaa3383804b6b87b17602c86d"
+                }
+            ],
+            "action_item_length": 1
+        },
+        {
+            "user_address": "0xf70da97812cb96acdf810712aa562db8dfa3dbef",
+            "chain_id": "eip155:8453",
+            "transaction_hash": "0xb75dcaa04f577154ad76b85d10736bf8780a40a7defec0e7359fca34aff1c8e8",
+            "block_time": "2025-11-21T16:25:05Z",
+            "action_items": [
+                {
+                    "label": "token_buy",
+                    "category": "token",
+                    "is_event": false,
+                    "log_index": 5,
+                    "block_hash": "22d0733a9b0bfd6d1d91cdf210eb07f83e0428d7901a9306fdaba556fdae06e6",
+                    "block_time": "2025-11-21T16:25:05+00:00",
+                    "trace_index": null,
+                    "extra_fields": {
+                        "id": "0xf70da97812cb96acdf810712aa562db8dfa3dbef-eip155:8453-0xb75dcaa04f577154ad76b85d10736bf8780a40a7defec0e7359fca34aff1c8e8",
+                        "swap_info": {
+                            "tokens_sold": [
+                                {
+                                    "price_usd": 1.0000958903658013,
+                                    "token_name": "USD Coin",
+                                    "token_amount": 26.13,
+                                    "token_symbol": "USDC",
+                                    "token_address": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+                                    "eth_price_usd": null,
+                                    "sol_price_usd": null,
+                                    "token_asset_id": "eip155:8453-0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+                                    "token_decimals": 6,
+                                    "token_image_url": "https://token-media.defined.fi/8453_0x833589fcd6edb6e08f4c7c32d4f71b54bda02913_large.png",
+                                    "token_amount_eth": null,
+                                    "token_amount_sol": null,
+                                    "token_amount_usd": 26.132505615258385,
+                                    "token_banner_url": "https://dd.dexscreener.com/ds-data/tokens/base/0x833589fcd6edb6e08f4c7c32d4f71b54bda02913/header.png",
+                                    "token_external_url": null,
+                                    "token_image_previews": {
+                                        "blurhash": null,
+                                        "image_large_url": "https://token-media.defined.fi/8453_0x833589fcd6edb6e08f4c7c32d4f71b54bda02913_large.png",
+                                        "image_small_url": "https://token-media.defined.fi/8453_0x833589fcd6edb6e08f4c7c32d4f71b54bda02913_small.png",
+                                        "image_medium_url": "https://token-media.defined.fi/8453_0x833589fcd6edb6e08f4c7c32d4f71b54bda02913_large.png",
+                                        "predominant_color": "#2373cb",
+                                        "image_opengraph_url": "https://token-media.defined.fi/8453_0x833589fcd6edb6e08f4c7c32d4f71b54bda02913_large.png"
+                                    },
+                                    "token_creator_address": "0x6aaff8af0ae8017725312c388ba3745dfe91185b",
+                                    "token_created_timestamp": "2023-09-06T19:56:01Z",
+                                    "token_verified": true,
+                                    "token_circulating_supply": 4397647850.647651
+                                }
+                            ],
+                            "tokens_bought": [
+                                {
+                                    "price_usd": 2699.026372399601,
+                                    "token_name": "Wrapped Ether",
+                                    "token_amount": 0.00968126887058492,
+                                    "token_symbol": "WETH",
+                                    "token_address": "0x4200000000000000000000000000000000000006",
+                                    "eth_price_usd": null,
+                                    "sol_price_usd": null,
+                                    "token_asset_id": "eip155:8453-0x4200000000000000000000000000000000000006",
+                                    "token_decimals": 18,
+                                    "token_image_url": "https://token-media.defined.fi/8453_0x4200000000000000000000000000000000000006_1758707472_large.png",
+                                    "token_amount_eth": null,
+                                    "token_amount_sol": null,
+                                    "token_amount_usd": 26.13,
+                                    "token_banner_url": "https://dd.dexscreener.com/ds-data/tokens/base/0x4200000000000000000000000000000000000006/header.png",
+                                    "token_external_url": null,
+                                    "token_image_previews": {
+                                        "blurhash": null,
+                                        "image_large_url": "https://token-media.defined.fi/8453_0x4200000000000000000000000000000000000006_1758707472_large.png",
+                                        "image_small_url": "https://token-media.defined.fi/8453_0x4200000000000000000000000000000000000006_1758707472_small.png",
+                                        "image_medium_url": "https://token-media.defined.fi/8453_0x4200000000000000000000000000000000000006_1758707472_large.png",
+                                        "predominant_color": "#647cec",
+                                        "image_opengraph_url": "https://token-media.defined.fi/8453_0x4200000000000000000000000000000000000006_1758707472_large.png"
+                                    },
+                                    "token_creator_address": null,
+                                    "token_created_timestamp": "2024-09-26T18:53:29Z",
+                                    "token_verified": true,
+                                    "token_circulating_supply": 185776.0067520575
+                                }
+                            ]
+                        },
+                        "nft_info": null,
+                        "payment_token_info": null,
+                        "db_uniqueness_id": 5,
+                        "transaction_info": {
+                            "tx_fee": null,
+                            "network": "base",
+                            "tx_value": 0.0,
+                            "log_index": 5,
+                            "timestamp": "2025-11-21T16:25:05Z",
+                            "block_hash": "22d0733a9b0bfd6d1d91cdf210eb07f83e0428d7901a9306fdaba556fdae06e6",
+                            "block_number": 38476479,
+                            "tx_fee_symbol": "ETH",
+                            "tx_to_address": "0xbbbfd134e9b44bfb5123898ba36b01de7ab93d98",
+                            "tx_fee_asset_id": "eip155:8453-0x0000000000000000000000000000000000000000",
+                            "tx_fee_decimals": 18,
+                            "tx_from_address": "0xf70da97812cb96acdf810712aa562db8dfa3dbef",
+                            "tx_value_symbol": "ETH",
+                            "transaction_hash": "0xb75dcaa04f577154ad76b85d10736bf8780a40a7defec0e7359fca34aff1c8e8",
+                            "tx_value_asset_id": "eip155:8453-0x0000000000000000000000000000000000000000",
+                            "trace_index": null
+                        }
+                    },
+                    "tx_to_address": "0xbbbfd134e9b44bfb5123898ba36b01de7ab93d98",
+                    "tx_from_address": "0xf70da97812cb96acdf810712aa562db8dfa3dbef",
+                    "contract_address": "0x72ab388e2e2f6facef59e3c3fa2c4e29011c2d38"
+                }
+            ],
+            "action_item_length": 1
+        },
+        {
+            "user_address": "0xaf11495f021c5c2c5f5230f40d5d57ebe4059700",
+            "chain_id": "eip155:8453",
+            "transaction_hash": "0xab879a907cf0158ecfb9273ba23f97c22118c7445597be8516ae9908b30c3a4e",
+            "block_time": "2025-11-21T16:25:05Z",
+            "action_items": [
+                {
+                    "label": "token_sell",
+                    "category": "token",
+                    "is_event": false,
+                    "log_index": 5,
+                    "block_hash": "22d0733a9b0bfd6d1d91cdf210eb07f83e0428d7901a9306fdaba556fdae06e6",
+                    "block_time": "2025-11-21T16:25:05+00:00",
+                    "trace_index": null,
+                    "extra_fields": {
+                        "id": "0xaf11495f021c5c2c5f5230f40d5d57ebe4059700-eip155:8453-0xab879a907cf0158ecfb9273ba23f97c22118c7445597be8516ae9908b30c3a4e",
+                        "swap_info": {
+                            "tokens_sold": [
+                                {
+                                    "price_usd": 2699.2851830257578,
+                                    "token_name": "Wrapped Ether",
+                                    "token_amount": 0.003966,
+                                    "token_symbol": "WETH",
+                                    "token_address": "0x4200000000000000000000000000000000000006",
+                                    "eth_price_usd": null,
+                                    "sol_price_usd": null,
+                                    "token_asset_id": "eip155:8453-0x4200000000000000000000000000000000000006",
+                                    "token_decimals": 18,
+                                    "token_image_url": "https://token-media.defined.fi/8453_0x4200000000000000000000000000000000000006_1758707472_large.png",
+                                    "token_amount_eth": null,
+                                    "token_amount_sol": null,
+                                    "token_amount_usd": 10.705365035880154,
+                                    "token_banner_url": "https://dd.dexscreener.com/ds-data/tokens/base/0x4200000000000000000000000000000000000006/header.png",
+                                    "token_external_url": null,
+                                    "token_image_previews": {
+                                        "blurhash": null,
+                                        "image_large_url": "https://token-media.defined.fi/8453_0x4200000000000000000000000000000000000006_1758707472_large.png",
+                                        "image_small_url": "https://token-media.defined.fi/8453_0x4200000000000000000000000000000000000006_1758707472_small.png",
+                                        "image_medium_url": "https://token-media.defined.fi/8453_0x4200000000000000000000000000000000000006_1758707472_large.png",
+                                        "predominant_color": "#647cec",
+                                        "image_opengraph_url": "https://token-media.defined.fi/8453_0x4200000000000000000000000000000000000006_1758707472_large.png"
+                                    },
+                                    "token_creator_address": null,
+                                    "token_created_timestamp": "2024-09-26T18:53:29Z",
+                                    "token_verified": true,
+                                    "token_circulating_supply": 185776.0067520575
+                                }
+                            ],
+                            "tokens_bought": [
+                                {
+                                    "price_usd": 1.0000613782160293,
+                                    "token_name": "USD Coin",
+                                    "token_amount": 10.704708,
+                                    "token_symbol": "USDC",
+                                    "token_address": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+                                    "eth_price_usd": null,
+                                    "sol_price_usd": null,
+                                    "token_asset_id": "eip155:8453-0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+                                    "token_decimals": 6,
+                                    "token_image_url": "https://token-media.defined.fi/8453_0x833589fcd6edb6e08f4c7c32d4f71b54bda02913_large.png",
+                                    "token_amount_eth": null,
+                                    "token_amount_sol": null,
+                                    "token_amount_usd": 10.705365035880154,
+                                    "token_banner_url": "https://dd.dexscreener.com/ds-data/tokens/base/0x833589fcd6edb6e08f4c7c32d4f71b54bda02913/header.png",
+                                    "token_external_url": null,
+                                    "token_image_previews": {
+                                        "blurhash": null,
+                                        "image_large_url": "https://token-media.defined.fi/8453_0x833589fcd6edb6e08f4c7c32d4f71b54bda02913_large.png",
+                                        "image_small_url": "https://token-media.defined.fi/8453_0x833589fcd6edb6e08f4c7c32d4f71b54bda02913_small.png",
+                                        "image_medium_url": "https://token-media.defined.fi/8453_0x833589fcd6edb6e08f4c7c32d4f71b54bda02913_large.png",
+                                        "predominant_color": "#2373cb",
+                                        "image_opengraph_url": "https://token-media.defined.fi/8453_0x833589fcd6edb6e08f4c7c32d4f71b54bda02913_large.png"
+                                    },
+                                    "token_creator_address": "0x6aaff8af0ae8017725312c388ba3745dfe91185b",
+                                    "token_created_timestamp": "2023-09-06T19:56:01Z",
+                                    "token_verified": true,
+                                    "token_circulating_supply": 4397647850.647651
+                                }
+                            ]
+                        },
+                        "nft_info": null,
+                        "payment_token_info": null,
+                        "db_uniqueness_id": 5,
+                        "transaction_info": {
+                            "tx_fee": null,
+                            "network": "base",
+                            "tx_value": 0.0,
+                            "log_index": 5,
+                            "timestamp": "2025-11-21T16:25:05Z",
+                            "block_hash": "22d0733a9b0bfd6d1d91cdf210eb07f83e0428d7901a9306fdaba556fdae06e6",
+                            "block_number": 38476479,
+                            "tx_fee_symbol": "ETH",
+                            "tx_to_address": "0xf5042e6ffac5a625d4e7848e0b01373d8eb9e222",
+                            "tx_fee_asset_id": "eip155:8453-0x0000000000000000000000000000000000000000",
+                            "tx_fee_decimals": 18,
+                            "tx_from_address": "0xaf11495f021c5c2c5f5230f40d5d57ebe4059700",
+                            "tx_value_symbol": "ETH",
+                            "transaction_hash": "0xab879a907cf0158ecfb9273ba23f97c22118c7445597be8516ae9908b30c3a4e",
+                            "tx_value_asset_id": "eip155:8453-0x0000000000000000000000000000000000000000",
+                            "trace_index": null
+                        }
+                    },
+                    "tx_to_address": "0xf5042e6ffac5a625d4e7848e0b01373d8eb9e222",
+                    "tx_from_address": "0xaf11495f021c5c2c5f5230f40d5d57ebe4059700",
+                    "contract_address": "0xdf033790907c60c9b81ae355f76f74f52f92114a"
+                }
+            ],
+            "action_item_length": 1
+        }
+    ],
+    "error": null,
+    "next_cursor": "eyJhc2NlbmRpbmciOiBmYWxzZSwgImN1cnNvciI6ICIyMDI1LTExLTIxVDE2OjI1OjA0WiJ9",
+    "prev_cursor": null
+}
