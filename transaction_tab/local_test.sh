@@ -8,3 +8,10 @@ curl --location \
   | jq '.actions | length'
 
 
+curl --location 'http://127.0.0.1:8080/v1/actions/0xf70da97812cb96acdf810712aa562db8dfa3dbef-eip155:8453-0x3d7cc36129a720b330067afe76cbd74d15ffde51c219503cf1d898a99a1033c3/related?limit=2' \
+--header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ4eXouc2hhcmUuYXBwIiwiZXhwIjoxNzY0MjAxMTc5LCJpYXQiOjE3NjQxMTQ3NzksImlzcyI6Imh0dHBzOi8vc2hhcmUueHl6LyIsInN1YiI6ImM1ZmNiODkxLTdhNDgtNGRlZC1iMmMzLTMzYzk2MGQxM2Y5NCJ9.VXFLuy16f29QA65H0DP7tA0HiDpAnPFojtFhchlQ_1Y3pW54BeXB50gjuUIEUWbyqeewd6zAvciQK7OlVLblhnl8-Yec0-m2-hn8tm_iPdP4NF1p2cKfWgfoHsM--K7gmRUjcnXp2jUhuot7jLUdqWSwXMjOA2IGCkHqfzWH56Cxlzoi6ar4w7orPD7Oh9DDv-f8fwWu7-7w_9NwMYjFITTAt3VBsLH4Z3BC0R0ruw3ypiMihfX6zl-wFyX1r5xSbu9a6PmTDniyta-YgLPpUvjWkP19IONrGkfDSap7AjYtqxaLJMxo9zLIH-WKfhlzyqFx6ckG7mAboNqDyqtKdw' \
+  | jq '.actions | length'
+
+
+
+
