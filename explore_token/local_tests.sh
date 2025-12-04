@@ -47,6 +47,11 @@ curl --location \
   | jq '.tokens | length'
 
   
-  
+curl --location \
+  'http://127.0.0.1:8080/v1/explore/tokens?limit=5&chain=eip155:8453&trendingTime=1h' \
+  --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ4eXouc2hhcmUuYXBwIiwiZXhwIjoxNzY0OTEyMzg2LCJpYXQiOjE3NjQ4MjU5ODYsImlzcyI6Imh0dHBzOi8vc2hhcmUueHl6LyIsInN1YiI6ImM1ZmNiODkxLTdhNDgtNGRlZC1iMmMzLTMzYzk2MGQxM2Y5NCJ9.gB0rOEkTwravi8vfbsHxfsHtcCdze0qLQO9hQXsmxl9uOzLY4I_u-zBjIBFNpKEA26h5FFmLhRFWVNlyJFEyf1sZpuALt1-g2Hl4VvwYvlGSxRNkDthqHvRcFqeeiTEpoPybKKwWh07MqILsnK241o_tP8-krVQtlMAyW-QdnWxTqHIRSjvnrX9cdcoo-KBwNQGThOdsQterGyYkSckcwo2baBe-ovuy_SflACqghHa0tDxIdwhvFNqxIsrsyJBSvTcbDnetgx_I4HXSavYM6SAX75zsLXp13SrwHnZvx4dbObsAv098ZaEi8f7jkgzZr2GSAh5MSfk3aVO0MN0E_A' \
+  | jq '.tokens[].token.shortToken.name'
+
+
 
 
