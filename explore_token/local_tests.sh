@@ -55,3 +55,15 @@ curl --location \
 
 
 
+curl --location \
+  'https://e30m2qu3w2.execute-api.us-east-1.amazonaws.com/v1/explore/tokens?limit=5&chain=eip155:8453&trendingTime=1h' \
+  --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ4eXouc2hhcmUuYXBwIiwiZXhwIjoxNzY0OTEzMjY2LCJpYXQiOjE3NjQ4MjY4NjYsImlzcyI6Imh0dHBzOi8vc2hhcmUueHl6LyIsInN1YiI6ImM1ZmNiODkxLTdhNDgtNGRlZC1iMmMzLTMzYzk2MGQxM2Y5NCJ9.XQEkY2cBIV2A0Uy8tnDOahDO2AiNLyr8b6ycqfXYhcRgxTAp4lbo_ltjP0ojuaAPrgzRbolfofjrzzAcggUDMeQ_Cb0ZElcAKZNUArRO5SL_zqpEo_0nZyBPkyhI7ds-XCecrdpFZWoVZNCsgZvtL8vyrgmPFxIARTNmn_p7OCl5593mTnXrUx-RH-C34zjKYH6hQp6a1u8489obHx2zSAl4LKJIXxb5PCsOKb6Q_VIGbPPn3iZQGlDOwfBbIbzkwBmUtoi9jvAnjjk3Llagt6tvssTLasElypOg3RkSVd8KfH94Qgy31DHa4drJhBha3lkbNSoO4euQEne0MnEdNw' \
+  | jq '.tokens[].token.shortToken.name'
+
+  
+
+  
+
+
+
+
