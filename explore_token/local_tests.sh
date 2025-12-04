@@ -1,0 +1,18 @@
+
+
+curl --location \
+  'http://127.0.0.1:8080/v1/explore/tokens?limit=2' \
+  --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ4eXouc2hhcmUuYXBwIiwiZXhwIjoxNzY0ODkyNzg2LCJpYXQiOjE3NjQ4MDYzODYsImlzcyI6Imh0dHBzOi8vc2hhcmUueHl6LyIsInN1YiI6ImM1ZmNiODkxLTdhNDgtNGRlZC1iMmMzLTMzYzk2MGQxM2Y5NCJ9.Rc-J2ZqgC7eKiFHZnakCG6NHv_3PL8Y-KgT7SWVcmaRI03Ws0cQL1Pz05zhfIuMFp9hhGUuKTeYHN6yGP7aZ7DhDEbIOzUDGteYqjw_4P_K1MoV_ZDV378H5dOCJgjK57zLVlL93gvAGwra0EKKaWgD-lBqA2T1sW4kjuFMYj646_X-vXWixJCInK36NQuGcVLsD3mHYbHTXokf-zDZOqgTKNFVfyDQC4w0GtpWb9VDpP0FA8g-_0ygsKX9hRkkPbyNPYmZde9JzpA7dxN6k-1AZd6fqAhPP-eIfM-KfKNM7K_UOo7UBPvJfrR6ter0dV4TYDSIYBXc1Ng7q6pF8bA' \
+| pbcopy
+
+curl --location \
+  'http://127.0.0.1:8080/v1/explore/tokens?limit=5&chain=eip155:8453' \
+  --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ4eXouc2hhcmUuYXBwIiwiZXhwIjoxNzY0ODkyNzg2LCJpYXQiOjE3NjQ4MDYzODYsImlzcyI6Imh0dHBzOi8vc2hhcmUueHl6LyIsInN1YiI6ImM1ZmNiODkxLTdhNDgtNGRlZC1iMmMzLTMzYzk2MGQxM2Y5NCJ9.Rc-J2ZqgC7eKiFHZnakCG6NHv_3PL8Y-KgT7SWVcmaRI03Ws0cQL1Pz05zhfIuMFp9hhGUuKTeYHN6yGP7aZ7DhDEbIOzUDGteYqjw_4P_K1MoV_ZDV378H5dOCJgjK57zLVlL93gvAGwra0EKKaWgD-lBqA2T1sW4kjuFMYj646_X-vXWixJCInK36NQuGcVLsD3mHYbHTXokf-zDZOqgTKNFVfyDQC4w0GtpWb9VDpP0FA8g-_0ygsKX9hRkkPbyNPYmZde9JzpA7dxN6k-1AZd6fqAhPP-eIfM-KfKNM7K_UOo7UBPvJfrR6ter0dV4TYDSIYBXc1Ng7q6pF8bA' \
+  | jq '.tokens | length'
+
+ curl --location \
+  'http://127.0.0.1:8080/v1/explore/tokens?limit=5&chain=eip155:8453' \
+  --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ4eXouc2hhcmUuYXBwIiwiZXhwIjoxNzY0ODkyNzg2LCJpYXQiOjE3NjQ4MDYzODYsImlzcyI6Imh0dHBzOi8vc2hhcmUueHl6LyIsInN1YiI6ImM1ZmNiODkxLTdhNDgtNGRlZC1iMmMzLTMzYzk2MGQxM2Y5NCJ9.Rc-J2ZqgC7eKiFHZnakCG6NHv_3PL8Y-KgT7SWVcmaRI03Ws0cQL1Pz05zhfIuMFp9hhGUuKTeYHN6yGP7aZ7DhDEbIOzUDGteYqjw_4P_K1MoV_ZDV378H5dOCJgjK57zLVlL93gvAGwra0EKKaWgD-lBqA2T1sW4kjuFMYj646_X-vXWixJCInK36NQuGcVLsD3mHYbHTXokf-zDZOqgTKNFVfyDQC4w0GtpWb9VDpP0FA8g-_0ygsKX9hRkkPbyNPYmZde9JzpA7dxN6k-1AZd6fqAhPP-eIfM-KfKNM7K_UOo7UBPvJfrR6ter0dV4TYDSIYBXc1Ng7q6pF8bA' \
+  | jq '.tokens[].token.creator.id.addressSpace'
+
+
