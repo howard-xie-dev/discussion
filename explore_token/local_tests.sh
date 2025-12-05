@@ -23,10 +23,17 @@ curl --location \
   | jq '.tokens[].token.marketCap.amount'
 
 
- curl --location \
-  'http://127.0.0.1:8080/v1/explore/tokens?limit=2&minTokenAge=0s&maxTokenAge=48h' \
+  curl --location \
+  'http://127.0.0.1:8080/v1/explore/tokens?limit=5&minTokenAge=0m&maxTokenAge=5d' \
   --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ4eXouc2hhcmUuYXBwIiwiZXhwIjoxNzY1MDUyNzUzLCJpYXQiOjE3NjQ5NjYzNTMsImlzcyI6Imh0dHBzOi8vc2hhcmUueHl6LyIsInN1YiI6ImM1ZmNiODkxLTdhNDgtNGRlZC1iMmMzLTMzYzk2MGQxM2Y5NCJ9.NYR4mEdDpL3q3GNNhAYmJeDadVtodgGq5qsihi8PfReQ_Z7akVVx8kDu7zmHBMf3E2gwqrbHYzLCo1hmbcqTYVF2m4ZIELQMDOlu6Tzjr1_oPTFos2mgtD4jDUImv2y61kfQoTd4xTiLP9Qvhin5au06ElzVPkWQm0oHGEi8kW9HYUoUdQ0Hxj91_g2LPmMRZGZT_aL4VpWopwHa-YCVYNSmzKf5ileGtyeMf26yD_Gg33uLX44Lo4qTNVTBg7C94TDlnJOILKnZCMnuHBG6dfEm9TVRzY1ShAmifjHRtHhYf6biRFA2e7Ek-_4o4YhzDZRerERHNDGrhF1wnsHNlw' \
   | jq '.tokens[].token.shortToken.createdAt'
+
+
+curl --location \
+  'http://127.0.0.1:8080/v1/explore/tokens?limit=5&minAvgWalletAge=10d' \
+  --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ4eXouc2hhcmUuYXBwIiwiZXhwIjoxNzY1MDUyNzUzLCJpYXQiOjE3NjQ5NjYzNTMsImlzcyI6Imh0dHBzOi8vc2hhcmUueHl6LyIsInN1YiI6ImM1ZmNiODkxLTdhNDgtNGRlZC1iMmMzLTMzYzk2MGQxM2Y5NCJ9.NYR4mEdDpL3q3GNNhAYmJeDadVtodgGq5qsihi8PfReQ_Z7akVVx8kDu7zmHBMf3E2gwqrbHYzLCo1hmbcqTYVF2m4ZIELQMDOlu6Tzjr1_oPTFos2mgtD4jDUImv2y61kfQoTd4xTiLP9Qvhin5au06ElzVPkWQm0oHGEi8kW9HYUoUdQ0Hxj91_g2LPmMRZGZT_aL4VpWopwHa-YCVYNSmzKf5ileGtyeMf26yD_Gg33uLX44Lo4qTNVTBg7C94TDlnJOILKnZCMnuHBG6dfEm9TVRzY1ShAmifjHRtHhYf6biRFA2e7Ek-_4o4YhzDZRerERHNDGrhF1wnsHNlw' \
+  | jq '.tokens[].token.shortToken.createdAt'
+
 
 
 curl --location \
