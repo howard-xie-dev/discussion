@@ -1,0 +1,22 @@
+curl --location \
+  'https://e30m2qu3w2.execute-api.us-east-1.amazonaws.com/v1/explore/tokens?limit=5&chain=eip155:8453&trendingTime=1h' \
+  --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ4eXouc2hhcmUuYXBwIiwiZXhwIjoxNzY1ODc4NDA4LCJpYXQiOjE3NjU3OTIwMDgsImlzcyI6Imh0dHBzOi8vc2hhcmUueHl6LyIsInN1YiI6ImM1ZmNiODkxLTdhNDgtNGRlZC1iMmMzLTMzYzk2MGQxM2Y5NCJ9.IUD4biftrkdai0kR98O_HMhku9SgAEuwDRxaowaA-mvZL9LTbo23dCQg3Fih5yDzPi1jcVRCwxr2ODHBg1h4iJk_syyaqTO6QgHdFMyYxHTVQWk_DfC7jTQvcDP2a1JW_ONjRL0XxfehEoU5RKueUKcK1-I3Rax7dcE9z3uMTvLGTgibW_b9_4JHc21HyuK3WvnZOBMSmN0QsAZAOmrqf-UZ0Yl95v8nKWgHcCe1d5MQvfV0Gf4KuajLt_Hn-vJUq7X0bbfei_6FTIll5Qgf84eSMIkHHuTXs35gQ38IzUfPXakuUyMUQfLnoZc-RPH5jGxMZxdqPULw0rPthTBYRg' \
+  | jq '.tokens[].token.shortToken.image.metadata'
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  3922  100  3922    0     0   2493      0  0:00:01  0:00:01 --:--:--  2491
+{
+  "height": 0,
+  "mimeType": "",
+  "predominantColor": {
+    "darkTheme": {
+      "color": "#ffcc00",
+      "opacity": 1
+    },
+    "lightTheme": {
+      "color": "#ffcc00",
+      "opacity": 1
+    }
+  },
+  "width": 0
+}
