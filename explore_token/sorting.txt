@@ -1,0 +1,33 @@
+{
+  "operationName": "FilterTokens",
+  "variables": {
+    "filters": {
+      "volume24": {
+        "lte": 100000000000
+      },
+      "liquidity": {
+        "lte": 1000000000
+      },
+      "marketCap": {
+        "gte": 500000,
+        "lte": 1000000000000
+      },
+      "uniqueTransactions24": {
+        "gte": 10
+      },
+      "network": [],
+      "creatorAddress": null,
+      "potentialScam": false
+    },
+    "statsType": "FILTERED",
+    "offset": 0,
+    "rankings": [
+      {
+        "attribute": "liquidity",
+        "direction": "DESC"
+      }
+    ],
+    "limit": 50
+  },
+  "query": "query FilterTokens($filters: TokenFilters, $statsType: TokenPairStatisticsType, $excludeTokens: [String], $phrase: String, $tokens: [String], $rankings: [TokenRanking], $limit: Int, $offset: Int) {\n  filterTokens(\n    filters: $filters\n    statsType: $statsType\n    excludeTokens: $excludeTokens\n    phrase: $phrase\n    tokens: $tokens\n    rankings: $rankings\n    limit: $limit\n    offset: $offset\n  ) {\n    results {\n      buyCount5m\n      buyCount1\n      buyCount12\n      buyCount24\n      buyCount4\n      uniqueBuys5m\n      uniqueBuys1\n      uniqueBuys12\n      uniqueBuys24\n      uniqueBuys4\n      change5m\n      change1\n      change12\n      change24\n      change4\n      createdAt\n      exchanges {\n        ...ExchangeModel\n        __typename\n      }\n      fdv\n      high5m\n      high1\n      high12\n      high24\n      high4\n      holders\n      lastTransaction\n      liquidity\n      low5m\n      low1\n      low12\n      low24\n      low4\n      marketCap\n      pair {\n        ...PairModel\n        __typename\n      }\n      priceUSD\n      quoteToken\n      sellCount5m\n      sellCount1\n      sellCount12\n      sellCount24\n      sellCount4\n      uniqueSells5m\n      uniqueSells1\n      uniqueSells12\n      uniqueSells24\n      uniqueSells4\n      token {\n        address\n        decimals\n        id\n        name\n        networkId\n        symbol\n        isScam\n        socialLinks {\n          discord\n          telegram\n          twitter\n          website\n          __typename\n        }\n        imageThumbUrl\n        imageSmallUrl\n        imageLargeUrl\n        info {\n          ...BaseTokenInfo\n          __typename\n        }\n        __typename\n      }\n      txnCount5m\n      txnCount1\n      txnCount12\n      txnCount24\n      txnCount4\n      uniqueTransactions5m\n      uniqueTransactions1\n      uniqueTransactions12\n      uniqueTransactions24\n      uniqueTransactions4\n      volume5m\n      volume1\n      volume12\n      volume24\n      volume4\n      swapPct7dOldWallet\n      swapPct1dOldWallet\n      walletAgeAvg\n      walletAgeStd\n      __typename\n    }\n    count\n    page\n    __typename\n  }\n}\n\nfragment ExchangeModel on Exchange {\n  address\n  color\n  exchangeVersion\n  id\n  name\n  networkId\n  tradeUrl\n  iconUrl\n  enabled\n  __typename\n}\n\nfragment PairModel on Pair {\n  address\n  exchangeHash\n  fee\n  id\n  networkId\n  tickSpacing\n  token0\n  token1\n  __typename\n}\n\nfragment BaseTokenInfo on TokenInfo {\n  address\n  circulatingSupply\n  description\n  id\n  imageBannerUrl\n  imageLargeUrl\n  imageSmallUrl\n  imageThumbUrl\n  isScam\n  name\n  networkId\n  symbol\n  totalSupply\n  __typename\n}"
+}
