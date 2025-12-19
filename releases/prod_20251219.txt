@@ -1,0 +1,109 @@
+(BE-3385) Implement APIs for email verification and storing Email (#2362)
+chiragsharejames-share
+chiragshare
+and
+james-share
+authored
+20 hours ago
+·
+Verified
+Commits on Dec 17, 2025
+(BE-3371) More change for the Profile Endpoint for Web (#2360)
+chiragshare
+chiragshare
+authored
+2 days ago
+·
+Verified
+Commits on Dec 16, 2025
+BE-3369 : fix: add fallback to subtitle for empty notification description in Mixpanel notification event (#2358)
+dipankar-share
+dipankar-share
+authored
+3 days ago
+·
+Verified
+Commits on Dec 14, 2025
+Onramp webhook implementation (#2354)
+humbledshuttler
+humbledshuttler
+authored
+4 days ago
+·
+Verified
+Commits on Dec 13, 2025
+(BE-3368) Explore the Account Feed for the Profile Web implementation (#2357)
+chiragshare
+chiragshare
+authored
+last week
+·
+Verified
+fix identity service mock (#2356)
+dipankar-share
+dipankar-share
+authored
+last week
+·
+Verified
+Remove collectionAssetID fallback from nftInfo.Collection.AssetID (#2005)
+dipankar-sharechiragshare
+dipankar-share
+and
+chiragshare
+authored
+last week
+·
+Verified
+Commits on Dec 12, 2025
+[Trending Tokens]: Add Cursor support (#2355)
+KonScanner
+KonScanner
+authored
+last week
+·
+Verified
+Implement phone number addition and verification endpoint (#2351)
+humbledshuttler
+humbledshuttler
+authored
+last week
+·
+Verified
+BE-3133 handle 0x api server errors (#2353)
+james-share
+james-share
+authored
+last week
+·
+Verified
+BE-3173 handle action not found for action earnings total (#2352)
+james-share
+james-share
+authored
+last week
+·
+Verified
+BE-3272 , BE-3281 : Added Tx Status Enum in Inflight table to phase out successful trxn table (#2332)
+dipankar-share
+dipankar-share
+authored
+last week
+·
+Verified
+Commits on Dec 11, 2025
+Add api for phone number verification (#2340)
+humbledshuttler
+humbledshuttler
+authored
+last week
+·
+Verified
+Add implementation for coinbase onramp (#2347)
+humbledshuttler
+humbledshuttler
+authored
+last week
+·
+Verified
+(BE-3326) Implement Post Comments for web (#2345)
