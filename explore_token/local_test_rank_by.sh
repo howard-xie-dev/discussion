@@ -1,0 +1,58 @@
+
+
+curl --location \
+  'http://127.0.0.1:8080/v1/explore/tokens?limit=2' \
+  --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ4eXouc2hhcmUuYXBwIiwiZXhwIjoxNzY2NTc2NjE1LCJpYXQiOjE3NjY0OTAyMTUsImlzcyI6Imh0dHBzOi8vc2hhcmUueHl6LyIsInN1YiI6ImM1ZmNiODkxLTdhNDgtNGRlZC1iMmMzLTMzYzk2MGQxM2Y5NCJ9.PQQWAUT6S8Uj6q8hMVOHEXFsdwUkb3ATQzJ_2j1EySYO8Nyi6izgPTThinARc-3PRUNF-Ne1VQEPblHPY1IJED2Sb3O24Jrzcvy9aUPK1MkfxbONPuQWZtLv42WaSPbhoSTdk7C4ANSvoIqCgAwt-94rhgQFqloKJ81cXh--nPQSkEZG3pwxJT8wr5uPz1gWdgDTjIUBu4FUUnpfKo_X4ThiSi8nB3RT_GLls92epybmuUTjT18yGQTFFAG8gUP27FvaROV7I_ETYlGOkhYHGdPWCa5i--JpiVT4XQLcM6z3WbxeUMv-wiIgwZxGUs--t9vjEcAmxen8hb3B2k-fJw' \
+| pbcopy
+
+
+  curl --location \
+  'http://127.0.0.1:8080/v1/explore/tokens?limit=5&chain=solana:101' \
+  --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ4eXouc2hhcmUuYXBwIiwiZXhwIjoxNzY2NTc3ODYxLCJpYXQiOjE3NjY0OTE0NjEsImlzcyI6Imh0dHBzOi8vc2hhcmUueHl6LyIsInN1YiI6ImM1ZmNiODkxLTdhNDgtNGRlZC1iMmMzLTMzYzk2MGQxM2Y5NCJ9.GDKggB-o76nf4kydNtDNueILR-blsqfKGOgVzZHrYikfj6gfeFHn1TFOWYnso6BE29Y_k7xIHlejVHrt8bgw5QGTf-yANZ2N7M8Ev4GTx3uFkF_s2DXCQq8ANithTKPD9DDiHD9ObHThMRKo4bJ47O71dbs4DW37pe_mEN3ksVNxxUXQJ_vlH8OJ_AhPIsuhhwURBjFQ6CeD_AArwyCxeBi2tnHmB8zM6_nJ2hAqd5YtzMxZ3izkxF0FZD_koRh9iqNWr64KxzEzj9ooL2B9-46eSmLr3p0T_gjjv7zIQZTHXaVMlDgi_cgRCWDAP6ZGFK_zxXfZurlfsW7o4NfkgA' \
+ | jq '.tokens[].token.shortToken.chain'
+
+
+curl --location \
+  'http://127.0.0.1:8080/v1/explore/tokens?limit=12&minMC=10000&maxMC=200000&rankBy=marketCap&rankDirection=desc' \
+  --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ4eXouc2hhcmUuYXBwIiwiZXhwIjoxNzY2NTc3ODYxLCJpYXQiOjE3NjY0OTE0NjEsImlzcyI6Imh0dHBzOi8vc2hhcmUueHl6LyIsInN1YiI6ImM1ZmNiODkxLTdhNDgtNGRlZC1iMmMzLTMzYzk2MGQxM2Y5NCJ9.GDKggB-o76nf4kydNtDNueILR-blsqfKGOgVzZHrYikfj6gfeFHn1TFOWYnso6BE29Y_k7xIHlejVHrt8bgw5QGTf-yANZ2N7M8Ev4GTx3uFkF_s2DXCQq8ANithTKPD9DDiHD9ObHThMRKo4bJ47O71dbs4DW37pe_mEN3ksVNxxUXQJ_vlH8OJ_AhPIsuhhwURBjFQ6CeD_AArwyCxeBi2tnHmB8zM6_nJ2hAqd5YtzMxZ3izkxF0FZD_koRh9iqNWr64KxzEzj9ooL2B9-46eSmLr3p0T_gjjv7zIQZTHXaVMlDgi_cgRCWDAP6ZGFK_zxXfZurlfsW7o4NfkgA' \
+  | jq '.tokens[].token.marketCap.amount'
+
+
+  curl --location \
+  'http://127.0.0.1:8080/v1/explore/tokens?limit=5&minTokenAge=0m&maxTokenAge=5d&rankBy=tokenAge&rankDirection=asc' \
+  --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ4eXouc2hhcmUuYXBwIiwiZXhwIjoxNzY2NTc3ODYxLCJpYXQiOjE3NjY0OTE0NjEsImlzcyI6Imh0dHBzOi8vc2hhcmUueHl6LyIsInN1YiI6ImM1ZmNiODkxLTdhNDgtNGRlZC1iMmMzLTMzYzk2MGQxM2Y5NCJ9.GDKggB-o76nf4kydNtDNueILR-blsqfKGOgVzZHrYikfj6gfeFHn1TFOWYnso6BE29Y_k7xIHlejVHrt8bgw5QGTf-yANZ2N7M8Ev4GTx3uFkF_s2DXCQq8ANithTKPD9DDiHD9ObHThMRKo4bJ47O71dbs4DW37pe_mEN3ksVNxxUXQJ_vlH8OJ_AhPIsuhhwURBjFQ6CeD_AArwyCxeBi2tnHmB8zM6_nJ2hAqd5YtzMxZ3izkxF0FZD_koRh9iqNWr64KxzEzj9ooL2B9-46eSmLr3p0T_gjjv7zIQZTHXaVMlDgi_cgRCWDAP6ZGFK_zxXfZurlfsW7o4NfkgA' \
+  | jq '.tokens[].token.shortToken.createdAt'
+
+
+curl --location \
+  'http://127.0.0.1:8080/v1/explore/tokens?limit=2&minHolderCount=100&maxHolderCount=10000&rankBy=holderCount&rankDirection=asc' \
+  --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ4eXouc2hhcmUuYXBwIiwiZXhwIjoxNzY2NTc3ODYxLCJpYXQiOjE3NjY0OTE0NjEsImlzcyI6Imh0dHBzOi8vc2hhcmUueHl6LyIsInN1YiI6ImM1ZmNiODkxLTdhNDgtNGRlZC1iMmMzLTMzYzk2MGQxM2Y5NCJ9.GDKggB-o76nf4kydNtDNueILR-blsqfKGOgVzZHrYikfj6gfeFHn1TFOWYnso6BE29Y_k7xIHlejVHrt8bgw5QGTf-yANZ2N7M8Ev4GTx3uFkF_s2DXCQq8ANithTKPD9DDiHD9ObHThMRKo4bJ47O71dbs4DW37pe_mEN3ksVNxxUXQJ_vlH8OJ_AhPIsuhhwURBjFQ6CeD_AArwyCxeBi2tnHmB8zM6_nJ2hAqd5YtzMxZ3izkxF0FZD_koRh9iqNWr64KxzEzj9ooL2B9-46eSmLr3p0T_gjjv7zIQZTHXaVMlDgi_cgRCWDAP6ZGFK_zxXfZurlfsW7o4NfkgA' \
+  | jq '.tokens[].token.ownersCount'
+
+
+curl --location \
+  'http://127.0.0.1:8080/v1/explore/tokens?limit=2&minLiq=50000&maxLiq=100000&minVolume=5000&maxVolume=50000&rankBy=liquidity&rankDirection=asc' \
+  --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ4eXouc2hhcmUuYXBwIiwiZXhwIjoxNzY2NTc3ODYxLCJpYXQiOjE3NjY0OTE0NjEsImlzcyI6Imh0dHBzOi8vc2hhcmUueHl6LyIsInN1YiI6ImM1ZmNiODkxLTdhNDgtNGRlZC1iMmMzLTMzYzk2MGQxM2Y5NCJ9.GDKggB-o76nf4kydNtDNueILR-blsqfKGOgVzZHrYikfj6gfeFHn1TFOWYnso6BE29Y_k7xIHlejVHrt8bgw5QGTf-yANZ2N7M8Ev4GTx3uFkF_s2DXCQq8ANithTKPD9DDiHD9ObHThMRKo4bJ47O71dbs4DW37pe_mEN3ksVNxxUXQJ_vlH8OJ_AhPIsuhhwURBjFQ6CeD_AArwyCxeBi2tnHmB8zM6_nJ2hAqd5YtzMxZ3izkxF0FZD_koRh9iqNWr64KxzEzj9ooL2B9-46eSmLr3p0T_gjjv7zIQZTHXaVMlDgi_cgRCWDAP6ZGFK_zxXfZurlfsW7o4NfkgA' \
+  | jq '.tokens[].token | {liquidity: .liquidity.amount, volume24h: .volume24h.amount}'
+
+
+ curl --location \
+  'http://127.0.0.1:8080/v1/explore/tokens?limit=5&chain=eip155:8453&trendingTime=12h&rankBy=trendingScore&rankDirection=asc' \
+  --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ4eXouc2hhcmUuYXBwIiwiZXhwIjoxNzY2NTc3ODYxLCJpYXQiOjE3NjY0OTE0NjEsImlzcyI6Imh0dHBzOi8vc2hhcmUueHl6LyIsInN1YiI6ImM1ZmNiODkxLTdhNDgtNGRlZC1iMmMzLTMzYzk2MGQxM2Y5NCJ9.GDKggB-o76nf4kydNtDNueILR-blsqfKGOgVzZHrYikfj6gfeFHn1TFOWYnso6BE29Y_k7xIHlejVHrt8bgw5QGTf-yANZ2N7M8Ev4GTx3uFkF_s2DXCQq8ANithTKPD9DDiHD9ObHThMRKo4bJ47O71dbs4DW37pe_mEN3ksVNxxUXQJ_vlH8OJ_AhPIsuhhwURBjFQ6CeD_AArwyCxeBi2tnHmB8zM6_nJ2hAqd5YtzMxZ3izkxF0FZD_koRh9iqNWr64KxzEzj9ooL2B9-46eSmLr3p0T_gjjv7zIQZTHXaVMlDgi_cgRCWDAP6ZGFK_zxXfZurlfsW7o4NfkgA' \
+  | jq '.tokens[].token.shortToken.name'
+
+
+
+
+
+curl --location \
+  'https://e30m2qu3w2.execute-api.us-east-1.amazonaws.com/v1/explore/tokens?limit=5&chain=eip155:8453&trendingTime=1h' \
+  --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ4eXouc2hhcmUuYXBwIiwiZXhwIjoxNzY0OTEzMjY2LCJpYXQiOjE3NjQ4MjY4NjYsImlzcyI6Imh0dHBzOi8vc2hhcmUueHl6LyIsInN1YiI6ImM1ZmNiODkxLTdhNDgtNGRlZC1iMmMzLTMzYzk2MGQxM2Y5NCJ9.XQEkY2cBIV2A0Uy8tnDOahDO2AiNLyr8b6ycqfXYhcRgxTAp4lbo_ltjP0ojuaAPrgzRbolfofjrzzAcggUDMeQ_Cb0ZElcAKZNUArRO5SL_zqpEo_0nZyBPkyhI7ds-XCecrdpFZWoVZNCsgZvtL8vyrgmPFxIARTNmn_p7OCl5593mTnXrUx-RH-C34zjKYH6hQp6a1u8489obHx2zSAl4LKJIXxb5PCsOKb6Q_VIGbPPn3iZQGlDOwfBbIbzkwBmUtoi9jvAnjjk3Llagt6tvssTLasElypOg3RkSVd8KfH94Qgy31DHa4drJhBha3lkbNSoO4euQEne0MnEdNw' \
+  | jq '.tokens[].token.shortToken.name'
+
+  
+
+  
+
+
+
