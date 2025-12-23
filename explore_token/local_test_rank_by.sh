@@ -46,9 +46,9 @@ curl --location \
 
 
 curl --location \
-  'https://e30m2qu3w2.execute-api.us-east-1.amazonaws.com/v1/explore/tokens?limit=5&chain=eip155:8453&trendingTime=1h' \
-  --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ4eXouc2hhcmUuYXBwIiwiZXhwIjoxNzY0OTEzMjY2LCJpYXQiOjE3NjQ4MjY4NjYsImlzcyI6Imh0dHBzOi8vc2hhcmUueHl6LyIsInN1YiI6ImM1ZmNiODkxLTdhNDgtNGRlZC1iMmMzLTMzYzk2MGQxM2Y5NCJ9.XQEkY2cBIV2A0Uy8tnDOahDO2AiNLyr8b6ycqfXYhcRgxTAp4lbo_ltjP0ojuaAPrgzRbolfofjrzzAcggUDMeQ_Cb0ZElcAKZNUArRO5SL_zqpEo_0nZyBPkyhI7ds-XCecrdpFZWoVZNCsgZvtL8vyrgmPFxIARTNmn_p7OCl5593mTnXrUx-RH-C34zjKYH6hQp6a1u8489obHx2zSAl4LKJIXxb5PCsOKb6Q_VIGbPPn3iZQGlDOwfBbIbzkwBmUtoi9jvAnjjk3Llagt6tvssTLasElypOg3RkSVd8KfH94Qgy31DHa4drJhBha3lkbNSoO4euQEne0MnEdNw' \
-  | jq '.tokens[].token.shortToken.name'
+  'https://b4xxzwqkni.execute-api.us-east-1.amazonaws.com/v1/explore/tokens?limit=15&minLiq=50000&maxLiq=100000&minVolume=5000&maxVolume=50000&rankBy=liquidity&rankDirection=asc' \
+  --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ4eXouc2hhcmUuYXBwIiwiZXhwIjoxNzY2NTgxODAwLCJpYXQiOjE3NjY0OTU0MDAsImlzcyI6Imh0dHBzOi8vc2hhcmUueHl6LyIsInN1YiI6ImM1ZmNiODkxLTdhNDgtNGRlZC1iMmMzLTMzYzk2MGQxM2Y5NCJ9.O8jmrdbkDpNRiVnwcsSq6On-Qg9vf_qMF7wEqWVSZC96CXJLnDsEcd4MgAm-KChDy3lw_vj3CKzwob5oaq_JH5OG2z0KVHO0tAwvsVJv9ZnaBPq7RD1edYvmYlFjwlu9bh_kQHGyZ2W4VXJ0Z99K4mJvc7xLkRnglxP-5eXNC-wp-Kr4W79Rsip8ykb1KDMYDJCH12wjramGBJ47KNFiMbQFDY8eKdOTuiQLC_nmFUKpDlAL5spwJpZmxYUxcP2tfwVyPeyfQeRmRxHq-dL1Pxwd6Bf-VARE-ShWshElNOdF11X3YNMJ-9zuSzzrRPB6dMDsthpi-z-NKlI3nl-dKA' \
+  | jq '.tokens[].token | {liquidity: .liquidity.amount, volume24h: .volume24h.amount}'
 
   
 
