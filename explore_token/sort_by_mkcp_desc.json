@@ -1,0 +1,130 @@
+{
+    "data": [
+        {
+            "asset_id": "eip155:8453-0xf495b8d5543b81390784b345b5d2f0a054edb6dc",
+            "asset_type": "token",
+            "chain_id": "eip155:8453",
+            "contract_address": "0xf495b8d5543b81390784b345b5d2f0a054edb6dc",
+            "name": "Base PUPS",
+            "symbol": "PUPS",
+            "image_url": "https://dd.dexscreener.com/ds-data/tokens/base/0xf495b8d5543b81390784b345b5d2f0a054edb6dc.png?size=lg",
+            "image_previews": {
+                "image_small_url": "https://dd.dexscreener.com/ds-data/tokens/base/0xf495b8d5543b81390784b345b5d2f0a054edb6dc.png?size=md",
+                "image_medium_url": "https://dd.dexscreener.com/ds-data/tokens/base/0xf495b8d5543b81390784b345b5d2f0a054edb6dc.png?size=lg",
+                "image_large_url": "https://dd.dexscreener.com/ds-data/tokens/base/0xf495b8d5543b81390784b345b5d2f0a054edb6dc.png?size=xl",
+                "image_opengraph_url": "https://dd.dexscreener.com/ds-data/tokens/base/0xf495b8d5543b81390784b345b5d2f0a054edb6dc.png",
+                "blurhash": null,
+                "predominant_color": null
+            },
+            "image_properties": null,
+            "verified": true,
+            "created_timestamp": "2024-05-25T01:41:57Z",
+            "collection_asset_id": "",
+            "collection_image_url": null,
+            "collection_image_properties": null,
+            "collection_image_previews": null,
+            "collection_name": null,
+            "banner_image_url": "https://dd.dexscreener.com/ds-data/tokens/base/0xf495b8d5543b81390784b345b5d2f0a054edb6dc/header.png",
+            "chain_image_url": "https://imagedelivery.net/90kS5HuIA-OvczE-Dr7gYg/2fa4b7a6-d692-4c83-8c1c-49f4c80f6400/public=0",
+            "categories": [
+                "bluechip"
+            ],
+            "metadata": {
+                "asset_id": "eip155:8453-0xf495b8d5543b81390784b345b5d2f0a054edb6dc",
+                "asset_type": "token",
+                "chain_id": "eip155:8453",
+                "contract_address": "0xf495b8d5543b81390784b345b5d2f0a054edb6dc",
+                "token_id": null,
+                "name": "Base PUPS",
+                "symbol": "PUPS",
+                "decimals": 18,
+                "image": {
+                    "url": "https://dd.dexscreener.com/ds-data/tokens/base/0xf495b8d5543b81390784b345b5d2f0a054edb6dc.png?size=lg",
+                    "previews": {
+                        "image_small_url": "https://dd.dexscreener.com/ds-data/tokens/base/0xf495b8d5543b81390784b345b5d2f0a054edb6dc.png?size=md",
+                        "image_medium_url": "https://dd.dexscreener.com/ds-data/tokens/base/0xf495b8d5543b81390784b345b5d2f0a054edb6dc.png?size=lg",
+                        "image_large_url": "https://dd.dexscreener.com/ds-data/tokens/base/0xf495b8d5543b81390784b345b5d2f0a054edb6dc.png?size=xl",
+                        "image_opengraph_url": "https://dd.dexscreener.com/ds-data/tokens/base/0xf495b8d5543b81390784b345b5d2f0a054edb6dc.png",
+                        "blurhash": null,
+                        "predominant_color": null
+                    },
+                    "properties": null
+                },
+                "verified": true,
+                "creator_address": "0x72027ee15b4c8f20bcd9ee0449c3a18c46470aa5",
+                "created_timestamp": "2024-05-25T01:41:57Z",
+                "categories": [
+                    "bluechip"
+                ],
+                "collection": null
+            },
+            "banner_image": {
+                "url": "https://dd.dexscreener.com/ds-data/tokens/base/0xf495b8d5543b81390784b345b5d2f0a054edb6dc/header.png",
+                "previews": null,
+                "properties": null
+            },
+            "category": null,
+            "creator_address": "0x72027ee15b4c8f20bcd9ee0449c3a18c46470aa5",
+            "creator_quantity": null,
+            "created_date": "2024-05-25T01:41:57Z",
+            "decimals": 18,
+            "description": "",
+            "floor_prices": [],
+            "fdv_usd": 9.223372036854776e+18,
+            "holder_address": null,
+            "holder_quantity": null,
+            "last_sale": null,
+            "liquidity_usd": 0.0,
+            "market_cap_usd": 9.223372036854776e+18,
+            "marketplace_pages": [],
+            "supply": 1000000000.0,
+            "circulating_supply": 1000000000.0,
+            "editions": null,
+            "owner_address": null,
+            "owners": 3,
+            "top_pair": {
+                "contract_address": {
+                    "chain_id": "eip155:8453",
+                    "contract_address": "0xfa57fe67b15413bdb92cda402a850ced71106e76",
+                    "token_id": null
+                },
+                "token_0_asset_id": "eip155:8453-0x4200000000000000000000000000000000000006",
+                "token_1_asset_id": "eip155:8453-0xf495b8d5543b81390784b345b5d2f0a054edb6dc"
+            },
+            "price_change_percentage": {
+                "m5": 0.0,
+                "h1": 0.0,
+                "h4": 0.0,
+                "h12": 0.0,
+                "h24": 0.0,
+                "total": null
+            },
+            "price_usd": 3644817744430000.0,
+            "processed_at": "2025-12-27T08:39:58Z",
+            "rarity": null,
+            "royalties": [],
+            "standard": "ERC20",
+            "socials": {
+                "external_url": null,
+                "twitter_username": null,
+                "discord_url": null,
+                "instagram_username": null,
+                "medium_username": null,
+                "telegram_url": null
+            },
+            "spam_score": null,
+            "token_id": null,
+            "traits": [],
+            "volume": {
+                "m5": 0.0,
+                "h1": 0.0,
+                "h4": 0.0,
+                "h12": 0.0,
+                "h24": 0.0,
+                "total": null
+            }
+        }
+    ],
+    "cursor": "eyJsaW1pdCI6IDUwLCAib2Zmc2V0IjogNTB9",
+    "error": ""
+}
