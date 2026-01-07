@@ -33,7 +33,7 @@ curl --request GET \
   --header "x-api-key: pRUpP2gm6MocIOMN7ctj"
 
 
-#look for events with nested markets
+#look for events with nested markets -- I.E. look for all markets associated to an event
  curl -sS \
   "https://prediction-markets-api.dflow.net/api/v1/event/KXNFLGAME-26JAN04LACDEN?withNestedMarkets=true" \
   -H "x-api-key: pRUpP2gm6MocIOMN7ctj"
