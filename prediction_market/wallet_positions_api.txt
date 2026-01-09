@@ -1,0 +1,181 @@
+
+curl -s \
+  --url "https://data-api.polymarket.com/positions?user=0x607f420d584632934fc6e351bf55041446c976a2" \
+  --header "Authorization: Bearer $DOME_API_KEY" \
+| jq .
+[
+  {
+    "proxyWallet": "0x607f420d584632934fc6e351bf55041446c976a2",
+    "asset": "91169185029399600659990999064987272404050819812438505317775377973162159127878",
+    "conditionId": "0x3c7aa98e70bd109e54b65190032f83aee73c09ca7907f4584da705c571f32340",
+    "size": 2.222221,
+    "avgPrice": 0.449999,
+    "initialValue": 0.999997227779,
+    "currentValue": 2.222221,
+    "cashPnl": 1.2222237722209999,
+    "percentPnl": 122.22271605048012,
+    "totalBought": 2.222221,
+    "realizedPnl": 0,
+    "percentRealizedPnl": 122.22271605048012,
+    "curPrice": 1,
+    "redeemable": true,
+    "mergeable": false,
+    "title": "Penguins vs. Predators",
+    "slug": "nhl-pit-nsh-2025-11-14",
+    "icon": "https://polymarket-upload.s3.us-east-2.amazonaws.com/nhl.png",
+    "eventId": "61346",
+    "eventSlug": "nhl-pit-nsh-2025-11-14",
+    "outcome": "Predators",
+    "outcomeIndex": 1,
+    "oppositeOutcome": "Penguins",
+    "oppositeAsset": "59136467787978626811672868347067066849048276780173477999184350545476328184985",
+    "endDate": "2025-11-14",
+    "negativeRisk": false
+  }
+]
+
+
+
+
+
+
+
+curl -s \
+  --url "https://data-api.polymarket.com/closed-positions?user=0x607f420d584632934fc6e351bf55041446c976a2" \
+  --header "Authorization: Bearer $DOME_API_KEY" \
+| jq .
+[
+  {
+    "proxyWallet": "0x607f420d584632934fc6e351bf55041446c976a2",
+    "asset": "44289914169410214378723047236718699870940355640206484107480523950738553914461",
+    "conditionId": "0x4be911bd6212333670aef283f63d824ff57d91782b4db5e18f91c20144ac45aa",
+    "avgPrice": 0.279999,
+    "totalBought": 3.571427,
+    "realizedPnl": 0.856803,
+    "curPrice": 1,
+    "title": "Cavaliers vs. Heat",
+    "slug": "nba-cle-mia-2025-11-11",
+    "icon": "https://polymarket-upload.s3.us-east-2.amazonaws.com/super+cool+basketball+in+red+and+blue+wow.png",
+    "eventSlug": "nba-cle-mia-2025-11-11",
+    "outcome": "Heat",
+    "outcomeIndex": 1,
+    "oppositeOutcome": "Cavaliers",
+    "oppositeAsset": "68243012160445904009090245820108259286898315932891052691083200450397394953053",
+    "endDate": "2025-11-11T00:00:00Z",
+    "timestamp": 1762825850
+  },
+  {
+    "proxyWallet": "0x607f420d584632934fc6e351bf55041446c976a2",
+    "asset": "5083340918604307366649237618194733322362407785518003918295484462223079571506",
+    "conditionId": "0xe73c3165dc4dd3a5ab14aed2d3e945f524a2e52ef113e055e2b1bfafbb4fc581",
+    "avgPrice": 0.629999,
+    "totalBought": 15.873013,
+    "realizedPnl": -1.499982,
+    "curPrice": 0,
+    "title": "Spread: Lakers (-8.5)",
+    "slug": "nba-lal-cha-2025-11-11-spread-away-8pt5",
+    "icon": "https://polymarket-upload.s3.us-east-2.amazonaws.com/super+cool+basketball+in+red+and+blue+wow.png",
+    "eventSlug": "nba-lal-cha-2025-11-11",
+    "outcome": "Hornets",
+    "outcomeIndex": 1,
+    "oppositeOutcome": "Lakers",
+    "oppositeAsset": "2015063841516829263382399936242276720095353442639410209640237119116925276926",
+    "endDate": "2025-11-11T00:00:00Z",
+    "timestamp": 1765231899
+  },
+  {
+    "proxyWallet": "0x607f420d584632934fc6e351bf55041446c976a2",
+    "asset": "74157148188525269140196402567972252044221911481697267424481480371071641645859",
+    "conditionId": "0x4c23dc2b9e39806471fcb88722b554e305ab698529292156abfd0fcf4aa9be1f",
+    "avgPrice": 0.329999,
+    "totalBought": 6.0606040000000005,
+    "realizedPnl": -1.999993,
+    "curPrice": 0,
+    "title": "Heat vs. Knicks",
+    "slug": "nba-mia-nyk-2025-11-14",
+    "icon": "https://polymarket-upload.s3.us-east-2.amazonaws.com/super+cool+basketball+in+red+and+blue+wow.png",
+    "eventSlug": "nba-mia-nyk-2025-11-14",
+    "outcome": "Heat",
+    "outcomeIndex": 0,
+    "oppositeOutcome": "Knicks",
+    "oppositeAsset": "18813944557323434362649626670778459110933141494593315817266089805015663908590",
+    "endDate": "2025-11-15T00:00:00Z",
+    "timestamp": 1765231899
+  },
+  {
+    "proxyWallet": "0x607f420d584632934fc6e351bf55041446c976a2",
+    "asset": "51065249850487745117592078698022491411825600514699329680539525713863997350177",
+    "conditionId": "0x82e3eebb81705fa4a89020064eb41419171916430f29d5a7cc3ef883381812b4",
+    "avgPrice": 0.589999,
+    "totalBought": 16.949151,
+    "realizedPnl": -7.840986,
+    "curPrice": 0,
+    "title": "Spread: Lakers (-7.5)",
+    "slug": "nba-lal-cha-2025-11-11-spread-away-7pt5",
+    "icon": "https://polymarket-upload.s3.us-east-2.amazonaws.com/super+cool+basketball+in+red+and+blue+wow.png",
+    "eventSlug": "nba-lal-cha-2025-11-11",
+    "outcome": "Hornets",
+    "outcomeIndex": 1,
+    "oppositeOutcome": "Lakers",
+    "oppositeAsset": "68531163270845963422633146930002306851755488229499732012519156740872300844996",
+    "endDate": "2025-11-11T00:00:00Z",
+    "timestamp": 1765231899
+  },
+  {
+    "proxyWallet": "0x607f420d584632934fc6e351bf55041446c976a2",
+    "asset": "45898880998432579737736989393575025928213377966511380536788277931723862816965",
+    "conditionId": "0xf97bb0fe808d0625b5a6936a495d65a6414aa9491171c61196dbe8799063d5f1",
+    "avgPrice": 0.143999,
+    "totalBought": 1041.666665,
+    "realizedPnl": -149.998958,
+    "curPrice": 0,
+    "title": "Kamala president by Friday?",
+    "slug": "kamala-president-by-friday",
+    "icon": "https://polymarket-upload.s3.us-east-2.amazonaws.com/kamala-acting-president-by-friday-19TEaL6nJuct.jpg",
+    "eventSlug": "kamala-president-by-friday",
+    "outcome": "Yes",
+    "outcomeIndex": 0,
+    "oppositeOutcome": "No",
+    "oppositeAsset": "96351870478709515693831253857520050806647002150495486363906662814052412403194",
+    "endDate": "2024-07-26T00:00:00Z",
+    "timestamp": 1765231899
+  },
+  {
+    "proxyWallet": "0x607f420d584632934fc6e351bf55041446c976a2",
+    "asset": "114906809173953523276355880925100389606649541176600550608761173629971358774558",
+    "conditionId": "0x2d606a51f902a4d934a4b810dd77cb28bb8e40268f42354057b5a47f9799efad",
+    "avgPrice": 0.07898999999999999,
+    "totalBought": 4047.594935,
+    "realizedPnl": -287.338414,
+    "curPrice": 0,
+    "title": "Will Michelle Obama win the 2024 Democratic Presidential Nomination?",
+    "slug": "will-michelle-obama-win-the-2024-democratic-presidential-nomination",
+    "icon": "https://polymarket-upload.s3.us-east-2.amazonaws.com/Michelle+Obama.png",
+    "eventSlug": "democratic-nominee-2024",
+    "outcome": "Yes",
+    "outcomeIndex": 0,
+    "oppositeOutcome": "No",
+    "oppositeAsset": "111642085027395307760165609157375961929053087532129347894740372163977917411268",
+    "endDate": "2024-08-19T00:00:00Z",
+    "timestamp": 1722877043
+  },
+  {
+    "proxyWallet": "0x607f420d584632934fc6e351bf55041446c976a2",
+    "asset": "100180144441344516029196380796541367659775855719836481414910537902981560041958",
+    "conditionId": "0xd1e760f57415093db2e8378b79fe37ec8dc9ad09ee57f6f0cdc2468ae29fea23",
+    "avgPrice": 0.559657,
+    "totalBought": 2044.535713,
+    "realizedPnl": -694.438926,
+    "curPrice": 0,
+    "title": "Will Biden finish his term?",
+    "slug": "will-biden-complete-his-term-as-president",
+    "icon": "https://polymarket-upload.s3.us-east-2.amazonaws.com/will-biden-complete-his-term-as-president-ef7MVl4ncDiT.jpg",
+    "eventSlug": "will-biden-complete-his-term-as-president",
+    "outcome": "No",
+    "outcomeIndex": 1,
+    "oppositeOutcome": "Yes",
+    "oppositeAsset": "76018684495672907293972579038657312280524447899213220717960084627380959769440",
+    "endDate": "2025-01-20T00:00:00Z",
+    "timestamp": 1722877087
+  }
+]
