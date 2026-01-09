@@ -58,4 +58,9 @@ curl -s \
 
 
 
+ curl -s \
+  "https://api.domeapi.io/v1/polymarket/orders?market_slug=will-biden-complete-his-term-as-president&limit=10&offset=0" \
+  -H "Authorization: Bearer $DOME_API_KEY" \
+| jq -r '.orders[] | .user, .taker' \
+| sort -u
 
