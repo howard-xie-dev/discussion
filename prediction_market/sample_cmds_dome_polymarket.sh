@@ -51,3 +51,11 @@ curl -s \
 | sort -u
 
 
+
+curl -s \
+  --url "https://data-api.polymarket.com/v1/leaderboard?timePeriod=MONTH&orderBy=PNL&category=OVERALL&limit=50&offset=0" \
+| jq -r '.[] | "\(.rank)\t\(.proxyWallet)\t\(.pnl)"'
+
+
+
+
