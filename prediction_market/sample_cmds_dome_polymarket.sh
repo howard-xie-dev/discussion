@@ -43,5 +43,11 @@ curl -s \
 
 
 
+ curl -s "https://gamma-api.polymarket.com/events/slug/will-biden-complete-his-term-as-president" \
+| jq -r '.markets[].conditionId'
+
+ curl -s "https://data-api.polymarket.com/holders?market=0xd1e760f57415093db2e8378b79fe37ec8dc9ad09ee57f6f0cdc2468ae29fea23&limit=20&minBalance=1" \
+| jq -r '.[].holders[].proxyWallet' \
+| sort -u
 
 
