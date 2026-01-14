@@ -64,3 +64,38 @@ curl -s \
 | jq -r '.orders[] | .user, .taker' \
 | sort -u
 
+
+
+# combo that fetches candle stick
+# step 1 fetch a condition ID
+curl -sS \
+    --url "https://api.domeapi.io/v1/polymarket/markets?status=open&min_volume=10000&limit=1&offset=0" \
+    --header "Authorization: Bearer ${DOME_API_KEY}" \
+  | jq -r '.markets[0].condition_id'
+
+# step 1 alternative fetch a condition ID
+  curl -sS \
+    --url "https://api.domeapi.io/v1/polymarket/markets?search=bitcoin&status=open&limit=1&offset=0" \
+    --header "Authorization: Bearer ${DOME_API_KEY}" \
+  | jq -r '.markets[0].condition_id'
+
+# step 2 fetch candle stick
+   curl -sS \
+  --url "https://api.domeapi.io/v1/polymarket/candlesticks/0x17815081230e3b9c78b098162c33b1ffa68c4ec29c123d3d14989599e0c2e113?start_time=${START_TIME}&end_time=${END_TIME}&interval=${INTERVAL}" \
+  --header "Authorization: Bearer ${DOME_API_KEY}" \
+| jq .
+
+# step 3 flattened output 
+curl -sS \
+  --url "https://api.domeapi.io/v1/polymarket/candlesticks/0x17815081230e3b9c78b098162c33b1ffa68c4ec29c123d3d14989599e0c2e113?start_time=${START_TIME}&end_time=${END_TIME}&interval=${INTERVAL}" \
+  --header "Authorization: Bearer ${DOME_API_KEY}" \
+| jq '[.candlesticks[][][] | select(type=="object" and has("end_period_ts"))] | length'
+
+# leaf object keys
+curl -sS \
+  --url "https://api.domeapi.io/v1/polymarket/candlesticks/0x17815081230e3b9c78b098162c33b1ffa68c4ec29c123d3d14989599e0c2e113?start_time=${START_TIME}&end_time=${END_TIME}&interval=${INTERVAL}" \
+  --header "Authorization: Bearer ${DOME_API_KEY}" \
+| jq -r '.candlesticks[][][] | select(type=="object") | keys[]' | sort -u
+
+
+
