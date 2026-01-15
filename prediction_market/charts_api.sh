@@ -40,4 +40,11 @@ curl --request GET \
   --header "Authorization: Bearer ${DOME_API_KEY}" \
 | jq . 
 
+# fetch 2 days with 1 day interval, if market is resolved before window range, there is no data
+curl -sS \
+  --url "https://api.domeapi.io/v1/polymarket/candlesticks/0x17815081230e3b9c78b098162c33b1ffa68c4ec29c123d3d14989599e0c2e113?start_time=$(date -v-2d +%s)&end_time=$(date +%s)&interval=1440" \
+  --header "Authorization: Bearer ${DOME_API_KEY}" \
+| jq . | less
+
+
 
