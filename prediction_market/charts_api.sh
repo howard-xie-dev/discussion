@@ -9,21 +9,22 @@ curl -s \
   | [
       $event.slug,
       .slug,
-      .conditionId
+      .conditionId,
     ]
   | @csv
 '
 
 # Alternative, better solution, use dome API's get markets by event slug API to fetch markets
-curl --request GET \
-  --url 'https://api.domeapi.io/v1/polymarket/markets?limit=10&event_slug=super-bowl-champion-2026-731' \
+ curl --request GET \
+  --url 'https://api.domeapi.io/v1/polymarket/markets?status=open&event_slug=super-bowl-champion-2026-731' \
   --header "Authorization: Bearer $DOME_API_KEY" \
   --header "Accept: application/json" | jq -r '
   .markets[]
   | [
       .event_slug,
       .market_slug,
-      .condition_id
+      .condition_id,
+      .status
     ]
   | @csv
 '
