@@ -41,10 +41,27 @@ curl --request GET \
 | jq . 
 
 # fetch 2 days with 1 day interval, if market is resolved before window range, there is no data
-curl -sS \
-  --url "https://api.domeapi.io/v1/polymarket/candlesticks/0x17815081230e3b9c78b098162c33b1ffa68c4ec29c123d3d14989599e0c2e113?start_time=$(date -v-2d +%s)&end_time=$(date +%s)&interval=1440" \
+ curl -sS \
+  --url "https://api.domeapi.io/v1/polymarket/candlesticks/0xa0eafdfa7da17483796f77f4b287d28834ab97db4a9a6e999b52c1ba239bc2f3?start_time=$(date -v-2d +%s)&end_time=$(date +%s)&interval=1440" \
   --header "Authorization: Bearer ${DOME_API_KEY}" \
-| jq . | less
+| jq -r '
+  ["token_id","side","end_period_ts","yes_ask.close","yes_bid.close"],
+  (
+    .candlesticks[]
+    | .[1] as $meta
+    | .[0][]
+    | [
+        $meta.token_id,
+        $meta.side,
+        .end_period_ts,
+        .yes_ask.close,
+        .yes_bid.close
+      ]
+  )
+  | @csv'
+
+
+
 
 
 
