@@ -43,7 +43,7 @@ curl -s \
 
 # fetch 2 days with 1 day interval, if market is resolved before window range, there is no data
  curl -sS \
-  --url "https://api.domeapi.io/v1/polymarket/candlesticks/0xa0eafdfa7da17483796f77f4b287d28834ab97db4a9a6e999b52c1ba239bc2f3?start_time=$(date -v-2d +%s)&end_time=$(date +%s)&interval=1440" \
+  --url "https://api.domeapi.io/v1/polymarket/candlesticks/0x98d1aaf1514d3e2fca35c3fc218e3697c80e7227fbb3b56137e6c8a5dc1882fe?start_time=$(date -v-2d +%s)&end_time=$(date +%s)&interval=1440" \
   --header "Authorization: Bearer ${DOME_API_KEY}" \
 | jq -r '
   ["token_id","side","end_period_ts","yes_ask.close","yes_bid.close"],
