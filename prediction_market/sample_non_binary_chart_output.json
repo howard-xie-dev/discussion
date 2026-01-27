@@ -1,0 +1,57 @@
+{
+    "available_zoom_levels": [
+        "1h",
+        "4h",
+        "1d",
+        "1w",
+        "max"
+    ],
+    "markets": [
+        {
+            "market_id": "cbb-mdes-ncc-2026-01-26:north-carolina-central-eagles",
+            "polymarket_market_id": "cbb-mdes-ncc-2026-01-26",
+            "outcome_type": "yes",
+            "odds_data": {
+                "zoom_level": "max",
+                "resolution": "1d",
+                "data_points": [
+                    {
+                        "unix_time": 1769328000,
+                        "odds": 30.0
+                    },
+                    {
+                        "unix_time": 1769414400,
+                        "odds": 50.0
+                    },
+                    {
+                        "unix_time": 1769500800,
+                        "odds": 99.0
+                    }
+                ]
+            }
+        },
+        {
+            "market_id": "cbb-mdes-ncc-2026-01-26:maryland-eastern-shore-hawks",
+            "polymarket_market_id": "cbb-mdes-ncc-2026-01-26",
+            "outcome_type": "yes",
+            "odds_data": {
+                "zoom_level": "max",
+                "resolution": "1d",
+                "data_points": [
+                    {
+                        "unix_time": 1769328000,
+                        "odds": 69.0
+                    },
+                    {
+                        "unix_time": 1769414400,
+                        "odds": 50.0
+                    },
+                    {
+                        "unix_time": 1769500800,
+                        "odds": 1.0
+                    }
+                ]
+            }
+        }
+    ]
+}
