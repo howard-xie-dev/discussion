@@ -21,12 +21,8 @@ curl --request GET \
   | @csv
 '
 
-# fetch position of an address
+# fetch position given an address(user) and a market (condition)
 curl --request GET \
-  --url 'https://data-api.polymarket.com/positions?sizeThreshold=1&limit=10&sortBy=TOKENS&sortDirection=DESC&user=0xd12cfe28c79312d68855de22984e946726d3ed3d' | jq -r '
-  ["proxyWallet","asset","size","conditionId"],
-  (.[] | [.proxyWallet, .asset, .size, .conditionId])
-  | @csv
-'
+  --url 'https://data-api.polymarket.com/positions?sizeThreshold=1&limit=10&sortBy=TOKENS&sortDirection=DESC&user=0xd12cfe28c79312d68855de22984e946726d3ed3d&market=0xcabe8b4a1ad5d4385a7895a64eda7c9339ca64cfed0cf8c585d4ef8a74d370a6' | jq .
 
 
